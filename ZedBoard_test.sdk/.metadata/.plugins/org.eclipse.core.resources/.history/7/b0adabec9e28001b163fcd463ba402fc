@@ -1,0 +1,60 @@
+/*
+ * test_functions.c
+ *
+ *  Created on: 16 но€б. 2020 г.
+ *      Author: stud
+ */
+#include "xgpio.h"
+#include "test_functions.h"
+#include "project_parameters.h"
+
+u32 DataRead = 0;
+u32 DataReadPrev = 0;
+
+
+int initial_action(int action) {
+	volatile int Delay;
+	int x = 0;
+	while (x < action) {
+				/* Set the LED to High */
+				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED << x);
+
+				/* Wait a small amount of time so the LED is visible */
+				for (Delay = 0; Delay < LED_DELAY; Delay++);
+
+				/* Clear the LED bit */
+				XGpio_DiscreteClear(&Gpio_0, LED_CHANNEL, LED << x);
+
+				/* Wait a small amount of time so the LED is visible */
+				for (Delay = 0; Delay < LED_DELAY; Delay++);
+
+				x++;
+			}
+
+}
+
+int read_in(){
+
+				DataReadPrev = DataRead;
+				DataRead = TestINdigital(&Gpio_0);
+	//			XUartPs_Recv(&UartPs, RecvBuffer, TEST_BUFFER_SIZE);
+	//			XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, RecvBuffer[1]);
+	//			XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, DataRead);
+				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, RecvBuffer[30]);
+				if (DataReadPrev != DataRead) {
+					SendBuffer[24] = DataRead;
+					if (DataRead > 100) SendBuffer[30] = 6;
+					else SendBuffer[30] = 0;
+					SendBuffer[112] = DataRead;
+					SendBuffer[115] = DataRead;
+					SendBuffer[116] = DataRead;
+					SendBuffer[117] = DataRead;
+	//				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, DataRead);
+				}
+}
+
+
+int exit_programm() {
+	if (XGpio_DiscreteRead(&Gpio_1, 1) != 1) return 1; else return 0;
+
+}

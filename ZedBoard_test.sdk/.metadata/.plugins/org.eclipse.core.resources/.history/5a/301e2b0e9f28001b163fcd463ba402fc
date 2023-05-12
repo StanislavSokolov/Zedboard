@@ -1,0 +1,45 @@
+/*
+ * test_functions.c
+ *
+ *  Created on: 16 но€б. 2020 г.
+ *      Author: stud
+ */
+#include "xgpio.h"
+#include "test_functions.h"
+#include "project_parameters.h"
+
+int initial_action(int action) {
+	volatile int Delay;
+	int x = 0;
+	while (x < action) {
+				/* Set the LED to High */
+				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED << x);
+
+				/* Wait a small amount of time so the LED is visible */
+				for (Delay = 0; Delay < LED_DELAY; Delay++);
+
+				/* Clear the LED bit */
+				XGpio_DiscreteClear(&Gpio_0, LED_CHANNEL, LED << x);
+
+				/* Wait a small amount of time so the LED is visible */
+				for (Delay = 0; Delay < LED_DELAY; Delay++);
+
+				x++;
+			}
+
+}
+
+int read_in(* DataRead){
+	DataRead = TestINdigital(&Gpio_0);
+}
+
+int write_out(DataWrite){
+	XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, DataWrite);
+}
+
+
+
+int exit_programm() {
+	if (XGpio_DiscreteRead(&Gpio_1, 1) != 1) return 1; else return 0;
+
+}

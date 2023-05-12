@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = MCS
+the_ROM_image:
+{
+	[bootloader]D:\Projects\XilinxProjects\ZedBoard_test\ZedBoard_test.sdk\zynq_fsbl_0\Release\zynq_fsbl_0.elf
+	D:\Projects\XilinxProjects\ZedBoard_test\ZedBoard_test.sdk\design_1_wrapper_hw_platform_0\design_1_wrapper.bit
+	D:\Projects\XilinxProjects\ZedBoard_test\ZedBoard_test.sdk\TestHellowWorld\Release\TestHellowWorld.elf
+}

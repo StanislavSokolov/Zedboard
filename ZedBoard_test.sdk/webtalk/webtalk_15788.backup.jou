@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# 
+# Start of session at: Mon Aug 17 13:38:15 2020
+# Process ID: 15788
+# Current directory: D:/Projects/XilinxProjects/ZedBoard_test/ZedBoard_test.sdk/webtalk
+# Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
+# Log file: D:/Projects/XilinxProjects/ZedBoard_test/ZedBoard_test.sdk/webtalk/webtalk.log
+# Journal file: D:/Projects/XilinxProjects/ZedBoard_test/ZedBoard_test.sdk/webtalk\webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl
