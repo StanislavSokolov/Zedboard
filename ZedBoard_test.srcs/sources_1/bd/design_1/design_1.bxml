@@ -2,29 +2,13 @@
 <Root MajorVersion="0" MinorVersion="37">
   <CompositeFile CompositeFileTopName="design_1" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1683902972"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1683902972"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1683902972"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1683902972"/>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1791556400"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1791556400"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1791556400"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1791556400"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
-      <File Name="ip\design_1_clk_wiz_0_0\design_1_clk_wiz_0_0.xci" Type="IP">
-        <Instance HierarchyPath="clk_wiz_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\design_1_axi_gpio_0_0\design_1_axi_gpio_0_0.xci" Type="IP">
         <Instance HierarchyPath="axi_gpio_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\design_1_axi_gpio_1_0\design_1_axi_gpio_1_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_gpio_1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -63,14 +47,76 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth\design_1.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+      <File Name="ip\design_1_IP_AXI_LEDS_0_0\design_1_IP_AXI_LEDS_0_0.xci" Type="IP">
+        <Instance HierarchyPath="IP_AXI_LEDS_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="sim\design_1.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+      <File Name="ip\design_1_SerialBusSlave_ver_2_0_0\design_1_SerialBusSlave_ver_2_0_0.xci" Type="IP">
+        <Instance HierarchyPath="SerialBusSlave_ver_2_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_IP_AXI_ManagerSerial_0_1\design_1_IP_AXI_ManagerSerial_0_1.xci" Type="IP">
+        <Instance HierarchyPath="IP_AXI_ManagerSerial_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_OneStageSynchronizer_0_0\design_1_OneStageSynchronizer_0_0.xci" Type="IP">
+        <Instance HierarchyPath="OneStageSynchronizer_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_OneStageSynchronizer_0_1\design_1_OneStageSynchronizer_0_1.xci" Type="IP">
+        <Instance HierarchyPath="OneStageSynchronizer_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_ParallelBusSlave_ver_0_0\design_1_ParallelBusSlave_ver_0_0.xci" Type="IP">
+        <Instance HierarchyPath="ParallelBusSlave_ver_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_OneStageSynchronizer_1_0\design_1_OneStageSynchronizer_1_0.xci" Type="IP">
+        <Instance HierarchyPath="OneStageSynchronizer_2"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_OneStageSynchronizer_0_2\design_1_OneStageSynchronizer_0_2.xci" Type="IP">
+        <Instance HierarchyPath="OneStageSynchronizer_3"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_IP_AXI_ManagerParall_0_0\design_1_IP_AXI_ManagerParall_0_0.xci" Type="IP">
+        <Instance HierarchyPath="IP_AXI_ManagerParall_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\design_1_auto_pc_0\design_1_auto_pc_0.xci" Type="IP">
@@ -79,6 +125,16 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="synth\design_1.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+      </File>
+      <File Name="sim\design_1.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="design_1_ooc.xdc" Type="XDC">

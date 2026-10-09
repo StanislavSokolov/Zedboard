@@ -1,0 +1,352 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri Oct  9 17:11:36 2026
+# Process ID: 11532
+# Current directory: D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.runs/design_1_IP_AXI_ManagerSerial_0_1_synth_1
+# Command line: vivado.exe -log design_1_IP_AXI_ManagerSerial_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_IP_AXI_ManagerSerial_0_1.tcl
+# Log file: D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.runs/design_1_IP_AXI_ManagerSerial_0_1_synth_1/design_1_IP_AXI_ManagerSerial_0_1.vds
+# Journal file: D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.runs/design_1_IP_AXI_ManagerSerial_0_1_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_IP_AXI_ManagerSerial_0_1.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'd:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerParallelBusSlave/IP_AXI_ManagerParallelBusSlave_v1.0/IP_AXI_ManagerParallelBusSlave_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'd:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'd:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_1.0'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository 'd:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave_1.0'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/GITEA/GitHub/ES/IP_cores'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2019.1/data/ip'.
+Command: synth_design -top design_1_IP_AXI_ManagerSerial_0_1 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 11064 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 841.434 ; gain = 184.230
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_IP_AXI_ManagerSerial_0_1' [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_IP_AXI_ManagerSerial_0_1/synth/design_1_IP_AXI_ManagerSerial_0_1.vhd:89]
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDRESS_BUS_WIDTH bound to: 8 - type: integer 
+	Parameter DATA_BUS_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'IP_AXI_ManagerSerialBusSlave_v1_0' declared at 'd:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd:5' bound to instance 'U0' of component 'IP_AXI_ManagerSerialBusSlave_v1_0' [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_IP_AXI_ManagerSerial_0_1/synth/design_1_IP_AXI_ManagerSerial_0_1.vhd:164]
+INFO: [Synth 8-638] synthesizing module 'IP_AXI_ManagerSerialBusSlave_v1_0' [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd:60]
+	Parameter ADDRESS_BUS_WIDTH bound to: 8 - type: integer 
+	Parameter DATA_BUS_WIDTH bound to: 16 - type: integer 
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter ADDRESS_BUS_WIDTH bound to: 8 - type: integer 
+	Parameter DATA_BUS_WIDTH bound to: 16 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI' declared at 'd:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd:5' bound to instance 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_inst' of component 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI' [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd:105]
+INFO: [Synth 8-638] synthesizing module 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI' [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd:97]
+	Parameter ADDRESS_BUS_WIDTH bound to: 8 - type: integer 
+	Parameter DATA_BUS_WIDTH bound to: 16 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-226] default block is never used [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd:330]
+WARNING: [Synth 8-6014] Unused sequential element loc_addr_reg was removed.  [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd:230]
+INFO: [Synth 8-256] done synthesizing module 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI' (1#1) [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd:97]
+INFO: [Synth 8-256] done synthesizing module 'IP_AXI_ManagerSerialBusSlave_v1_0' (2#1) [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd:60]
+INFO: [Synth 8-256] done synthesizing module 'design_1_IP_AXI_ManagerSerial_0_1' (3#1) [d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_IP_AXI_ManagerSerial_0_1/synth/design_1_IP_AXI_ManagerSerial_0_1.vhd:89]
+WARNING: [Synth 8-3331] design IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI has unconnected port S_AXI_AWPROT[2]
+WARNING: [Synth 8-3331] design IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI has unconnected port S_AXI_AWPROT[1]
+WARNING: [Synth 8-3331] design IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI has unconnected port S_AXI_AWPROT[0]
+WARNING: [Synth 8-3331] design IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI has unconnected port S_AXI_ARPROT[2]
+WARNING: [Synth 8-3331] design IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI has unconnected port S_AXI_ARPROT[1]
+WARNING: [Synth 8-3331] design IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI has unconnected port S_AXI_ARPROT[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 988.523 ; gain = 331.320
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 988.523 ; gain = 331.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 988.523 ; gain = 331.320
+---------------------------------------------------------------------------------
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1142.367 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.397 . Memory (MB): peak = 1153.254 ; gain = 10.887
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+-----------------------------------------------+------------+----------+
+|      |RTL Partition                                  |Replication |Instances |
++------+-----------------------------------------------+------------+----------+
+|1     |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI__GB0 |           1|     50132|
+|2     |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI__GB1 |           1|     43758|
++------+-----------------------------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 513   
+	               16 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 256   
+	   4 Input     16 Bit        Muxes := 256   
+	   2 Input      8 Bit        Muxes := 1280  
+	   2 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 513   
+	               16 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 256   
+	   4 Input     16 Bit        Muxes := 256   
+	   2 Input      8 Bit        Muxes := 1280  
+	   2 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design design_1_IP_AXI_ManagerSerial_0_1 has unconnected port s00_axi_awprot[2]
+WARNING: [Synth 8-3331] design design_1_IP_AXI_ManagerSerial_0_1 has unconnected port s00_axi_awprot[1]
+WARNING: [Synth 8-3331] design design_1_IP_AXI_ManagerSerial_0_1 has unconnected port s00_axi_awprot[0]
+WARNING: [Synth 8-3331] design design_1_IP_AXI_ManagerSerial_0_1 has unconnected port s00_axi_arprot[2]
+WARNING: [Synth 8-3331] design design_1_IP_AXI_ManagerSerial_0_1 has unconnected port s00_axi_arprot[1]
+WARNING: [Synth 8-3331] design design_1_IP_AXI_ManagerSerial_0_1 has unconnected port s00_axi_arprot[0]
+INFO: [Synth 8-3886] merging instance 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_insti_0/axi_bresp_reg[0]' (FDRE) to 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_insti_0/axi_bresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_insti_0/\axi_bresp_reg[1] )
+INFO: [Synth 8-3886] merging instance 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_insti_1/axi_rresp_reg[0]' (FDRE) to 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_insti_1/axi_rresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_insti_1/\axi_rresp_reg[1] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+-----------------------------------------------+------------+----------+
+|      |RTL Partition                                  |Replication |Instances |
++------+-----------------------------------------------+------------+----------+
+|1     |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI__GB0 |           1|     12847|
+|2     |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI__GB1 |           1|      8778|
++------+-----------------------------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+-----------------------------------------------+------------+----------+
+|      |RTL Partition                                  |Replication |Instances |
++------+-----------------------------------------------+------------+----------+
+|1     |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI__GB0 |           1|     12847|
+|2     |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI__GB1 |           1|      8778|
++------+-----------------------------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:02 ; elapsed = 00:01:04 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:05 ; elapsed = 00:01:06 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |LUT1  |     1|
+|2     |LUT2  |     1|
+|3     |LUT3  |     2|
+|4     |LUT4  |     3|
+|5     |LUT5  |   546|
+|6     |LUT6  |  2442|
+|7     |MUXF7 |  1088|
+|8     |MUXF8 |   544|
+|9     |FDRE  |  8266|
+|10    |FDSE  |    43|
++------+------+------+
+
+Report Instance Areas: 
++------+---------------------------------------------------+------------------------------------------+------+
+|      |Instance                                           |Module                                    |Cells |
++------+---------------------------------------------------+------------------------------------------+------+
+|1     |top                                                |                                          | 12936|
+|2     |  U0                                               |IP_AXI_ManagerSerialBusSlave_v1_0         | 12936|
+|3     |    IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI_inst |IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI | 12936|
++------+---------------------------------------------------+------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1153.254 ; gain = 496.051
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:01:01 . Memory (MB): peak = 1153.254 ; gain = 331.320
+Synthesis Optimization Complete : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1153.254 ; gain = 496.051
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 1632 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'design_1_IP_AXI_ManagerSerial_0_1' is not ideal for floorplanning, since the cellview 'IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1153.254 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+27 Infos, 19 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1153.254 ; gain = 764.980
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1153.254 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.runs/design_1_IP_AXI_ManagerSerial_0_1_synth_1/design_1_IP_AXI_ManagerSerial_0_1.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_IP_AXI_ManagerSerial_0_1, cache-ID = 9a8e6962f534cae4
+INFO: [Coretcl 2-1174] Renamed 2 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1153.254 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.runs/design_1_IP_AXI_ManagerSerial_0_1_synth_1/design_1_IP_AXI_ManagerSerial_0_1.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_IP_AXI_ManagerSerial_0_1_utilization_synth.rpt -pb design_1_IP_AXI_ManagerSerial_0_1_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Oct  9 17:13:06 2026...

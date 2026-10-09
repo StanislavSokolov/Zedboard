@@ -17,6 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -29,19 +30,21 @@ set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:zed:part0:1.4 [current_project]
+set_property ip_repo_paths {
+  d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerParallelBusSlave/IP_AXI_ManagerParallelBusSlave_v1.0/IP_AXI_ManagerParallelBusSlave_1.0
+  d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0
+  d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_1.0
+  d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave_1.0
+  d:/GITEA/GitHub/ES/IP_cores
+} [current_project]
+update_ip_catalog
 set_property ip_output_repo d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_vhdl -library xil_defaultlib D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd
 add_files D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_board.xdc]
 set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0.xdc]
-set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_1_0/design_1_axi_gpio_1_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_1_0/design_1_axi_gpio_1_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_1_0/design_1_axi_gpio_1_0.xdc]
 set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
 set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_xbar_0/design_1_xbar_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc]
@@ -58,6 +61,9 @@ set_property used_in_implementation false [get_files -all D:/GITEA/GitHub/ES/Zed
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/constrs_1/new/pins.xdc
+set_property used_in_implementation false [get_files D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/constrs_1/new/pins.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1

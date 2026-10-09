@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri May 12 17:52:27 2023
+| Date         : Fri Oct  9 17:18:58 2026
 | Host         : STAS-W10 running 64-bit major release  (build 9200)
 | Command      : report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
 | Design       : design_1_wrapper
@@ -24,12 +24,93 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 0
-+------+----------+-------------+------------+
-| Rule | Severity | Description | Violations |
-+------+----------+-------------+------------+
-+------+----------+-------------+------------+
+             Violations found: 16
++--------+----------+---------------------------------+------------+
+| Rule   | Severity | Description                     | Violations |
++--------+----------+---------------------------------+------------+
+| RPBF-3 | Warning  | IO port buffering is incomplete | 16         |
++--------+----------+---------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+RPBF-3#1 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[0] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#2 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[10] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#3 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[11] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#4 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[12] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#5 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[13] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#6 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[14] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#7 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[15] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#8 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[1] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#9 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[2] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#10 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[3] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#11 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[4] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#12 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[5] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#13 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[6] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#14 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[7] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#15 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[8] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#16 Warning
+IO port buffering is incomplete  
+Device port pbdata_0[9] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
 

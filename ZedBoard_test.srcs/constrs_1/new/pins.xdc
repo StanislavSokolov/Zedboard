@@ -22,15 +22,70 @@ set_property IOSTANDARD LVCMOS33 [get_ports sbdatain_0]
 set_property PACKAGE_PIN N19 [get_ports sbclk_0]
 set_property IOSTANDARD LVCMOS33 [get_ports sbclk_0]
 
-
-
-
 #ParallelBus
 #CE
-#ACK
+set_property PACKAGE_PIN AA21 [get_ports pbce_0]
+set_property IOSTANDARD LVCMOS33 [get_ports pbce_0]
+
 #CLK
+set_property PACKAGE_PIN AA19 [get_ports pbclk_0]
+set_property IOSTANDARD LVCMOS33 [get_ports pbclk_0]
+
+#ACK
+set_property DRIVE 12 [get_ports pback_0]
+set_property PACKAGE_PIN T16 [get_ports pback_0]
+set_property IOSTANDARD LVCMOS33 [get_ports pback_0]
 
 #DATA
+set_property PACKAGE_PIN V22 [get_ports {pbdata_0[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[0]}]
+set_property PACKAGE_PIN P21 [get_ports {pbdata_0[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[1]}]
+set_property PACKAGE_PIN N15 [get_ports {pbdata_0[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[2]}]
+set_property PACKAGE_PIN W22 [get_ports {pbdata_0[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[3]}]
+set_property PACKAGE_PIN P15 [get_ports {pbdata_0[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[4]}]
+set_property PACKAGE_PIN R15 [get_ports {pbdata_0[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[5]}]
+set_property PACKAGE_PIN U20 [get_ports {pbdata_0[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[6]}]
+set_property PACKAGE_PIN T19 [get_ports {pbdata_0[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[7]}]
+set_property PACKAGE_PIN T17 [get_ports {pbdata_0[8]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[8]}]
+set_property PACKAGE_PIN P16 [get_ports {pbdata_0[9]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[9]}]
+set_property PACKAGE_PIN AA22 [get_ports {pbdata_0[10]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[10]}]
+set_property PACKAGE_PIN T22 [get_ports {pbdata_0[11]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[11]}]
+set_property PACKAGE_PIN U22 [get_ports {pbdata_0[12]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[12]}]
+set_property PACKAGE_PIN AB22 [get_ports {pbdata_0[13]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[13]}]
+set_property PACKAGE_PIN W20 [get_ports {pbdata_0[14]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[14]}]
+set_property PACKAGE_PIN W21 [get_ports {pbdata_0[15]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pbdata_0[15]}]
+
+set_property KEEPER true [get_ports {pbdata_0[14]}]
+set_property KEEPER true [get_ports {pbdata_0[13]}]
+set_property KEEPER true [get_ports {pbdata_0[12]}]
+set_property KEEPER true [get_ports {pbdata_0[11]}]
+set_property KEEPER true [get_ports {pbdata_0[10]}]
+set_property KEEPER true [get_ports {pbdata_0[9]}]
+set_property KEEPER true [get_ports {pbdata_0[8]}]
+set_property KEEPER true [get_ports {pbdata_0[7]}]
+set_property KEEPER true [get_ports {pbdata_0[6]}]
+set_property KEEPER true [get_ports {pbdata_0[5]}]
+set_property KEEPER true [get_ports {pbdata_0[4]}]
+set_property KEEPER true [get_ports {pbdata_0[3]}]
+set_property KEEPER true [get_ports {pbdata_0[2]}]
+set_property KEEPER true [get_ports {pbdata_0[1]}]
+set_property KEEPER true [get_ports {pbdata_0[0]}]
+set_property KEEPER true [get_ports {pbdata_0[15]}]
 
 
 

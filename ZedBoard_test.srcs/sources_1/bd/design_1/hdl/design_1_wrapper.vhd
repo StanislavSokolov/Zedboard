@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Fri May 12 17:49:09 2023
+--Date        : Fri Oct  9 17:11:29 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
@@ -34,19 +34,28 @@ entity design_1_wrapper is
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
-    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    leds_8bits_tri_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    reset_rtl : in STD_LOGIC;
-    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    sys_clock : in STD_LOGIC
+    GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LEDS_0 : out STD_LOGIC;
+    pback_0 : out STD_LOGIC;
+    pbce_0 : in STD_LOGIC;
+    pbclk_0 : in STD_LOGIC;
+    pbdata_0 : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    sbclk_0 : in STD_LOGIC;
+    sbdatain_0 : in STD_LOGIC;
+    sbdataout_0 : out STD_LOGIC
   );
 end design_1_wrapper;
 
 architecture STRUCTURE of design_1_wrapper is
   component design_1 is
   port (
-    sys_clock : in STD_LOGIC;
-    reset_rtl : in STD_LOGIC;
+    LEDS_0 : out STD_LOGIC;
+    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
+    FIXED_IO_ddr_vrn : inout STD_LOGIC;
+    FIXED_IO_ddr_vrp : inout STD_LOGIC;
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    FIXED_IO_ps_clk : inout STD_LOGIC;
+    FIXED_IO_ps_porb : inout STD_LOGIC;
     DDR_cas_n : inout STD_LOGIC;
     DDR_cke : inout STD_LOGIC;
     DDR_ck_n : inout STD_LOGIC;
@@ -62,15 +71,14 @@ architecture STRUCTURE of design_1_wrapper is
     DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    leds_8bits_tri_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
-    FIXED_IO_ddr_vrn : inout STD_LOGIC;
-    FIXED_IO_ddr_vrp : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC;
-    FIXED_IO_ps_clk : inout STD_LOGIC;
-    FIXED_IO_ps_porb : inout STD_LOGIC
+    GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    sbclk_0 : in STD_LOGIC;
+    sbdatain_0 : in STD_LOGIC;
+    sbdataout_0 : out STD_LOGIC;
+    pbdata_0 : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    pback_0 : out STD_LOGIC;
+    pbclk_0 : in STD_LOGIC;
+    pbce_0 : in STD_LOGIC
   );
   end component design_1;
 begin
@@ -97,10 +105,14 @@ design_1_i: component design_1
       FIXED_IO_ps_clk => FIXED_IO_ps_clk,
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
-      btns_5bits_tri_i(4 downto 0) => btns_5bits_tri_i(4 downto 0),
-      leds_8bits_tri_o(7 downto 0) => leds_8bits_tri_o(7 downto 0),
-      reset_rtl => reset_rtl,
-      sws_8bits_tri_i(7 downto 0) => sws_8bits_tri_i(7 downto 0),
-      sys_clock => sys_clock
+      GPIO_0_tri_o(0) => GPIO_0_tri_o(0),
+      LEDS_0 => LEDS_0,
+      pback_0 => pback_0,
+      pbce_0 => pbce_0,
+      pbclk_0 => pbclk_0,
+      pbdata_0(15 downto 0) => pbdata_0(15 downto 0),
+      sbclk_0 => sbclk_0,
+      sbdatain_0 => sbdatain_0,
+      sbdataout_0 => sbdataout_0
     );
 end STRUCTURE;

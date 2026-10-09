@@ -1,0 +1,27 @@
+vhdl xil_defaultlib  \
+"../../../bd/design_1/ip/design_1_axi_gpio_0_0/sim/design_1_axi_gpio_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0_sim_netlist.vhdl" \
+"../../../bd/design_1/ip/design_1_xbar_0/design_1_xbar_0_sim_netlist.vhdl" \
+"../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
+"../../../bd/design_1/ipshared/a010/hdl/IP_AXI_LEDS_v1_0_S00_AXI.vhd" \
+"../../../bd/design_1/ipshared/a010/hdl/IP_AXI_LEDS_v1_0.vhd" \
+"../../../bd/design_1/ip/design_1_IP_AXI_LEDS_0_0/sim/design_1_IP_AXI_LEDS_0_0.vhd" \
+"../../../bd/design_1/ipshared/6e44/src/SerialBusSlave_ver_2_0.vhd" \
+"../../../bd/design_1/ip/design_1_SerialBusSlave_ver_2_0_0/sim/design_1_SerialBusSlave_ver_2_0_0.vhd" \
+"../../../bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd" \
+"../../../bd/design_1/ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd" \
+"../../../bd/design_1/ip/design_1_IP_AXI_ManagerSerial_0_1/sim/design_1_IP_AXI_ManagerSerial_0_1.vhd" \
+"../../../bd/design_1/ipshared/edd9/src/OneStageSynchronizerAndDigitalFilterSingle_ver_1_0.vhd" \
+"../../../bd/design_1/ip/design_1_OneStageSynchronizer_0_0/sim/design_1_OneStageSynchronizer_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_OneStageSynchronizer_0_1/sim/design_1_OneStageSynchronizer_0_1.vhd" \
+"../../../bd/design_1/ipshared/43c7/src/ParallelBusSlave_ver_2_0.vhd" \
+"../../../bd/design_1/ip/design_1_ParallelBusSlave_ver_0_0/sim/design_1_ParallelBusSlave_ver_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_OneStageSynchronizer_1_0/sim/design_1_OneStageSynchronizer_1_0.vhd" \
+"../../../bd/design_1/ip/design_1_OneStageSynchronizer_0_2/sim/design_1_OneStageSynchronizer_0_2.vhd" \
+"../../../bd/design_1/ipshared/6e5b/hdl/IP_AXI_ManagerParallelBusSlave_v1_0_S00_AXI.vhd" \
+"../../../bd/design_1/ipshared/6e5b/hdl/IP_AXI_ManagerParallelBusSlave_v1_0.vhd" \
+"../../../bd/design_1/ip/design_1_IP_AXI_ManagerParall_0_0/sim/design_1_IP_AXI_ManagerParall_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_sim_netlist.vhdl" \
+"../../../bd/design_1/sim/design_1.vhd" \
+
+nosort

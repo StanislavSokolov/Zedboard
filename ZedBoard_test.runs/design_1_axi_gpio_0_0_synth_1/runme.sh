@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/Projects/XilinxProjects/ZedBoard_test/ZedBoard_test.runs/design_1_axi_gpio_0_0_synth_1'
+HD_PWD='D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.runs/design_1_axi_gpio_0_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

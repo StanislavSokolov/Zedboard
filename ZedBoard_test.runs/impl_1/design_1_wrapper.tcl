@@ -72,6 +72,14 @@ set rc [catch {
   set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.cache/wt [current_project]
   set_property parent.project_path D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.xpr [current_project]
+  set_property ip_repo_paths {
+  D:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerParallelBusSlave/IP_AXI_ManagerParallelBusSlave_v1.0/IP_AXI_ManagerParallelBusSlave_1.0
+  D:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0
+  D:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_1.0
+  D:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave_1.0
+  D:/GITEA/GitHub/ES/IP_cores
+} [current_project]
+  update_ip_catalog
   set_property ip_output_repo D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
@@ -80,6 +88,7 @@ set rc [catch {
   set_param project.isImplRun true
   add_files D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/sources_1/bd/design_1/design_1.bd
   set_param project.isImplRun false
+  read_xdc D:/GITEA/GitHub/ES/Zedboard/ZedBoard_test.srcs/constrs_1/new/pins.xdc
   set_param project.isImplRun true
   link_design -top design_1_wrapper -part xc7z020clg484-1
   set_param project.isImplRun false
