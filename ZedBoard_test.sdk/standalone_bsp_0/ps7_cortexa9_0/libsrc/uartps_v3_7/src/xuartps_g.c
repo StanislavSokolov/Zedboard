@@ -5,7 +5,7 @@
 * Version: 2019.1
 * DO NOT EDIT.
 *
-* Copyright (C) 2010-2020 Xilinx, Inc. All Rights Reserved.*
+* Copyright (C) 2010-2026 Xilinx, Inc. All Rights Reserved.*
 *Permission is hereby granted, free of charge, to any person obtaining a copy
 *of this software and associated documentation files (the Software), to deal
 *in the Software without restriction, including without limitation the rights
@@ -42,6 +42,12 @@
 
 XUartPs_Config XUartPs_ConfigTable[XPAR_XUARTPS_NUM_INSTANCES] =
 {
+	{
+		XPAR_PS7_UART_0_DEVICE_ID,
+		XPAR_PS7_UART_0_BASEADDR,
+		XPAR_PS7_UART_0_UART_CLK_FREQ_HZ,
+		XPAR_PS7_UART_0_HAS_MODEM
+	},
 	{
 		XPAR_PS7_UART_1_DEVICE_ID,
 		XPAR_PS7_UART_1_BASEADDR,
