@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Fri Oct  9 17:11:29 2026
+--Date        : Mon Oct 12 14:25:23 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1638,7 +1638,7 @@ entity design_1 is
     sbdataout_0 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=20,numReposBlks=14,numNonXlnxBlks=9,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=21,numReposBlks=15,numNonXlnxBlks=10,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -1805,18 +1805,6 @@ architecture STRUCTURE of design_1 is
     sync_signal : out STD_LOGIC
   );
   end component design_1_OneStageSynchronizer_0_1;
-  component design_1_ParallelBusSlave_ver_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    pbclk : in STD_LOGIC;
-    pbdata : inout STD_LOGIC_VECTOR ( 15 downto 0 );
-    pbce : in STD_LOGIC;
-    pback : out STD_LOGIC;
-    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    dataready : out STD_LOGIC
-  );
-  end component design_1_ParallelBusSlave_ver_0_0;
   component design_1_OneStageSynchronizer_1_0 is
   port (
     clk : in STD_LOGIC;
@@ -1831,35 +1819,6 @@ architecture STRUCTURE of design_1 is
     sync_signal : out STD_LOGIC
   );
   end component design_1_OneStageSynchronizer_0_2;
-  component design_1_IP_AXI_ManagerParall_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    dataready : in STD_LOGIC;
-    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_awvalid : in STD_LOGIC;
-    s00_axi_awready : out STD_LOGIC;
-    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s00_axi_wvalid : in STD_LOGIC;
-    s00_axi_wready : out STD_LOGIC;
-    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_bvalid : out STD_LOGIC;
-    s00_axi_bready : in STD_LOGIC;
-    s00_axi_araddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_arvalid : in STD_LOGIC;
-    s00_axi_arready : out STD_LOGIC;
-    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_rvalid : out STD_LOGIC;
-    s00_axi_rready : in STD_LOGIC;
-    s00_axi_aclk : in STD_LOGIC;
-    s00_axi_aresetn : in STD_LOGIC
-  );
-  end component design_1_IP_AXI_ManagerParall_0_0;
   component design_1_IP_AXI_ManagerSerial_0_1 is
   port (
     clk : in STD_LOGIC;
@@ -1892,9 +1851,56 @@ architecture STRUCTURE of design_1 is
     s00_axi_aresetn : in STD_LOGIC
   );
   end component design_1_IP_AXI_ManagerSerial_0_1;
+  component design_1_IP_AXI_ManagerParall_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    dataready : in STD_LOGIC;
+    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_awvalid : in STD_LOGIC;
+    s00_axi_awready : out STD_LOGIC;
+    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_wvalid : in STD_LOGIC;
+    s00_axi_wready : out STD_LOGIC;
+    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_bvalid : out STD_LOGIC;
+    s00_axi_bready : in STD_LOGIC;
+    s00_axi_araddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_arvalid : in STD_LOGIC;
+    s00_axi_arready : out STD_LOGIC;
+    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_rvalid : out STD_LOGIC;
+    s00_axi_rready : in STD_LOGIC;
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC
+  );
+  end component design_1_IP_AXI_ManagerParall_0_0;
+  component design_1_LedBlink_ver_1_0_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    led : out STD_LOGIC
+  );
+  end component design_1_LedBlink_ver_1_0_0_0;
+  component design_1_ParallelBusSlave_ver_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    pbclk : in STD_LOGIC;
+    pbdata : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    pbce : in STD_LOGIC;
+    pback : out STD_LOGIC;
+    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dataready : out STD_LOGIC
+  );
+  end component design_1_ParallelBusSlave_ver_0_0;
   signal IP_AXI_ManagerParall_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal IP_AXI_ManagerSerial_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal IP_AXI_ManagerSerial_0_done : STD_LOGIC;
+  signal LedBlink_ver_1_0_0_led : STD_LOGIC;
   signal Net : STD_LOGIC;
   signal Net1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal OneStageSynchronizer_0_sync_signal : STD_LOGIC;
@@ -2051,6 +2057,7 @@ architecture STRUCTURE of design_1 is
   signal sbclk_0_1 : STD_LOGIC;
   signal sbdatain_0_1 : STD_LOGIC;
   signal NLW_IP_AXI_LEDS_0_LEDS_UNCONNECTED : STD_LOGIC;
+  signal NLW_IP_AXI_ManagerSerial_0_done_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE0_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE1_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE2_OUT_UNCONNECTED : STD_LOGIC;
@@ -2086,7 +2093,7 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of GPIO_0_tri_o : signal is "xilinx.com:interface:gpio:1.0 GPIO_0 TRI_O";
 begin
   GPIO_0_tri_o(0) <= axi_gpio_0_GPIO_TRI_O(0);
-  LEDS_0 <= IP_AXI_ManagerSerial_0_done;
+  LEDS_0 <= LedBlink_ver_1_0_0_led;
   pback_0 <= ParallelBusSlave_ver_0_pback;
   pbce_0_1 <= pbce_0;
   pbclk_0_1 <= pbclk_0;
@@ -2153,7 +2160,7 @@ IP_AXI_ManagerSerial_0: component design_1_IP_AXI_ManagerSerial_0_1
       datain(15 downto 0) => SerialBusSlave_ver_2_0_dataout(15 downto 0),
       dataout(15 downto 0) => IP_AXI_ManagerSerial_0_dataout(15 downto 0),
       dataready => SerialBusSlave_ver_2_0_dataready,
-      done => IP_AXI_ManagerSerial_0_done,
+      done => NLW_IP_AXI_ManagerSerial_0_done_UNCONNECTED,
       rw => SerialBusSlave_ver_2_0_rw,
       s00_axi_aclk => processing_system7_0_FCLK_CLK0,
       s00_axi_araddr(9 downto 0) => ps7_0_axi_periph_M02_AXI_ARADDR(9 downto 0),
@@ -2176,6 +2183,11 @@ IP_AXI_ManagerSerial_0: component design_1_IP_AXI_ManagerSerial_0_1
       s00_axi_wready => ps7_0_axi_periph_M02_AXI_WREADY,
       s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
       s00_axi_wvalid => ps7_0_axi_periph_M02_AXI_WVALID
+    );
+LedBlink_ver_1_0_0: component design_1_LedBlink_ver_1_0_0_0
+     port map (
+      clk => OneStageSynchronizer_2_sync_signal,
+      led => LedBlink_ver_1_0_0_led
     );
 OneStageSynchronizer_0: component design_1_OneStageSynchronizer_0_0
      port map (

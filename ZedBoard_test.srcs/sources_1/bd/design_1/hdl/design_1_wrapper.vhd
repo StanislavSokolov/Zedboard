@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Fri Oct  9 17:11:29 2026
+--Date        : Mon Oct 12 14:25:23 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
@@ -50,6 +50,13 @@ architecture STRUCTURE of design_1_wrapper is
   component design_1 is
   port (
     LEDS_0 : out STD_LOGIC;
+    sbclk_0 : in STD_LOGIC;
+    sbdatain_0 : in STD_LOGIC;
+    pbdata_0 : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    pback_0 : out STD_LOGIC;
+    pbclk_0 : in STD_LOGIC;
+    pbce_0 : in STD_LOGIC;
+    sbdataout_0 : out STD_LOGIC;
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ddr_vrn : inout STD_LOGIC;
     FIXED_IO_ddr_vrp : inout STD_LOGIC;
@@ -71,14 +78,7 @@ architecture STRUCTURE of design_1_wrapper is
     DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    sbclk_0 : in STD_LOGIC;
-    sbdatain_0 : in STD_LOGIC;
-    sbdataout_0 : out STD_LOGIC;
-    pbdata_0 : inout STD_LOGIC_VECTOR ( 15 downto 0 );
-    pback_0 : out STD_LOGIC;
-    pbclk_0 : in STD_LOGIC;
-    pbce_0 : in STD_LOGIC
+    GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component design_1;
 begin

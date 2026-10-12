@@ -1,12 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct  9 17:11:30 2026" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Oct 12 14:25:46 2026" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
-    <PORT DIR="O" NAME="LEDS_0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_done">
+    <PORT DIR="O" NAME="LEDS_0" SIGIS="undef" SIGNAME="LedBlink_ver_1_0_0_led">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="done"/>
+        <CONNECTION INSTANCE="LedBlink_ver_1_0_0" PORT="led"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sbclk_0" SIGIS="undef" SIGNAME="External_Ports_sbclk_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="OneStageSynchronizer_1" PORT="async_signal"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sbdatain_0" SIGIS="undef" SIGNAME="External_Ports_sbdatain_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="OneStageSynchronizer_0" PORT="async_signal"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="15" NAME="pbdata_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pbdata_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pbdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pback_0" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_pback">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pback"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="pbclk_0" SIGIS="undef" SIGNAME="External_Ports_pbclk_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="async_signal"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="pbce_0" SIGIS="undef" SIGNAME="External_Ports_pbce_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="OneStageSynchronizer_3" PORT="async_signal"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sbdataout_0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_sbdataout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="sbdataout"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_MIO">
@@ -117,41 +152,6 @@
     <PORT DIR="O" LEFT="0" NAME="GPIO_0_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_gpio_0" PORT="gpio_io_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="sbclk_0" SIGIS="undef" SIGNAME="External_Ports_sbclk_0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_1" PORT="async_signal"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="sbdatain_0" SIGIS="undef" SIGNAME="External_Ports_sbdatain_0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_0" PORT="async_signal"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="sbdataout_0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_sbdataout">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="sbdataout"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="15" NAME="pbdata_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pbdata_0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pbdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="pback_0" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_pback">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pback"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="pbclk_0" SIGIS="undef" SIGNAME="External_Ports_pbclk_0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="async_signal"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="pbce_0" SIGIS="undef" SIGNAME="External_Ports_pbce_0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_3" PORT="async_signal"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -389,7 +389,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/IP_AXI_ManagerParall_0" HWVERSION="1.0" INSTANCE="IP_AXI_ManagerParall_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerParallelBusSlave" VLNV="setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0">
+    <MODULE COREREVISION="3" FULLNAME="/IP_AXI_ManagerParall_0" HWVERSION="1.0" INSTANCE="IP_AXI_ManagerParall_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerParallelBusSlave" VLNV="setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>
@@ -636,11 +636,7 @@
             <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="dataready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="done" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="LEDS_0"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="done" SIGIS="undef"/>
         <PORT DIR="I" LEFT="9" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_awaddr"/>
@@ -806,6 +802,27 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LedBlink_ver_1_0_0" HWVERSION="1.0" INSTANCE="LedBlink_ver_1_0_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="LedBlink_ver_1_0" VLNV="setcorp:user:LedBlink_ver_1_0:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="COUNT_MAX" VALUE="625000"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_LedBlink_ver_1_0_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="OneStageSynchronizer_2_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led" SIGIS="undef" SIGNAME="LedBlink_ver_1_0_0_led">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LEDS_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="2" FULLNAME="/OneStageSynchronizer_0" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -878,6 +895,7 @@
         </PORT>
         <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="OneStageSynchronizer_2_sync_signal">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="LedBlink_ver_1_0_0" PORT="clk"/>
             <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pbclk"/>
           </CONNECTIONS>
         </PORT>
@@ -910,7 +928,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/ParallelBusSlave_ver_0" HWVERSION="1.0" INSTANCE="ParallelBusSlave_ver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ParallelBusSlave_ver_2_0" VLNV="setcorp:user:ParallelBusSlave_ver_2_0:1.0">
+    <MODULE COREREVISION="6" FULLNAME="/ParallelBusSlave_ver_0" HWVERSION="1.0" INSTANCE="ParallelBusSlave_ver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ParallelBusSlave_ver_2_0" VLNV="setcorp:user:ParallelBusSlave_ver_2_0:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="ADDRESS_DEVICE_BUS_WIDTH" VALUE="4"/>
@@ -2531,9 +2549,9 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ACLK"/>
             <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
@@ -2541,11 +2559,11 @@
             <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="clk"/>
             <CONNECTION INSTANCE="OneStageSynchronizer_1" PORT="clk"/>
             <CONNECTION INSTANCE="OneStageSynchronizer_0" PORT="clk"/>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="clk"/>
             <CONNECTION INSTANCE="OneStageSynchronizer_3" PORT="clk"/>
             <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="clk"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="clk"/>
             <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="clk"/>
+            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="clk"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -3154,99 +3172,24 @@
             <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awaddr">
+        <PORT DIR="I" NAME="M02_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awaddr"/>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awprot">
+        <PORT DIR="I" NAME="M02_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awprot"/>
+            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awvalid">
+        <PORT DIR="I" NAME="M03_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awvalid"/>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awready">
+        <PORT DIR="I" NAME="M03_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M01_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rready"/>
+            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_M_AXI_GP0_AWID">
@@ -3526,14 +3469,99 @@
             <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M02_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M02_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
+        <PORT DIR="O" LEFT="2" NAME="M01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awprot">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M01_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awaddr">
@@ -3629,16 +3657,6 @@
         <PORT DIR="O" NAME="M02_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awaddr">
@@ -3920,9 +3938,9 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
             <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_aresetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_aresetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ARESETN"/>
             <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_aresetn"/>
+            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

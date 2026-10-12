@@ -24,15 +24,15 @@ int main(void) {
 		} else {
 
 			if (latch) {
-//				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED);
+				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED);
 				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x0000AA01);
 				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR, 0x00005512);
 				latch = 0;
 
 			} else {
-//				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, ~LED);
+				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, ~LED);
 				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x00000550);
-				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR, 0x0000A912);
+				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR + 8, 0x0000A912);
 				latch = 1;
 			}
 			count = 0;

@@ -182,6 +182,12 @@ proc create_root_design { parentCell } {
   # Create instance: IP_AXI_ManagerSerial_0, and set properties
   set IP_AXI_ManagerSerial_0 [ create_bd_cell -type ip -vlnv setcorp:user:IP_AXI_ManagerSerialBusSlave:1.0 IP_AXI_ManagerSerial_0 ]
 
+  # Create instance: LedBlink_ver_1_0_0, and set properties
+  set LedBlink_ver_1_0_0 [ create_bd_cell -type ip -vlnv setcorp:user:LedBlink_ver_1_0:1.0 LedBlink_ver_1_0_0 ]
+  set_property -dict [ list \
+   CONFIG.COUNT_MAX {625000} \
+ ] $LedBlink_ver_1_0_0
+
   # Create instance: OneStageSynchronizer_0, and set properties
   set OneStageSynchronizer_0 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_0 ]
   set_property -dict [ list \
@@ -661,12 +667,12 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net IP_AXI_ManagerParall_0_dataout [get_bd_pins IP_AXI_ManagerParall_0/dataout] [get_bd_pins ParallelBusSlave_ver_0/datain]
   connect_bd_net -net IP_AXI_ManagerSerial_0_dataout [get_bd_pins IP_AXI_ManagerSerial_0/dataout] [get_bd_pins SerialBusSlave_ver_2_0/datain]
-  connect_bd_net -net IP_AXI_ManagerSerial_0_done [get_bd_ports LEDS_0] [get_bd_pins IP_AXI_ManagerSerial_0/done]
+  connect_bd_net -net LedBlink_ver_1_0_0_led [get_bd_ports LEDS_0] [get_bd_pins LedBlink_ver_1_0_0/led]
   connect_bd_net -net Net [get_bd_pins IP_AXI_ManagerParall_0/clk] [get_bd_pins IP_AXI_ManagerSerial_0/clk] [get_bd_pins OneStageSynchronizer_0/clk] [get_bd_pins OneStageSynchronizer_1/clk] [get_bd_pins OneStageSynchronizer_2/clk] [get_bd_pins OneStageSynchronizer_3/clk] [get_bd_pins ParallelBusSlave_ver_0/clk] [get_bd_pins SerialBusSlave_ver_2_0/clk] [get_bd_pins processing_system7_0/FCLK_CLK1]
   connect_bd_net -net Net1 [get_bd_ports pbdata_0] [get_bd_pins ParallelBusSlave_ver_0/pbdata]
   connect_bd_net -net OneStageSynchronizer_0_sync_signal [get_bd_pins OneStageSynchronizer_0/sync_signal] [get_bd_pins SerialBusSlave_ver_2_0/sbdatain]
   connect_bd_net -net OneStageSynchronizer_1_sync_signal [get_bd_pins OneStageSynchronizer_1/sync_signal] [get_bd_pins SerialBusSlave_ver_2_0/sbclk]
-  connect_bd_net -net OneStageSynchronizer_2_sync_signal [get_bd_pins OneStageSynchronizer_2/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbclk]
+  connect_bd_net -net OneStageSynchronizer_2_sync_signal [get_bd_pins LedBlink_ver_1_0_0/clk] [get_bd_pins OneStageSynchronizer_2/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbclk]
   connect_bd_net -net OneStageSynchronizer_3_sync_signal [get_bd_pins OneStageSynchronizer_3/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbce]
   connect_bd_net -net ParallelBusSlave_ver_0_addressregister [get_bd_pins IP_AXI_ManagerParall_0/addressregister] [get_bd_pins ParallelBusSlave_ver_0/addressregister]
   connect_bd_net -net ParallelBusSlave_ver_0_dataready [get_bd_pins IP_AXI_ManagerParall_0/dataready] [get_bd_pins ParallelBusSlave_ver_0/dataready]

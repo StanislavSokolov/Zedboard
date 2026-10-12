@@ -2,64 +2,65 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 4 -x 1170 -y 430 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 4 -x 1170 -y 450 -defaultsOSRD
-preplace port GPIO_0 -pg 1 -lvl 4 -x 1170 -y 220 -defaultsOSRD
-preplace port LEDS_0 -pg 1 -lvl 4 -x 1170 -y 600 -defaultsOSRD
-preplace port sbclk_0 -pg 1 -lvl 0 -x 0 -y 1150 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 4 -x 1160 -y 430 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 4 -x 1160 -y 450 -defaultsOSRD
+preplace port GPIO_0 -pg 1 -lvl 4 -x 1160 -y 220 -defaultsOSRD
+preplace port LEDS_0 -pg 1 -lvl 4 -x 1160 -y 1120 -defaultsOSRD
+preplace port sbclk_0 -pg 1 -lvl 0 -x 0 -y 1290 -defaultsOSRD
 preplace port sbdatain_0 -pg 1 -lvl 0 -x 0 -y 780 -defaultsOSRD
-preplace port pback_0 -pg 1 -lvl 4 -x 1170 -y 1020 -defaultsOSRD
-preplace port pbclk_0 -pg 1 -lvl 0 -x 0 -y 1030 -defaultsOSRD
-preplace port pbce_0 -pg 1 -lvl 0 -x 0 -y 910 -defaultsOSRD
-preplace port sbdataout_0 -pg 1 -lvl 4 -x 1170 -y 720 -defaultsOSRD
-preplace portBus pbdata_0 -pg 1 -lvl 4 -x 1170 -y 1000 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 1010 -y 220 -defaultsOSRD
+preplace port pback_0 -pg 1 -lvl 4 -x 1160 -y 1020 -defaultsOSRD
+preplace port pbclk_0 -pg 1 -lvl 0 -x 0 -y 1170 -defaultsOSRD
+preplace port pbce_0 -pg 1 -lvl 0 -x 0 -y 1050 -defaultsOSRD
+preplace port sbdataout_0 -pg 1 -lvl 4 -x 1160 -y 720 -defaultsOSRD
+preplace portBus pbdata_0 -pg 1 -lvl 4 -x 1160 -y 1000 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 1000 -y 220 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 1 -x 240 -y 510 -defaultsOSRD
 preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 640 -y 230 -defaultsOSRD
 preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 240 -y 260 -defaultsOSRD
-preplace inst IP_AXI_LEDS_0 -pg 1 -lvl 3 -x 1010 -y 80 -defaultsOSRD
+preplace inst IP_AXI_LEDS_0 -pg 1 -lvl 3 -x 1000 -y 80 -defaultsOSRD
 preplace inst SerialBusSlave_ver_2_0 -pg 1 -lvl 2 -x 640 -y 760 -defaultsOSRD
 preplace inst OneStageSynchronizer_0 -pg 1 -lvl 1 -x 240 -y 770 -defaultsOSRD
-preplace inst OneStageSynchronizer_1 -pg 1 -lvl 1 -x 240 -y 1140 -defaultsOSRD
+preplace inst OneStageSynchronizer_1 -pg 1 -lvl 1 -x 240 -y 1280 -defaultsOSRD
+preplace inst OneStageSynchronizer_2 -pg 1 -lvl 1 -x 240 -y 1160 -defaultsOSRD
+preplace inst OneStageSynchronizer_3 -pg 1 -lvl 1 -x 240 -y 1040 -defaultsOSRD
+preplace inst IP_AXI_ManagerSerial_0 -pg 1 -lvl 3 -x 1000 -y 590 -defaultsOSRD
+preplace inst IP_AXI_ManagerParall_0 -pg 1 -lvl 3 -x 1000 -y 830 -defaultsOSRD
+preplace inst LedBlink_ver_1_0_0 -pg 1 -lvl 3 -x 1000 -y 1120 -defaultsOSRD
 preplace inst ParallelBusSlave_ver_0 -pg 1 -lvl 2 -x 640 -y 1030 -defaultsOSRD
-preplace inst OneStageSynchronizer_2 -pg 1 -lvl 1 -x 240 -y 1020 -defaultsOSRD
-preplace inst OneStageSynchronizer_3 -pg 1 -lvl 1 -x 240 -y 900 -defaultsOSRD
-preplace inst IP_AXI_ManagerParall_0 -pg 1 -lvl 3 -x 1010 -y 830 -defaultsOSRD
-preplace inst IP_AXI_ManagerSerial_0 -pg 1 -lvl 3 -x 1010 -y 590 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 150 460 40 840
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 150 460 50 830
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 30 160 450
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 480 50 810
-preplace netloc IP_AXI_ManagerSerial_0_done 1 3 1 NJ 600
-preplace netloc IP_AXI_ManagerSerial_0_dataout 1 1 3 480 460 NJ 460 1150
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 490 410 840
+preplace netloc IP_AXI_ManagerSerial_0_dataout 1 1 3 490 460 NJ 460 1140
 preplace netloc SerialBusSlave_ver_2_0_dataready 1 2 1 850 620n
-preplace netloc SerialBusSlave_ver_2_0_rw 1 2 1 790 600n
-preplace netloc SerialBusSlave_ver_2_0_dataout 1 2 1 820 580n
+preplace netloc SerialBusSlave_ver_2_0_rw 1 2 1 800 600n
+preplace netloc SerialBusSlave_ver_2_0_dataout 1 2 1 810 580n
 preplace netloc Net 1 0 3 30 700 460 570 860
 preplace netloc OneStageSynchronizer_0_sync_signal 1 1 1 N 770
 preplace netloc sbdatain_0_1 1 0 1 NJ 780
 preplace netloc OneStageSynchronizer_1_sync_signal 1 1 1 470 750n
-preplace netloc sbclk_0_1 1 0 1 NJ 1150
-preplace netloc SerialBusSlave_ver_2_0_addressregister 1 2 1 800 560n
+preplace netloc sbclk_0_1 1 0 1 NJ 1290
+preplace netloc SerialBusSlave_ver_2_0_addressregister 1 2 1 790 560n
 preplace netloc Net1 1 2 2 NJ 1000 NJ
 preplace netloc ParallelBusSlave_ver_0_pback 1 2 2 NJ 1020 NJ
-preplace netloc pbclk_0_1 1 0 1 NJ 1030
-preplace netloc pbce_0_1 1 0 1 NJ 910
-preplace netloc OneStageSynchronizer_2_sync_signal 1 1 1 N 1020
-preplace netloc OneStageSynchronizer_3_sync_signal 1 1 1 450 900n
+preplace netloc pbclk_0_1 1 0 1 NJ 1170
+preplace netloc pbce_0_1 1 0 1 NJ 1050
+preplace netloc OneStageSynchronizer_2_sync_signal 1 1 2 480 1120 NJ
+preplace netloc OneStageSynchronizer_3_sync_signal 1 1 1 N 1040
 preplace netloc ParallelBusSlave_ver_0_dataready 1 2 1 860 840n
 preplace netloc ParallelBusSlave_ver_0_addressregister 1 2 1 850 820n
-preplace netloc IP_AXI_ManagerParall_0_dataout 1 1 3 480 940 NJ 940 1150
+preplace netloc IP_AXI_ManagerParall_0_dataout 1 1 3 490 940 NJ 940 1140
 preplace netloc SerialBusSlave_ver_2_0_sbdataout 1 2 2 NJ 720 NJ
-preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 N 200
+preplace netloc LedBlink_ver_1_0_0_led 1 3 1 NJ 1120
+preplace netloc ps7_0_axi_periph_M03_AXI 1 2 1 820 260n
 preplace netloc processing_system7_0_FIXED_IO 1 1 3 NJ 450 NJ 450 NJ
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 N 200
 preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 470 110n
 preplace netloc processing_system7_0_DDR 1 1 3 NJ 430 NJ 430 NJ
+preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 820 60n
 preplace netloc axi_gpio_0_GPIO 1 3 1 NJ 220
-preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 800 60n
-preplace netloc ps7_0_axi_periph_M02_AXI 1 2 1 800 240n
-preplace netloc ps7_0_axi_periph_M03_AXI 1 2 1 830 260n
-levelinfo -pg 1 0 240 640 1010 1170
-pagesize -pg 1 -db -bbox -sgen -120 0 1320 1210
+preplace netloc ps7_0_axi_periph_M02_AXI 1 2 1 790 240n
+levelinfo -pg 1 0 240 640 1000 1160
+pagesize -pg 1 -db -bbox -sgen -120 0 1310 1350
 "
 }
 {
