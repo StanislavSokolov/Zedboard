@@ -9,6 +9,7 @@ int count = 0;
 int latch = 0;
 
 XGpio Gpio_0;
+XGpio Gpio_1;
 
 int main(void) {
 
@@ -17,6 +18,10 @@ int main(void) {
 	if (Status != XST_SUCCESS) return XST_FAILURE;
 	XGpio_SetDataDirection(&Gpio_0, LED_CHANNEL, ~LED);
 
+	Status = XGpio_Initialize(&Gpio_1, XPAR_GPIO_1_DEVICE_ID);
+	if (Status != XST_SUCCESS) return XST_FAILURE;
+	XGpio_SetDataDirection(&Gpio_1, 0, ~LED);
+
 	while (1) {
 
 		if (count < 10000000) {
@@ -24,12 +29,16 @@ int main(void) {
 		} else {
 
 			if (latch) {
-				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED);
-				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x0000AA01);
-				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR, 0x00005512);
+				Xil_Out32(XPAR_IP_AXI_LEDS_0_S00_AXI_BASEADDR, 0x00000001); // управление светодиодом на морде
+//				XGpio_DiscreteRead(&Gpio_1, 1); // чтение линий управления ключами
+				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED); // управление светодиодом VD3
+				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x0000AA01); // пример заполнения адресного пространства последовательной шины
+				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR, 0x00005512); // пример заполнения адресного пространства паралельной шины
 				latch = 0;
 
 			} else {
+				Xil_Out32(XPAR_IP_AXI_LEDS_0_S00_AXI_BASEADDR, 0x00000000);
+//				XGpio_DiscreteRead(&Gpio_1, 1);
 				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, ~LED);
 				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x00000550);
 				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR + 8, 0x0000A912);
