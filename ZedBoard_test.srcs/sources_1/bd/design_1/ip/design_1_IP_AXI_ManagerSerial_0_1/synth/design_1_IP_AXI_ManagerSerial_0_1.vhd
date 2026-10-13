@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: setcorp:user:IP_AXI_ManagerSerialBusSlave:1.0
--- IP Revision: 4
+-- IP Revision: 5
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -61,7 +61,6 @@ ENTITY design_1_IP_AXI_ManagerSerial_0_1 IS
     datain : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     rw : IN STD_LOGIC;
     dataready : IN STD_LOGIC;
-    done : OUT STD_LOGIC;
     s00_axi_awaddr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
     s00_axi_awprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
     s00_axi_awvalid : IN STD_LOGIC;
@@ -103,7 +102,6 @@ ARCHITECTURE design_1_IP_AXI_ManagerSerial_0_1_arch OF design_1_IP_AXI_ManagerSe
       datain : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       rw : IN STD_LOGIC;
       dataready : IN STD_LOGIC;
-      done : OUT STD_LOGIC;
       s00_axi_awaddr : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
       s00_axi_awprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
       s00_axi_awvalid : IN STD_LOGIC;
@@ -175,7 +173,6 @@ BEGIN
       datain => datain,
       rw => rw,
       dataready => dataready,
-      done => done,
       s00_axi_awaddr => s00_axi_awaddr,
       s00_axi_awprot => s00_axi_awprot,
       s00_axi_awvalid => s00_axi_awvalid,

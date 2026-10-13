@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Fri Oct  9 17:19:08 2026
+| Date             : Tue Oct 13 10:52:26 2026
 | Host             : STAS-W10 running 64-bit major release  (build 9200)
 | Command          : report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
 | Design           : design_1_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.708        |
+| Total On-Chip Power (W)  | 1.734        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.563        |
-| Device Static (W)        | 0.145        |
+| Dynamic (W)              | 1.588        |
+| Device Static (W)        | 0.146        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 65.3         |
-| Junction Temperature (C) | 44.7         |
+| Max Ambient (C)          | 65.0         |
+| Junction Temperature (C) | 45.0         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -49,23 +49,25 @@ Table of Contents
 1.1 On-Chip Components
 ----------------------
 
-+-------------------------+-----------+----------+-----------+-----------------+
-| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
-+-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.022 |        4 |       --- |             --- |
-| Slice Logic             |     0.001 |    21982 |       --- |             --- |
-|   LUT as Logic          |    <0.001 |     5410 |     53200 |           10.17 |
-|   Register              |    <0.001 |    13560 |    106400 |           12.74 |
-|   CARRY4                |    <0.001 |       18 |     13300 |            0.14 |
-|   F7/F8 Muxes           |    <0.001 |     2453 |     53200 |            4.61 |
-|   LUT as Shift Register |    <0.001 |       62 |     17400 |            0.36 |
-|   Others                |     0.000 |      221 |       --- |             --- |
-| Signals                 |     0.011 |    16424 |       --- |             --- |
-| I/O                     |    <0.001 |       24 |       200 |           12.00 |
-| PS7                     |     1.529 |        1 |       --- |             --- |
-| Static Power            |     0.145 |          |           |                 |
-| Total                   |     1.708 |          |           |                 |
-+-------------------------+-----------+----------+-----------+-----------------+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     0.031 |        4 |       --- |             --- |
+| Slice Logic              |     0.004 |    27932 |       --- |             --- |
+|   LUT as Logic           |     0.004 |     7328 |     53200 |           13.77 |
+|   CARRY4                 |    <0.001 |      106 |     13300 |            0.80 |
+|   Register               |    <0.001 |    16534 |    106400 |           15.54 |
+|   LUT as Distributed RAM |    <0.001 |      112 |     17400 |            0.64 |
+|   LUT as Shift Register  |    <0.001 |      141 |     17400 |            0.81 |
+|   F7/F8 Muxes            |    <0.001 |     2453 |     53200 |            4.61 |
+|   Others                 |     0.000 |      430 |       --- |             --- |
+| Signals                  |     0.014 |    20445 |       --- |             --- |
+| Block RAM                |     0.001 |        2 |       140 |            1.43 |
+| I/O                      |     0.004 |       40 |       200 |           20.00 |
+| PS7                      |     1.533 |        1 |       --- |             --- |
+| Static Power             |     0.146 |          |           |                 |
+| Total                    |     1.734 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -74,9 +76,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.049 |       0.034 |      0.015 |
+| Vccint    |       1.000 |     0.066 |       0.050 |      0.015 |
 | Vccaux    |       1.800 |     0.015 |       0.000 |      0.015 |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -87,7 +89,7 @@ Table of Contents
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.748 |       0.718 |      0.030 |
+| Vccpint   |       1.000 |     0.753 |       0.722 |      0.031 |
 | Vccpaux   |       1.800 |     0.061 |       0.051 |      0.010 |
 | Vccpll    |       1.800 |     0.017 |       0.014 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.459 |       0.457 |      0.002 |
@@ -151,15 +153,24 @@ Table of Contents
 +----------------------------+-----------+
 | Name                       | Power (W) |
 +----------------------------+-----------+
-| design_1_wrapper           |     1.563 |
-|   design_1_i               |     1.563 |
+| design_1_wrapper           |     1.588 |
+|   design_1_i               |     1.587 |
+|     EventCapturer64bit_0   |     0.001 |
+|       U0                   |     0.001 |
 |     IP_AXI_ManagerParall_0 |     0.008 |
 |       U0                   |     0.008 |
-|     IP_AXI_ManagerSerial_0 |     0.012 |
-|       U0                   |     0.012 |
-|     processing_system7_0   |     1.538 |
-|       inst                 |     1.538 |
-|     ps7_0_axi_periph       |     0.003 |
+|     IP_AXI_ManagerSerial_0 |     0.013 |
+|       U0                   |     0.013 |
+|     ParallelBusSlave_ver_0 |     0.004 |
+|     axi_dma_0              |     0.004 |
+|       U0                   |     0.004 |
+|     axi_smc                |     0.006 |
+|       inst                 |     0.006 |
+|     axis_data_fifo_0       |     0.002 |
+|       inst                 |     0.002 |
+|     processing_system7_0   |     1.542 |
+|       inst                 |     1.542 |
+|     ps7_0_axi_periph       |     0.004 |
 |       s00_couplers         |     0.003 |
 +----------------------------+-----------+
 

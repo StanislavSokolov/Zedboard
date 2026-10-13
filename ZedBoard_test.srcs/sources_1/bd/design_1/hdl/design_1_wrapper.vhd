@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Mon Oct 12 14:25:23 2026
+--Date        : Tue Oct 13 10:23:38 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
@@ -36,6 +36,7 @@ entity design_1_wrapper is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     LEDS_0 : out STD_LOGIC;
+    datain_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     pback_0 : out STD_LOGIC;
     pbce_0 : in STD_LOGIC;
     pbclk_0 : in STD_LOGIC;
@@ -78,7 +79,8 @@ architecture STRUCTURE of design_1_wrapper is
     DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 )
+    GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    datain_0 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component design_1;
 begin
@@ -107,6 +109,7 @@ design_1_i: component design_1
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       GPIO_0_tri_o(0) => GPIO_0_tri_o(0),
       LEDS_0 => LEDS_0,
+      datain_0(15 downto 0) => datain_0(15 downto 0),
       pback_0 => pback_0,
       pbce_0 => pbce_0,
       pbclk_0 => pbclk_0,

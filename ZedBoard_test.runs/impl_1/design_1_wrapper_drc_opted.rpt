@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri Oct  9 17:17:08 2026
+| Date         : Tue Oct 13 10:50:03 2026
 | Host         : STAS-W10 running 64-bit major release  (build 9200)
 | Command      : report_drc -file design_1_wrapper_drc_opted.rpt -pb design_1_wrapper_drc_opted.pb -rpx design_1_wrapper_drc_opted.rpx
 | Design       : design_1_wrapper
@@ -24,93 +24,23 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 16
-+--------+----------+---------------------------------+------------+
-| Rule   | Severity | Description                     | Violations |
-+--------+----------+---------------------------------+------------+
-| RPBF-3 | Warning  | IO port buffering is incomplete | 16         |
-+--------+----------+---------------------------------+------------+
+             Violations found: 2
++----------+----------+-------------+------------+
+| Rule     | Severity | Description | Violations |
++----------+----------+-------------+------------+
+| REQP-181 | Advisory | writefirst  | 2          |
++----------+----------+-------------+------------+
 
 2. REPORT DETAILS
 -----------------
-RPBF-3#1 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[0] expects both input and output buffering but the buffers are incomplete.
+REQP-181#1 Advisory
+writefirst  
+Synchronous clocking is detected for BRAM (design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg) in SDP mode with WRITE_FIRST write-mode. This is the preferred mode for best power characteristics, however it may exhibit address collisions if the same address appears on both read and write ports resulting in unknown or corrupted read data. It is suggested to confirm via simulation that an address collision never occurs and if so it is suggested to try and avoid this situation. If address collisions cannot be avoided, the write-mode may be set to READ_FIRST which guarantees that the read data is the prior contents of the memory at the cost of additional power in the design. See the FPGA Memory Resources User Guide for additional information.
 Related violations: <none>
 
-RPBF-3#2 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[10] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#3 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[11] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#4 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[12] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#5 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[13] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#6 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[14] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#7 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[15] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#8 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[1] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#9 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[2] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#10 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[3] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#11 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[4] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#12 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[5] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#13 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[6] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#14 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[7] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#15 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[8] expects both input and output buffering but the buffers are incomplete.
-Related violations: <none>
-
-RPBF-3#16 Warning
-IO port buffering is incomplete  
-Device port pbdata_0[9] expects both input and output buffering but the buffers are incomplete.
+REQP-181#2 Advisory
+writefirst  
+Synchronous clocking is detected for BRAM (design_1_i/axis_data_fifo_0/inst/gen_fifo.xpm_fifo_axis_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg) in SDP mode with WRITE_FIRST write-mode. This is the preferred mode for best power characteristics, however it may exhibit address collisions if the same address appears on both read and write ports resulting in unknown or corrupted read data. It is suggested to confirm via simulation that an address collision never occurs and if so it is suggested to try and avoid this situation. If address collisions cannot be avoided, the write-mode may be set to READ_FIRST which guarantees that the read data is the prior contents of the memory at the cost of additional power in the design. See the FPGA Memory Resources User Guide for additional information.
 Related violations: <none>
 
 

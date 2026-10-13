@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri Oct  9 17:19:03 2026
+| Date         : Tue Oct 13 10:52:20 2026
 | Host         : STAS-W10 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
 | Design       : design_1_wrapper
@@ -23,13 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 28
+             Violations found: 44
 +-----------+------------------+------------------------------------------------+------------+
 | Rule      | Severity         | Description                                    | Violations |
 +-----------+------------------+------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks | 2          |
 | TIMING-7  | Critical Warning | No common node between related clocks          | 2          |
-| TIMING-18 | Warning          | Missing input or output delay                  | 24         |
+| TIMING-18 | Warning          | Missing input or output delay                  | 40         |
 +-----------+------------------+------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -56,120 +56,200 @@ Related violations: <none>
 
 TIMING-18#1 Warning
 Missing input or output delay  
-An input delay is missing on pbce_0 relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[0] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#2 Warning
 Missing input or output delay  
-An input delay is missing on pbclk_0 relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[10] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#3 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[0] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[11] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#4 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[10] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[12] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#5 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[11] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[13] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#6 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[12] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[14] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#7 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[13] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[15] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#8 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[14] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[1] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#9 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[15] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[2] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[1] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[3] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#11 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[2] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[4] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#12 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[3] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[5] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#13 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[4] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[6] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#14 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[5] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[7] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#15 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[6] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[8] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#16 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[7] relative to clock(s) clk_fpga_1
+An input delay is missing on datain_0[9] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#17 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[8] relative to clock(s) clk_fpga_1
+An input delay is missing on pbce_0 relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#18 Warning
 Missing input or output delay  
-An input delay is missing on pbdata_0[9] relative to clock(s) clk_fpga_1
+An input delay is missing on pbclk_0 relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#19 Warning
 Missing input or output delay  
-An input delay is missing on sbclk_0 relative to clock(s) clk_fpga_1
+An input delay is missing on pbdata_0[0] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#20 Warning
 Missing input or output delay  
-An input delay is missing on sbdatain_0 relative to clock(s) clk_fpga_1
+An input delay is missing on pbdata_0[10] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#21 Warning
 Missing input or output delay  
-An output delay is missing on GPIO_0_tri_o[0] relative to clock(s) clk_fpga_0
+An input delay is missing on pbdata_0[11] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#22 Warning
 Missing input or output delay  
-An output delay is missing on LEDS_0 relative to clock(s) clk_fpga_0
+An input delay is missing on pbdata_0[12] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#23 Warning
 Missing input or output delay  
-An output delay is missing on pback_0 relative to clock(s) clk_fpga_1
+An input delay is missing on pbdata_0[13] relative to clock(s) clk_fpga_1
 Related violations: <none>
 
 TIMING-18#24 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[14] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#25 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[15] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#26 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[1] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#27 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[2] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#28 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[3] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#29 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[4] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#30 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[5] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#31 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[6] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#32 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[7] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#33 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[8] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#34 Warning
+Missing input or output delay  
+An input delay is missing on pbdata_0[9] relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#35 Warning
+Missing input or output delay  
+An input delay is missing on sbclk_0 relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#36 Warning
+Missing input or output delay  
+An input delay is missing on sbdatain_0 relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#37 Warning
+Missing input or output delay  
+An output delay is missing on GPIO_0_tri_o[0] relative to clock(s) clk_fpga_0
+Related violations: <none>
+
+TIMING-18#38 Warning
+Missing input or output delay  
+An output delay is missing on LEDS_0 relative to clock(s) clk_fpga_0
+Related violations: <none>
+
+TIMING-18#39 Warning
+Missing input or output delay  
+An output delay is missing on pback_0 relative to clock(s) clk_fpga_1
+Related violations: <none>
+
+TIMING-18#40 Warning
 Missing input or output delay  
 An output delay is missing on sbdataout_0 relative to clock(s) clk_fpga_1
 Related violations: <none>

@@ -653,11 +653,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Oct 09 14:11:30 UTC 2026</spirit:value>
+            <spirit:value>Tue Oct 13 07:08:23 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:67aef3e0</spirit:value>
+            <spirit:value>9:110796f2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -668,7 +668,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:67aef3e0</spirit:value>
+            <spirit:value>9:110796f2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -684,11 +684,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Oct 12 11:25:45 UTC 2026</spirit:value>
+            <spirit:value>Tue Oct 13 07:08:23 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:67aef3e0</spirit:value>
+            <spirit:value>9:110796f2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -704,11 +704,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Oct 09 14:11:30 UTC 2026</spirit:value>
+            <spirit:value>Tue Oct 13 07:08:23 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a873962d</spirit:value>
+            <spirit:value>9:5ba03ac4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -724,11 +724,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Oct 12 11:25:45 UTC 2026</spirit:value>
+            <spirit:value>Tue Oct 13 07:08:23 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a873962d</spirit:value>
+            <spirit:value>9:5ba03ac4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -815,19 +815,6 @@
         <spirit:name>dataready</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>done</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
@@ -1192,11 +1179,11 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd</spirit:name>
+        <spirit:name>../../ipshared/a922/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/a922/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1211,11 +1198,11 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd</spirit:name>
+        <spirit:name>../../ipshared/a922/hdl/IP_AXI_ManagerSerialBusSlave_v1_0_S00_AXI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/c059/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/a922/hdl/IP_AXI_ManagerSerialBusSlave_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1298,7 +1285,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>IP_AXI_ManagerSerialBusSlave_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>4</xilinx:coreRevision>
+      <xilinx:coreRevision>5</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@33d25d8c_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@437e5036_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
@@ -1377,6 +1364,24 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2b6ef4ce_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2c877f5e_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@347d56a1_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b1b6b44_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7103745a_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac87f5e_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@391f2d33_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f2c1071_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2db68e24_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e9b01b_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b515b21_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f3eed2_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fd50586_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27e7a739_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5beb199c_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28bee6ce_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fc517c2_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@600a5863_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49b10d4a_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32df25f9_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23dced07_ARCHIVE_LOCATION">d:/GITEA/GitHub/ES/IP_cores/IP_AXI_ManagerSerialBusSlave/IP_AXI_ManagerSerialBusSlave_v1.0/IP_AXI_ManagerSerialBusSlave_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
@@ -1413,8 +1418,8 @@
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="e8afae07"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5c90b487"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="48019667"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="73de29c0"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="0ec1920c"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="cca4f26d"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="18aa8f09"/>
     </xilinx:packagingInfo>
