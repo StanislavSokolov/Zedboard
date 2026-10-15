@@ -2,9 +2,6 @@
 #include "xgpio.h"
 #include "xplatform_info.h"
 
-#define LED 0x01
-#define LED_CHANNEL	1
-
 int count = 0;
 int latch = 0;
 
@@ -16,11 +13,11 @@ int main(void) {
 	int Status;
 	Status = XGpio_Initialize(&Gpio_0, XPAR_GPIO_0_DEVICE_ID);
 	if (Status != XST_SUCCESS) return XST_FAILURE;
-	XGpio_SetDataDirection(&Gpio_0, LED_CHANNEL, ~LED);
+	XGpio_SetDataDirection(&Gpio_0, 1, 0x00000000);
 
 	Status = XGpio_Initialize(&Gpio_1, XPAR_GPIO_1_DEVICE_ID);
 	if (Status != XST_SUCCESS) return XST_FAILURE;
-	XGpio_SetDataDirection(&Gpio_1, 0, ~LED);
+	XGpio_SetDataDirection(&Gpio_1, 1, 0x0000FFFF);
 
 	while (1) {
 
@@ -29,18 +26,18 @@ int main(void) {
 		} else {
 
 			if (latch) {
-				Xil_Out32(XPAR_IP_AXI_LEDS_0_S00_AXI_BASEADDR, 0x00000001); // управление светодиодом на морде
-//				XGpio_DiscreteRead(&Gpio_1, 1); // чтение линий управления ключами
-				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, LED); // управление светодиодом VD3
-				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x0000AA01); // пример заполнения адресного пространства последовательной шины
+				Xil_Out32(XPAR_IP_AXI_LEDS_0_S00_AXI_BASEADDR, 0x00000000); // управление светодиодом на морде
+				XGpio_DiscreteRead(&Gpio_1, 1); // чтение линий управления ключами
+				XGpio_DiscreteWrite(&Gpio_0, 1, 0x00000001); // управление светодиодом VD3
+				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, XGpio_DiscreteRead(&Gpio_1, 1)); // пример заполнения адресного пространства последовательной шины
 				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR, 0x00005512); // пример заполнения адресного пространства паралельной шины
 				latch = 0;
 
 			} else {
-				Xil_Out32(XPAR_IP_AXI_LEDS_0_S00_AXI_BASEADDR, 0x00000000);
-//				XGpio_DiscreteRead(&Gpio_1, 1);
-				XGpio_DiscreteWrite(&Gpio_0, LED_CHANNEL, ~LED);
-				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, 0x00000550);
+				Xil_Out32(XPAR_IP_AXI_LEDS_0_S00_AXI_BASEADDR, 0x00000001);
+				XGpio_DiscreteRead(&Gpio_1, 1);
+				XGpio_DiscreteWrite(&Gpio_0, 1, 0x00000000);
+				Xil_Out32(XPAR_IP_AXI_MANAGERSERIAL_0_S00_AXI_BASEADDR, XGpio_DiscreteRead(&Gpio_1, 1));
 				Xil_Out32(XPAR_IP_AXI_MANAGERPARALL_0_S00_AXI_BASEADDR + 8, 0x0000A912);
 				latch = 1;
 			}
