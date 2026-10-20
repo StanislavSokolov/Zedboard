@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Tue Oct 13 10:23:38 2026
+--Date        : Tue Oct 20 10:41:05 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -2316,18 +2316,6 @@ architecture STRUCTURE of design_1 is
     s00_axi_aresetn : in STD_LOGIC
   );
   end component design_1_IP_AXI_ManagerParall_0_0;
-  component design_1_ParallelBusSlave_ver_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    pbclk : in STD_LOGIC;
-    pbdata : inout STD_LOGIC_VECTOR ( 15 downto 0 );
-    pbce : in STD_LOGIC;
-    pback : out STD_LOGIC;
-    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    dataready : out STD_LOGIC
-  );
-  end component design_1_ParallelBusSlave_ver_0_0;
   component design_1_IP_AXI_ManagerSerial_0_1 is
   port (
     clk : in STD_LOGIC;
@@ -2535,6 +2523,18 @@ architecture STRUCTURE of design_1 is
     gpio_io_i : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component design_1_axi_gpio_1_0;
+  component design_1_ParallelBusSlave_ver_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    pbclk : in STD_LOGIC;
+    pbdata : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    pbce : in STD_LOGIC;
+    pback : out STD_LOGIC;
+    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dataready : out STD_LOGIC
+  );
+  end component design_1_ParallelBusSlave_ver_0_0;
   signal EventCapturer64bit_0_s_axis_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal EventCapturer64bit_0_s_axis_tkeep : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal EventCapturer64bit_0_s_axis_tlast : STD_LOGIC;

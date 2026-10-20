@@ -44,9 +44,15 @@ architecture behavorial of ParallelBusSlave_ver_2_0 is
     --! @details This signal holds the data received from the internal logic.
     signal dataBuf : std_logic_vector(DATA_BUS_WIDTH - 1 downto 0) := (others => '0');
 
-    --! @brief Buffer for the acknowledge signal.
-    --! @details This signal holds the current state of the acknowledge signal.
-    signal pbAckBuf : std_logic := 'Z';
+    -- Keep only binary values inside the FPGA. Reading a signal that also
+    -- carries 'Z' made synthesized idle logic enable the drivers at 25 MHz,
+    -- although RTL simulation left them released. Infer tristates only at
+    -- the pins, with separate value and output-enable registers.
+    signal ackValue : std_logic := '1';
+    signal ackEnable : std_logic := '0';
+    signal dataValue : std_logic_vector(DATA_BUS_WIDTH - 1 downto 0) := (others => '1');
+    signal dataEnable : std_logic := '0';
+    signal busWasActive : std_logic := '0';
 
     --! @brief State type for communication.
     --! @details This type defines the states of the communication process.
@@ -64,8 +70,8 @@ architecture behavorial of ParallelBusSlave_ver_2_0 is
 
 begin
 
-    --! @brief Assign the acknowledge signal to the buffer.
-    pback <= pbAckBuf;
+    pback <= ackValue when ackEnable = '1' else 'Z';
+    pbdata <= dataValue when dataEnable = '1' else (others => 'Z');
 
     --! @brief Process to handle communication with the parallel bus.
     --! @details This process implements the state machine for communication,
@@ -80,26 +86,35 @@ begin
                 dataready <= '0';
                 count := 0;
 
-                -- Reset acknowledge signal and data lines
-                if pbAckBuf = '0' then
-                    pbdata <= (others => '1');  -- Set data lines to high
-                    pbAckBuf <= '1';           -- Acknowledge reset
+                -- End a real transfer with one high cycle before releasing
+                -- its enabled outputs. An aborted address phase must never
+                -- enable data drivers while the master still owns the bus.
+                if busWasActive = '1' then
+                    dataValue <= (others => '1');
+                    ackValue <= '1';
                 else
-                    pbdata <= (others => 'Z');  -- Release data lines
-                    pbAckBuf <= 'Z';           -- Release acknowledge signal
+                    dataEnable <= '0';
+                    ackEnable <= '0';
                 end if;
+                busWasActive <= '0';
             else
+                busWasActive <= '1';
                 case CommunicationState is
                     when ReceiveAddress =>
-                        -- Decode address and validate parity
-                        if (pbdata(DATA_BUS_WIDTH - 1 downto DATA_BUS_WIDTH / 2) = not pbdata(DATA_BUS_WIDTH / 2 - 1 downto 0)) then
+                        dataEnable <= '0';
+                        -- The master holds the complementary address word
+                        -- until ACK. CE/CLK use the original external stages.
+                        if pbdata(DATA_BUS_WIDTH - 1 downto DATA_BUS_WIDTH / 2) =
+                           not pbdata(DATA_BUS_WIDTH / 2 - 1 downto 0) then
                             dataready <= '1';  -- Indicate data is ready
-                            pbAckBuf <= '0';   -- Acknowledge address reception
+                            ackValue <= '0';
+                            ackEnable <= '1';  -- Acknowledge address reception
                             addressregister <= pbdata(DATA_BUS_WIDTH - 1 downto DATA_BUS_WIDTH - ADDRESS_DEVICE_BUS_WIDTH - ADDRESS_REG_BUS_WIDTH);
                             CommunicationState <= GetData;  -- Transition to GetData state
                         else
-                            CommunicationState <= Waiting;  -- Invalid address, return to Waiting state
-                            pbAckBuf <= 'Z';               -- Release acknowledge signal
+                            dataready <= '0';
+                            ackEnable <= '0';
+                            CommunicationState <= Waiting;  -- Reject this invalid request.
                         end if;
 
                     when GetData =>
@@ -112,11 +127,12 @@ begin
                     when TransmitData =>
                         -- Transmit data to the bus when bus clock is low
                         if pbclk = '0' then
-                            pbdata <= dataBuf;  -- Drive data onto the bus
+                            dataValue <= dataBuf;
+                            dataEnable <= '1';  -- Drive only in the data/check phases.
                             if count < COUNT_WAIT then
                                 count := count + 1;  -- Increment wait counter
                             else
-                                pbAckBuf <= '1';     -- Acknowledge data transmission
+                                ackValue <= '1';     -- Acknowledge data transmission
                             end if;
                         else
                             count := 0;
@@ -126,11 +142,11 @@ begin
                     when TransmitCheck =>
                         -- Check transmitted data when bus clock is high
                         if pbclk = '1' then
-                            pbdata <= not dataBuf;  -- Drive inverted data onto the bus
+                            dataValue <= not dataBuf;  -- Drive inverted data onto the bus
                             if count < COUNT_WAIT then
                                 count := count + 1;  -- Increment wait counter
                             else
-                                pbAckBuf <= '0';     -- Acknowledge data check
+                                ackValue <= '0';     -- Acknowledge data check
                             end if;
                         else
                             count := 0;
