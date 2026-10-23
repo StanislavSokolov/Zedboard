@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct 23 15:10:50 2026" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct 23 16:46:02 2026" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -1698,7 +1698,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/SerialBusSlave/IP_AXI_ManagerSerial_0" HWVERSION="2.0" INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerSerialBusSlave" VLNV="setcorp:user:IP_AXI_ManagerSerialBusSlave:2.0">
+    <MODULE COREREVISION="4" FULLNAME="/SerialBusSlave/IP_AXI_ManagerSerial_0" HWVERSION="2.0" INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerSerialBusSlave" VLNV="setcorp:user:IP_AXI_ManagerSerialBusSlave:2.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>

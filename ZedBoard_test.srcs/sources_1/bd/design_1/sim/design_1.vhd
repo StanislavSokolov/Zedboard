@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Fri Oct 23 15:10:46 2026
+--Date        : Fri Oct 23 16:45:57 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -976,6 +976,19 @@ architecture STRUCTURE of SerialBusSlave_imp_8O1ME6 is
     sync_signal : out STD_LOGIC
   );
   end component design_1_OneStageSynchronizer_0_4;
+  component design_1_SerialBusSlave_ver_2_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    sbclk : in STD_LOGIC;
+    sbdatain : in STD_LOGIC;
+    sbdataout : out STD_LOGIC;
+    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    rw : out STD_LOGIC;
+    dataready : out STD_LOGIC
+  );
+  end component design_1_SerialBusSlave_ver_2_0_0;
   component design_1_IP_AXI_ManagerSerial_0_2 is
   port (
     addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -1091,19 +1104,6 @@ architecture STRUCTURE of SerialBusSlave_imp_8O1ME6 is
     s00_axi_aresetn : in STD_LOGIC
   );
   end component design_1_IP_AXI_ManagerSerial_0_2;
-  component design_1_SerialBusSlave_ver_2_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    sbclk : in STD_LOGIC;
-    sbdatain : in STD_LOGIC;
-    sbdataout : out STD_LOGIC;
-    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    rw : out STD_LOGIC;
-    dataready : out STD_LOGIC
-  );
-  end component design_1_SerialBusSlave_ver_2_0_0;
   signal IP_AXI_ManagerSerial_0_TK5_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal IP_AXI_ManagerSerial_0_TK5_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal IP_AXI_ManagerSerial_0_TK5_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );

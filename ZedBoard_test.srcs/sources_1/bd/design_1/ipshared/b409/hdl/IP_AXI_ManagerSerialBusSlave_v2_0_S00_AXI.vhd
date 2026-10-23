@@ -1020,7 +1020,7 @@ begin
                                                                     
                         when others =>
                             -- Читаем из memDtToWrite, так как memDtToRead заблокирован под AXI-интерфейс
-                            dataout <= memDtToWrite(addr_idx)(DATA_BUS_WIDTH - 1 downto 0);
+                            dataout <= memDtToRead(addr_idx)(DATA_BUS_WIDTH - 1 downto 0);
                     end case;                        
                 else  -- Режим Записи (Write)
                     memDtToWrite(addr_idx)(DATA_BUS_WIDTH - 1 downto 0) <= datain;
