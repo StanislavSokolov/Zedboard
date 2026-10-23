@@ -122,7 +122,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports {datain_0[14]}]
 set_property PACKAGE_PIN M20 [get_ports {datain_0[15]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {datain_0[15]}]
 
-
+set_property PACKAGE_PIN J15 [get_ports er0in_0]
+set_property IOSTANDARD LVCMOS33 [get_ports er0in_0]
 
 
 

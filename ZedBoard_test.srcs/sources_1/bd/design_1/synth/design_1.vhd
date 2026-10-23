@@ -1,12 +1,1476 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Tue Oct 20 10:41:05 2026
+--Date        : Fri Oct 23 15:10:45 2026
 --Host        : STAS-W10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
 --Purpose     : IP block netlist
 ----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity Invertor_imp_6Q0FNV is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK1_acknowledges : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_breaken : in STD_LOGIC;
+    TK1_currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK1_linepren : in STD_LOGIC;
+    TK1_mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK1_mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK1_mintimepren : in STD_LOGIC;
+    TK1_ready : in STD_LOGIC;
+    TK1_reset : in STD_LOGIC;
+    TK1_softshutdownen : in STD_LOGIC;
+    TK1_softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK1_softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK1_timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK2_acknowledges : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_breaken : in STD_LOGIC;
+    TK2_currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK2_linepren : in STD_LOGIC;
+    TK2_mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK2_mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK2_mintimepren : in STD_LOGIC;
+    TK2_ready : in STD_LOGIC;
+    TK2_reset : in STD_LOGIC;
+    TK2_softshutdownen : in STD_LOGIC;
+    TK2_softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK2_softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK2_timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK3_acknowledges : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_breaken : in STD_LOGIC;
+    TK3_currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK3_linepren : in STD_LOGIC;
+    TK3_mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK3_mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK3_mintimepren : in STD_LOGIC;
+    TK3_ready : in STD_LOGIC;
+    TK3_reset : in STD_LOGIC;
+    TK3_softshutdownen : in STD_LOGIC;
+    TK3_softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK3_softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK3_timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK_acknowledges : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_breaken : in STD_LOGIC;
+    TK_currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK_linepren : in STD_LOGIC;
+    TK_mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK_mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK_mintimepren : in STD_LOGIC;
+    TK_ready : in STD_LOGIC;
+    TK_reset : in STD_LOGIC;
+    TK_softshutdownen : in STD_LOGIC;
+    TK_softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK_softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK_timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    clk : in STD_LOGIC;
+    er0in_0 : in STD_LOGIC
+  );
+end Invertor_imp_6Q0FNV;
+
+architecture STRUCTURE of Invertor_imp_6Q0FNV is
+  component design_1_TransistorKeys_0_1 is
+  port (
+    acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    breaken : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    er0in : in STD_LOGIC;
+    keysel_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysel_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    linepren : in STD_LOGIC;
+    mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mintimepren : in STD_LOGIC;
+    ob_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ob_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ready : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    softshutdownen : in STD_LOGIC;
+    softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component design_1_TransistorKeys_0_1;
+  component design_1_TransistorKeys_0_2 is
+  port (
+    acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    breaken : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    er0in : in STD_LOGIC;
+    keysel_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysel_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    linepren : in STD_LOGIC;
+    mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mintimepren : in STD_LOGIC;
+    ob_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ob_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ready : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    softshutdownen : in STD_LOGIC;
+    softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component design_1_TransistorKeys_0_2;
+  component design_1_OneStageSynchronizer_1_0 is
+  port (
+    clk : in STD_LOGIC;
+    async_signal : in STD_LOGIC;
+    sync_signal : out STD_LOGIC
+  );
+  end component design_1_OneStageSynchronizer_1_0;
+  component design_1_TransistorKeys_0_3 is
+  port (
+    acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    breaken : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    er0in : in STD_LOGIC;
+    keysel_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysel_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    linepren : in STD_LOGIC;
+    mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mintimepren : in STD_LOGIC;
+    ob_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ob_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ready : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    softshutdownen : in STD_LOGIC;
+    softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component design_1_TransistorKeys_0_3;
+  component design_1_xlslice_0_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_0_1;
+  component design_1_xlslice_0_2 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_0_2;
+  component design_1_xlslice_2_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_2_0;
+  component design_1_xlslice_3_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_3_0;
+  component design_1_xlslice_4_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_4_0;
+  component design_1_xlslice_5_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_5_0;
+  component design_1_xlslice_6_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_6_0;
+  component design_1_TransistorKeys_0_0 is
+  port (
+    acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    acktime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    breaken : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    currentpr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadtime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    er0in : in STD_LOGIC;
+    keysel_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysel_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    keysen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    keysout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    linepren : in STD_LOGIC;
+    mintime : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mintimepren : in STD_LOGIC;
+    ob_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ob_1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    ready : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    softshutdownen : in STD_LOGIC;
+    softshutdownpr : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    softshutdowntimer : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    timeerror : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component design_1_TransistorKeys_0_0;
+  component design_1_xlslice_0_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlslice_0_0;
+  signal IP_AXI_ManagerSerial_0_TK5_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal OneStageSynchronizer_4_sync_signal : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal OneStageSynchronizer_5_sync_signal : STD_LOGIC;
+  signal er0in_0_1 : STD_LOGIC;
+  signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
+  signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_1_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_2_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_3_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_4_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_5_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_6_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlslice_7_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+begin
+  IP_AXI_ManagerSerial_0_TK5_ackTime(7 downto 0) <= TK3_acktime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_ackpren(7 downto 0) <= TK3_ackpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_breaken <= TK3_breaken;
+  IP_AXI_ManagerSerial_0_TK5_currentpren(7 downto 0) <= TK3_currentpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_deadTime(7 downto 0) <= TK3_deadtime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_keysen(7 downto 0) <= TK3_keysen(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_linepren <= TK3_linepren;
+  IP_AXI_ManagerSerial_0_TK5_minTime(7 downto 0) <= TK3_mintime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_mintimepren <= TK3_mintimepren;
+  IP_AXI_ManagerSerial_0_TK5_ready <= TK3_ready;
+  IP_AXI_ManagerSerial_0_TK5_reset <= TK3_reset;
+  IP_AXI_ManagerSerial_0_TK5_softShutdownTimer(15 downto 0) <= TK3_softshutdowntimer(15 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_softshutdownen <= TK3_softshutdownen;
+  IP_AXI_ManagerSerial_0_TK6_ackTime(7 downto 0) <= TK_acktime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_ackpren(7 downto 0) <= TK_ackpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_breaken <= TK_breaken;
+  IP_AXI_ManagerSerial_0_TK6_currentpren(7 downto 0) <= TK_currentpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_deadTime(7 downto 0) <= TK_deadtime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_keysen(7 downto 0) <= TK_keysen(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_linepren <= TK_linepren;
+  IP_AXI_ManagerSerial_0_TK6_minTime(7 downto 0) <= TK_mintime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_mintimepren <= TK_mintimepren;
+  IP_AXI_ManagerSerial_0_TK6_ready <= TK_ready;
+  IP_AXI_ManagerSerial_0_TK6_reset <= TK_reset;
+  IP_AXI_ManagerSerial_0_TK6_softShutdownTimer(15 downto 0) <= TK_softshutdowntimer(15 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_softshutdownen <= TK_softshutdownen;
+  IP_AXI_ManagerSerial_0_TK9_ackTime(7 downto 0) <= TK1_acktime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_ackpren(7 downto 0) <= TK1_ackpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_breaken <= TK1_breaken;
+  IP_AXI_ManagerSerial_0_TK9_currentpren(7 downto 0) <= TK1_currentpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_deadTime(7 downto 0) <= TK1_deadtime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_keysen(7 downto 0) <= TK1_keysen(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_linepren <= TK1_linepren;
+  IP_AXI_ManagerSerial_0_TK9_minTime(7 downto 0) <= TK1_mintime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_mintimepren <= TK1_mintimepren;
+  IP_AXI_ManagerSerial_0_TK9_ready <= TK1_ready;
+  IP_AXI_ManagerSerial_0_TK9_reset <= TK1_reset;
+  IP_AXI_ManagerSerial_0_TK9_softShutdownTimer(15 downto 0) <= TK1_softshutdowntimer(15 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_softshutdownen <= TK1_softshutdownen;
+  IP_AXI_ManagerSerial_0_TKA_ackTime(7 downto 0) <= TK2_acktime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_ackpren(7 downto 0) <= TK2_ackpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_breaken <= TK2_breaken;
+  IP_AXI_ManagerSerial_0_TKA_currentpren(7 downto 0) <= TK2_currentpren(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_deadTime(7 downto 0) <= TK2_deadtime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_keysen(7 downto 0) <= TK2_keysen(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_linepren <= TK2_linepren;
+  IP_AXI_ManagerSerial_0_TKA_minTime(7 downto 0) <= TK2_mintime(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_mintimepren <= TK2_mintimepren;
+  IP_AXI_ManagerSerial_0_TKA_ready <= TK2_ready;
+  IP_AXI_ManagerSerial_0_TKA_reset <= TK2_reset;
+  IP_AXI_ManagerSerial_0_TKA_softShutdownTimer(15 downto 0) <= TK2_softshutdowntimer(15 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_softshutdownen <= TK2_softshutdownen;
+  OneStageSynchronizer_4_sync_signal(15 downto 0) <= Din(15 downto 0);
+  TK1_acknowledges(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_acknowledges(7 downto 0);
+  TK1_ackpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_ackpr(7 downto 0);
+  TK1_currentpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_currentpr(7 downto 0);
+  TK1_keysout(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_keysout(7 downto 0);
+  TK1_linepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK9_linepr(1 downto 0);
+  TK1_mintimepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK9_mintimepr(1 downto 0);
+  TK1_softshutdownpr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK9_softshutdownpr(1 downto 0);
+  TK1_timeerror(15 downto 0) <= IP_AXI_ManagerSerial_0_TK9_timeerror(15 downto 0);
+  TK2_acknowledges(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_acknowledges(7 downto 0);
+  TK2_ackpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_ackpr(7 downto 0);
+  TK2_currentpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_currentpr(7 downto 0);
+  TK2_keysout(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_keysout(7 downto 0);
+  TK2_linepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TKA_linepr(1 downto 0);
+  TK2_mintimepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TKA_mintimepr(1 downto 0);
+  TK2_softshutdownpr(1 downto 0) <= IP_AXI_ManagerSerial_0_TKA_softshutdownpr(1 downto 0);
+  TK2_timeerror(15 downto 0) <= IP_AXI_ManagerSerial_0_TKA_timeerror(15 downto 0);
+  TK3_acknowledges(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_acknowledges(7 downto 0);
+  TK3_ackpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_ackpr(7 downto 0);
+  TK3_currentpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_currentpr(7 downto 0);
+  TK3_keysout(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_keysout(7 downto 0);
+  TK3_linepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK5_linepr(1 downto 0);
+  TK3_mintimepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK5_mintimepr(1 downto 0);
+  TK3_softshutdownpr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK5_softshutdownpr(1 downto 0);
+  TK3_timeerror(15 downto 0) <= IP_AXI_ManagerSerial_0_TK5_timeerror(15 downto 0);
+  TK_acknowledges(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_acknowledges(7 downto 0);
+  TK_ackpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_ackpr(7 downto 0);
+  TK_currentpr(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_currentpr(7 downto 0);
+  TK_keysout(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_keysout(7 downto 0);
+  TK_linepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK6_linepr(1 downto 0);
+  TK_mintimepr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK6_mintimepr(1 downto 0);
+  TK_softshutdownpr(1 downto 0) <= IP_AXI_ManagerSerial_0_TK6_softshutdownpr(1 downto 0);
+  TK_timeerror(15 downto 0) <= IP_AXI_ManagerSerial_0_TK6_timeerror(15 downto 0);
+  er0in_0_1 <= er0in_0;
+  processing_system7_0_FCLK_CLK0 <= clk;
+OneStageSynchronizer_5: component design_1_OneStageSynchronizer_1_0
+     port map (
+      async_signal => er0in_0_1,
+      clk => processing_system7_0_FCLK_CLK0,
+      sync_signal => OneStageSynchronizer_5_sync_signal
+    );
+TransistorKeys_0: component design_1_TransistorKeys_0_0
+     port map (
+      acknowledges(7 downto 0) => B"00000000",
+      ackout(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_acknowledges(7 downto 0),
+      ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpr(7 downto 0),
+      ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpren(7 downto 0),
+      acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackTime(7 downto 0),
+      breaken => IP_AXI_ManagerSerial_0_TK5_breaken,
+      clk => processing_system7_0_FCLK_CLK0,
+      currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpr(7 downto 0),
+      currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpren(7 downto 0),
+      deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_deadTime(7 downto 0),
+      er0in => OneStageSynchronizer_5_sync_signal,
+      keysel_0(1 downto 0) => xlslice_0_Dout(1 downto 0),
+      keysel_1(1 downto 0) => xlslice_1_Dout(1 downto 0),
+      keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysen(7 downto 0),
+      keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysout(7 downto 0),
+      linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_linepr(1 downto 0),
+      linepren => IP_AXI_ManagerSerial_0_TK5_linepren,
+      mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_minTime(7 downto 0),
+      mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_mintimepr(1 downto 0),
+      mintimepren => IP_AXI_ManagerSerial_0_TK5_mintimepren,
+      ob_0(1 downto 0) => B"00",
+      ob_1(1 downto 0) => B"00",
+      ready => IP_AXI_ManagerSerial_0_TK5_ready,
+      reset => IP_AXI_ManagerSerial_0_TK5_reset,
+      softshutdownen => IP_AXI_ManagerSerial_0_TK5_softshutdownen,
+      softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_softshutdownpr(1 downto 0),
+      softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_softShutdownTimer(15 downto 0),
+      timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_timeerror(15 downto 0)
+    );
+TransistorKeys_1: component design_1_TransistorKeys_0_1
+     port map (
+      acknowledges(7 downto 0) => B"00000000",
+      ackout(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_acknowledges(7 downto 0),
+      ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpr(7 downto 0),
+      ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpren(7 downto 0),
+      acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackTime(7 downto 0),
+      breaken => IP_AXI_ManagerSerial_0_TK6_breaken,
+      clk => processing_system7_0_FCLK_CLK0,
+      currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpr(7 downto 0),
+      currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpren(7 downto 0),
+      deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_deadTime(7 downto 0),
+      er0in => OneStageSynchronizer_5_sync_signal,
+      keysel_0(1 downto 0) => xlslice_2_Dout(1 downto 0),
+      keysel_1(1 downto 0) => xlslice_3_Dout(1 downto 0),
+      keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysen(7 downto 0),
+      keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysout(7 downto 0),
+      linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_linepr(1 downto 0),
+      linepren => IP_AXI_ManagerSerial_0_TK6_linepren,
+      mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_minTime(7 downto 0),
+      mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_mintimepr(1 downto 0),
+      mintimepren => IP_AXI_ManagerSerial_0_TK6_mintimepren,
+      ob_0(1 downto 0) => B"00",
+      ob_1(1 downto 0) => B"00",
+      ready => IP_AXI_ManagerSerial_0_TK6_ready,
+      reset => IP_AXI_ManagerSerial_0_TK6_reset,
+      softshutdownen => IP_AXI_ManagerSerial_0_TK6_softshutdownen,
+      softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_softshutdownpr(1 downto 0),
+      softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_softShutdownTimer(15 downto 0),
+      timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_timeerror(15 downto 0)
+    );
+TransistorKeys_2: component design_1_TransistorKeys_0_2
+     port map (
+      acknowledges(7 downto 0) => B"00000000",
+      ackout(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_acknowledges(7 downto 0),
+      ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpr(7 downto 0),
+      ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpren(7 downto 0),
+      acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackTime(7 downto 0),
+      breaken => IP_AXI_ManagerSerial_0_TK9_breaken,
+      clk => processing_system7_0_FCLK_CLK0,
+      currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpr(7 downto 0),
+      currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpren(7 downto 0),
+      deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_deadTime(7 downto 0),
+      er0in => OneStageSynchronizer_5_sync_signal,
+      keysel_0(1 downto 0) => xlslice_6_Dout(1 downto 0),
+      keysel_1(1 downto 0) => xlslice_7_Dout(1 downto 0),
+      keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysen(7 downto 0),
+      keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysout(7 downto 0),
+      linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_linepr(1 downto 0),
+      linepren => IP_AXI_ManagerSerial_0_TK9_linepren,
+      mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_minTime(7 downto 0),
+      mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_mintimepr(1 downto 0),
+      mintimepren => IP_AXI_ManagerSerial_0_TK9_mintimepren,
+      ob_0(1 downto 0) => B"00",
+      ob_1(1 downto 0) => B"00",
+      ready => IP_AXI_ManagerSerial_0_TK9_ready,
+      reset => IP_AXI_ManagerSerial_0_TK9_reset,
+      softshutdownen => IP_AXI_ManagerSerial_0_TK9_softshutdownen,
+      softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_softshutdownpr(1 downto 0),
+      softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_softShutdownTimer(15 downto 0),
+      timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_timeerror(15 downto 0)
+    );
+TransistorKeys_3: component design_1_TransistorKeys_0_3
+     port map (
+      acknowledges(7 downto 0) => B"00000000",
+      ackout(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_acknowledges(7 downto 0),
+      ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpr(7 downto 0),
+      ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpren(7 downto 0),
+      acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackTime(7 downto 0),
+      breaken => IP_AXI_ManagerSerial_0_TKA_breaken,
+      clk => processing_system7_0_FCLK_CLK0,
+      currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpr(7 downto 0),
+      currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpren(7 downto 0),
+      deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_deadTime(7 downto 0),
+      er0in => OneStageSynchronizer_5_sync_signal,
+      keysel_0(1 downto 0) => xlslice_4_Dout(1 downto 0),
+      keysel_1(1 downto 0) => xlslice_5_Dout(1 downto 0),
+      keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysen(7 downto 0),
+      keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysout(7 downto 0),
+      linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_linepr(1 downto 0),
+      linepren => IP_AXI_ManagerSerial_0_TKA_linepren,
+      mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_minTime(7 downto 0),
+      mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_mintimepr(1 downto 0),
+      mintimepren => IP_AXI_ManagerSerial_0_TKA_mintimepren,
+      ob_0(1 downto 0) => B"00",
+      ob_1(1 downto 0) => B"00",
+      ready => IP_AXI_ManagerSerial_0_TKA_ready,
+      reset => IP_AXI_ManagerSerial_0_TKA_reset,
+      softshutdownen => IP_AXI_ManagerSerial_0_TKA_softshutdownen,
+      softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_softshutdownpr(1 downto 0),
+      softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_softShutdownTimer(15 downto 0),
+      timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_timeerror(15 downto 0)
+    );
+xlslice_0: component design_1_xlslice_0_0
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_0_Dout(1 downto 0)
+    );
+xlslice_1: component design_1_xlslice_0_1
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_1_Dout(1 downto 0)
+    );
+xlslice_2: component design_1_xlslice_0_2
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_2_Dout(1 downto 0)
+    );
+xlslice_3: component design_1_xlslice_2_0
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_3_Dout(1 downto 0)
+    );
+xlslice_4: component design_1_xlslice_3_0
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_4_Dout(1 downto 0)
+    );
+xlslice_5: component design_1_xlslice_4_0
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_5_Dout(1 downto 0)
+    );
+xlslice_6: component design_1_xlslice_5_0
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_6_Dout(1 downto 0)
+    );
+xlslice_7: component design_1_xlslice_6_0
+     port map (
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      Dout(1 downto 0) => xlslice_7_Dout(1 downto 0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity ParallelBusSlave_imp_AOEBEC is
+  port (
+    S00_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S00_AXI_arready : out STD_LOGIC;
+    S00_AXI_arvalid : in STD_LOGIC;
+    S00_AXI_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S00_AXI_awready : out STD_LOGIC;
+    S00_AXI_awvalid : in STD_LOGIC;
+    S00_AXI_bready : in STD_LOGIC;
+    S00_AXI_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S00_AXI_bvalid : out STD_LOGIC;
+    S00_AXI_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_rready : in STD_LOGIC;
+    S00_AXI_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S00_AXI_rvalid : out STD_LOGIC;
+    S00_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_wready : out STD_LOGIC;
+    S00_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S00_AXI_wvalid : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    pback_0 : out STD_LOGIC;
+    pbce_0 : in STD_LOGIC;
+    pbclk_0 : in STD_LOGIC;
+    pbdata_0 : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC
+  );
+end ParallelBusSlave_imp_AOEBEC;
+
+architecture STRUCTURE of ParallelBusSlave_imp_AOEBEC is
+  component design_1_ParallelBusSlave_ver_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    pbclk : in STD_LOGIC;
+    pbdata : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    pbce : in STD_LOGIC;
+    pback : out STD_LOGIC;
+    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dataready : out STD_LOGIC
+  );
+  end component design_1_ParallelBusSlave_ver_0_0;
+  component design_1_IP_AXI_ManagerParall_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    dataready : in STD_LOGIC;
+    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_awvalid : in STD_LOGIC;
+    s00_axi_awready : out STD_LOGIC;
+    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_wvalid : in STD_LOGIC;
+    s00_axi_wready : out STD_LOGIC;
+    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_bvalid : out STD_LOGIC;
+    s00_axi_bready : in STD_LOGIC;
+    s00_axi_araddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_arvalid : in STD_LOGIC;
+    s00_axi_arready : out STD_LOGIC;
+    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_rvalid : out STD_LOGIC;
+    s00_axi_rready : in STD_LOGIC;
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC
+  );
+  end component design_1_IP_AXI_ManagerParall_0_0;
+  component design_1_OneStageSynchronizer_2_0 is
+  port (
+    clk : in STD_LOGIC;
+    async_signal : in STD_LOGIC;
+    sync_signal : out STD_LOGIC
+  );
+  end component design_1_OneStageSynchronizer_2_0;
+  component design_1_OneStageSynchronizer_0_5 is
+  port (
+    clk : in STD_LOGIC;
+    async_signal : in STD_LOGIC;
+    sync_signal : out STD_LOGIC
+  );
+  end component design_1_OneStageSynchronizer_0_5;
+  signal IP_AXI_ManagerParall_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal Net : STD_LOGIC;
+  signal Net1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal OneStageSynchronizer_2_sync_signal : STD_LOGIC;
+  signal OneStageSynchronizer_3_sync_signal : STD_LOGIC;
+  signal ParallelBusSlave_ver_0_addressregister : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal ParallelBusSlave_ver_0_dataready : STD_LOGIC;
+  signal ParallelBusSlave_ver_0_pback : STD_LOGIC;
+  signal pbce_0_1 : STD_LOGIC;
+  signal pbclk_0_1 : STD_LOGIC;
+  signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_ARREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_ARVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_AWREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_AWVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_BREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_BVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_RREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_RVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_WREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M03_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal ps7_0_axi_periph_M03_AXI_WVALID : STD_LOGIC;
+  signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC;
+begin
+  Net <= clk;
+  S00_AXI_arready <= ps7_0_axi_periph_M03_AXI_ARREADY;
+  S00_AXI_awready <= ps7_0_axi_periph_M03_AXI_AWREADY;
+  S00_AXI_bresp(1 downto 0) <= ps7_0_axi_periph_M03_AXI_BRESP(1 downto 0);
+  S00_AXI_bvalid <= ps7_0_axi_periph_M03_AXI_BVALID;
+  S00_AXI_rdata(31 downto 0) <= ps7_0_axi_periph_M03_AXI_RDATA(31 downto 0);
+  S00_AXI_rresp(1 downto 0) <= ps7_0_axi_periph_M03_AXI_RRESP(1 downto 0);
+  S00_AXI_rvalid <= ps7_0_axi_periph_M03_AXI_RVALID;
+  S00_AXI_wready <= ps7_0_axi_periph_M03_AXI_WREADY;
+  pback_0 <= ParallelBusSlave_ver_0_pback;
+  pbce_0_1 <= pbce_0;
+  pbclk_0_1 <= pbclk_0;
+  processing_system7_0_FCLK_CLK0 <= s00_axi_aclk;
+  ps7_0_axi_periph_M03_AXI_ARADDR(31 downto 0) <= S00_AXI_araddr(31 downto 0);
+  ps7_0_axi_periph_M03_AXI_ARPROT(2 downto 0) <= S00_AXI_arprot(2 downto 0);
+  ps7_0_axi_periph_M03_AXI_ARVALID <= S00_AXI_arvalid;
+  ps7_0_axi_periph_M03_AXI_AWADDR(31 downto 0) <= S00_AXI_awaddr(31 downto 0);
+  ps7_0_axi_periph_M03_AXI_AWPROT(2 downto 0) <= S00_AXI_awprot(2 downto 0);
+  ps7_0_axi_periph_M03_AXI_AWVALID <= S00_AXI_awvalid;
+  ps7_0_axi_periph_M03_AXI_BREADY <= S00_AXI_bready;
+  ps7_0_axi_periph_M03_AXI_RREADY <= S00_AXI_rready;
+  ps7_0_axi_periph_M03_AXI_WDATA(31 downto 0) <= S00_AXI_wdata(31 downto 0);
+  ps7_0_axi_periph_M03_AXI_WSTRB(3 downto 0) <= S00_AXI_wstrb(3 downto 0);
+  ps7_0_axi_periph_M03_AXI_WVALID <= S00_AXI_wvalid;
+  rst_ps7_0_100M_peripheral_aresetn <= s00_axi_aresetn;
+IP_AXI_ManagerParall_0: component design_1_IP_AXI_ManagerParall_0_0
+     port map (
+      addressregister(7 downto 0) => ParallelBusSlave_ver_0_addressregister(7 downto 0),
+      clk => Net,
+      dataout(15 downto 0) => IP_AXI_ManagerParall_0_dataout(15 downto 0),
+      dataready => ParallelBusSlave_ver_0_dataready,
+      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s00_axi_araddr(9 downto 0) => ps7_0_axi_periph_M03_AXI_ARADDR(9 downto 0),
+      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn,
+      s00_axi_arprot(2 downto 0) => ps7_0_axi_periph_M03_AXI_ARPROT(2 downto 0),
+      s00_axi_arready => ps7_0_axi_periph_M03_AXI_ARREADY,
+      s00_axi_arvalid => ps7_0_axi_periph_M03_AXI_ARVALID,
+      s00_axi_awaddr(9 downto 0) => ps7_0_axi_periph_M03_AXI_AWADDR(9 downto 0),
+      s00_axi_awprot(2 downto 0) => ps7_0_axi_periph_M03_AXI_AWPROT(2 downto 0),
+      s00_axi_awready => ps7_0_axi_periph_M03_AXI_AWREADY,
+      s00_axi_awvalid => ps7_0_axi_periph_M03_AXI_AWVALID,
+      s00_axi_bready => ps7_0_axi_periph_M03_AXI_BREADY,
+      s00_axi_bresp(1 downto 0) => ps7_0_axi_periph_M03_AXI_BRESP(1 downto 0),
+      s00_axi_bvalid => ps7_0_axi_periph_M03_AXI_BVALID,
+      s00_axi_rdata(31 downto 0) => ps7_0_axi_periph_M03_AXI_RDATA(31 downto 0),
+      s00_axi_rready => ps7_0_axi_periph_M03_AXI_RREADY,
+      s00_axi_rresp(1 downto 0) => ps7_0_axi_periph_M03_AXI_RRESP(1 downto 0),
+      s00_axi_rvalid => ps7_0_axi_periph_M03_AXI_RVALID,
+      s00_axi_wdata(31 downto 0) => ps7_0_axi_periph_M03_AXI_WDATA(31 downto 0),
+      s00_axi_wready => ps7_0_axi_periph_M03_AXI_WREADY,
+      s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M03_AXI_WSTRB(3 downto 0),
+      s00_axi_wvalid => ps7_0_axi_periph_M03_AXI_WVALID
+    );
+OneStageSynchronizer_2: component design_1_OneStageSynchronizer_0_5
+     port map (
+      async_signal => pbce_0_1,
+      clk => Net,
+      sync_signal => OneStageSynchronizer_2_sync_signal
+    );
+OneStageSynchronizer_3: component design_1_OneStageSynchronizer_2_0
+     port map (
+      async_signal => pbclk_0_1,
+      clk => Net,
+      sync_signal => OneStageSynchronizer_3_sync_signal
+    );
+ParallelBusSlave_ver_0: component design_1_ParallelBusSlave_ver_0_0
+     port map (
+      addressregister(7 downto 0) => ParallelBusSlave_ver_0_addressregister(7 downto 0),
+      clk => Net,
+      datain(15 downto 0) => IP_AXI_ManagerParall_0_dataout(15 downto 0),
+      dataready => ParallelBusSlave_ver_0_dataready,
+      pback => ParallelBusSlave_ver_0_pback,
+      pbce => OneStageSynchronizer_2_sync_signal,
+      pbclk => OneStageSynchronizer_3_sync_signal,
+      pbdata(15 downto 0) => pbdata_0(15 downto 0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity SerialBusSlave_imp_8O1ME6 is
+  port (
+    S00_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S00_AXI_arready : out STD_LOGIC;
+    S00_AXI_arvalid : in STD_LOGIC;
+    S00_AXI_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S00_AXI_awready : out STD_LOGIC;
+    S00_AXI_awvalid : in STD_LOGIC;
+    S00_AXI_bready : in STD_LOGIC;
+    S00_AXI_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S00_AXI_bvalid : out STD_LOGIC;
+    S00_AXI_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_rready : in STD_LOGIC;
+    S00_AXI_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S00_AXI_rvalid : out STD_LOGIC;
+    S00_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S00_AXI_wready : out STD_LOGIC;
+    S00_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S00_AXI_wvalid : in STD_LOGIC;
+    TK5_acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_ackpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_ackpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_acktime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_breaken : out STD_LOGIC;
+    TK5_currentpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_currentpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_deadtime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_keysen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_keysout : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_linepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK5_linepren : out STD_LOGIC;
+    TK5_mintime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK5_mintimepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK5_mintimepren : out STD_LOGIC;
+    TK5_ready : out STD_LOGIC;
+    TK5_reset : out STD_LOGIC;
+    TK5_softshutdownen : out STD_LOGIC;
+    TK5_softshutdownpr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK5_softshutdowntimer : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK5_timeerror : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK6_acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_ackpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_ackpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_acktime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_breaken : out STD_LOGIC;
+    TK6_currentpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_currentpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_deadtime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_keysen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_keysout : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_linepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK6_linepren : out STD_LOGIC;
+    TK6_mintime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK6_mintimepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK6_mintimepren : out STD_LOGIC;
+    TK6_ready : out STD_LOGIC;
+    TK6_reset : out STD_LOGIC;
+    TK6_softshutdownen : out STD_LOGIC;
+    TK6_softshutdownpr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK6_softshutdowntimer : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK6_timeerror : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK9_acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_ackpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_ackpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_acktime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_breaken : out STD_LOGIC;
+    TK9_currentpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_currentpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_deadtime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_keysen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_keysout : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_linepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK9_linepren : out STD_LOGIC;
+    TK9_mintime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TK9_mintimepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK9_mintimepren : out STD_LOGIC;
+    TK9_ready : out STD_LOGIC;
+    TK9_reset : out STD_LOGIC;
+    TK9_softshutdownen : out STD_LOGIC;
+    TK9_softshutdownpr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TK9_softshutdowntimer : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TK9_timeerror : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TKA_acknowledges : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_ackpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_ackpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_acktime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_breaken : out STD_LOGIC;
+    TKA_currentpr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_currentpren : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_deadtime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_keysen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_keysout : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_linepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TKA_linepren : out STD_LOGIC;
+    TKA_mintime : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TKA_mintimepr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TKA_mintimepren : out STD_LOGIC;
+    TKA_ready : out STD_LOGIC;
+    TKA_reset : out STD_LOGIC;
+    TKA_softshutdownen : out STD_LOGIC;
+    TKA_softshutdownpr : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TKA_softshutdowntimer : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TKA_timeerror : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    clk : in STD_LOGIC;
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC;
+    sbclk_0 : in STD_LOGIC;
+    sbdatain_0 : in STD_LOGIC;
+    sbdataout_0 : out STD_LOGIC;
+    tkin : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+end SerialBusSlave_imp_8O1ME6;
+
+architecture STRUCTURE of SerialBusSlave_imp_8O1ME6 is
+  component design_1_OneStageSynchronizer_0_3 is
+  port (
+    clk : in STD_LOGIC;
+    async_signal : in STD_LOGIC;
+    sync_signal : out STD_LOGIC
+  );
+  end component design_1_OneStageSynchronizer_0_3;
+  component design_1_OneStageSynchronizer_0_4 is
+  port (
+    clk : in STD_LOGIC;
+    async_signal : in STD_LOGIC;
+    sync_signal : out STD_LOGIC
+  );
+  end component design_1_OneStageSynchronizer_0_4;
+  component design_1_IP_AXI_ManagerSerial_0_2 is
+  port (
+    addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    rw : in STD_LOGIC;
+    dataready : in STD_LOGIC;
+    keysen5 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadTime5 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    minTime5 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackTime5 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren5 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren5 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepren5 : out STD_LOGIC;
+    linepren5 : out STD_LOGIC;
+    softshutdownpren5 : out STD_LOGIC;
+    softShutdownTimer5 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    keysin5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackin5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpr5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr5 : in STD_LOGIC;
+    softshutdownpr5 : in STD_LOGIC;
+    mintimepr5 : in STD_LOGIC;
+    timeerror5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    breaken5 : out STD_LOGIC;
+    ready5 : out STD_LOGIC;
+    reset5 : out STD_LOGIC;
+    keysen6 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadTime6 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    minTime6 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackTime6 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren6 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren6 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepren6 : out STD_LOGIC;
+    linepren6 : out STD_LOGIC;
+    softshutdownpren6 : out STD_LOGIC;
+    softShutdownTimer6 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    keysin6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackin6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpr6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr6 : in STD_LOGIC;
+    softshutdownpr6 : in STD_LOGIC;
+    mintimepr6 : in STD_LOGIC;
+    timeerror6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    breaken6 : out STD_LOGIC;
+    ready6 : out STD_LOGIC;
+    reset6 : out STD_LOGIC;
+    keysen9 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadTime9 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    minTime9 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackTime9 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpren9 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpren9 : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimepren9 : out STD_LOGIC;
+    linepren9 : out STD_LOGIC;
+    softshutdownpren9 : out STD_LOGIC;
+    softShutdownTimer9 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    keysin9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackin9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackpr9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentpr9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    linepr9 : in STD_LOGIC;
+    softshutdownpr9 : in STD_LOGIC;
+    mintimepr9 : in STD_LOGIC;
+    timeerror9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    breaken9 : out STD_LOGIC;
+    ready9 : out STD_LOGIC;
+    reset9 : out STD_LOGIC;
+    keysenA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    deadTimeA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    minTimeA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackTimeA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentprenA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackprenA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mintimeprenA : out STD_LOGIC;
+    lineprenA : out STD_LOGIC;
+    softshutdownprenA : out STD_LOGIC;
+    softShutdownTimerA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    keysinA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackinA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ackprA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    currentprA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    lineprA : in STD_LOGIC;
+    softshutdownprA : in STD_LOGIC;
+    mintimeprA : in STD_LOGIC;
+    timeerrorA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    breakenA : out STD_LOGIC;
+    readyA : out STD_LOGIC;
+    resetA : out STD_LOGIC;
+    tkin : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_awvalid : in STD_LOGIC;
+    s00_axi_awready : out STD_LOGIC;
+    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_wvalid : in STD_LOGIC;
+    s00_axi_wready : out STD_LOGIC;
+    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_bvalid : out STD_LOGIC;
+    s00_axi_bready : in STD_LOGIC;
+    s00_axi_araddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_arvalid : in STD_LOGIC;
+    s00_axi_arready : out STD_LOGIC;
+    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_rvalid : out STD_LOGIC;
+    s00_axi_rready : in STD_LOGIC;
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC
+  );
+  end component design_1_IP_AXI_ManagerSerial_0_2;
+  component design_1_SerialBusSlave_ver_2_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    sbclk : in STD_LOGIC;
+    sbdatain : in STD_LOGIC;
+    sbdataout : out STD_LOGIC;
+    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    rw : out STD_LOGIC;
+    dataready : out STD_LOGIC
+  );
+  end component design_1_SerialBusSlave_ver_2_0_0;
+  signal IP_AXI_ManagerSerial_0_TK5_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal Net : STD_LOGIC;
+  signal OneStageSynchronizer_0_sync_signal : STD_LOGIC;
+  signal OneStageSynchronizer_1_sync_signal : STD_LOGIC;
+  signal SerialBusSlave_ver_2_0_addressregister : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal SerialBusSlave_ver_2_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal SerialBusSlave_ver_2_0_dataready : STD_LOGIC;
+  signal SerialBusSlave_ver_2_0_rw : STD_LOGIC;
+  signal SerialBusSlave_ver_2_0_sbdataout : STD_LOGIC;
+  signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_ARREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_ARVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_AWREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_AWVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_BREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_BVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_RREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_RVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_WREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M02_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal ps7_0_axi_periph_M02_AXI_WVALID : STD_LOGIC;
+  signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC;
+  signal sbclk_0_1 : STD_LOGIC;
+  signal sbdatain_0_1 : STD_LOGIC;
+  signal tkin_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+begin
+  IP_AXI_ManagerSerial_0_TK5_acknowledges(7 downto 0) <= TK5_acknowledges(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_ackpr(7 downto 0) <= TK5_ackpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_currentpr(7 downto 0) <= TK5_currentpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_keysout(7 downto 0) <= TK5_keysout(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_linepr(1 downto 0) <= TK5_linepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_mintimepr(1 downto 0) <= TK5_mintimepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_softshutdownpr(1 downto 0) <= TK5_softshutdownpr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK5_timeerror(15 downto 0) <= TK5_timeerror(15 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_acknowledges(7 downto 0) <= TK6_acknowledges(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_ackpr(7 downto 0) <= TK6_ackpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_currentpr(7 downto 0) <= TK6_currentpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_keysout(7 downto 0) <= TK6_keysout(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_linepr(1 downto 0) <= TK6_linepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_mintimepr(1 downto 0) <= TK6_mintimepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_softshutdownpr(1 downto 0) <= TK6_softshutdownpr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK6_timeerror(15 downto 0) <= TK6_timeerror(15 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_acknowledges(7 downto 0) <= TK9_acknowledges(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_ackpr(7 downto 0) <= TK9_ackpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_currentpr(7 downto 0) <= TK9_currentpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_keysout(7 downto 0) <= TK9_keysout(7 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_linepr(1 downto 0) <= TK9_linepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_mintimepr(1 downto 0) <= TK9_mintimepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_softshutdownpr(1 downto 0) <= TK9_softshutdownpr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TK9_timeerror(15 downto 0) <= TK9_timeerror(15 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_acknowledges(7 downto 0) <= TKA_acknowledges(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_ackpr(7 downto 0) <= TKA_ackpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_currentpr(7 downto 0) <= TKA_currentpr(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_keysout(7 downto 0) <= TKA_keysout(7 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_linepr(1 downto 0) <= TKA_linepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_mintimepr(1 downto 0) <= TKA_mintimepr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_softshutdownpr(1 downto 0) <= TKA_softshutdownpr(1 downto 0);
+  IP_AXI_ManagerSerial_0_TKA_timeerror(15 downto 0) <= TKA_timeerror(15 downto 0);
+  Net <= clk;
+  S00_AXI_arready <= ps7_0_axi_periph_M02_AXI_ARREADY;
+  S00_AXI_awready <= ps7_0_axi_periph_M02_AXI_AWREADY;
+  S00_AXI_bresp(1 downto 0) <= ps7_0_axi_periph_M02_AXI_BRESP(1 downto 0);
+  S00_AXI_bvalid <= ps7_0_axi_periph_M02_AXI_BVALID;
+  S00_AXI_rdata(31 downto 0) <= ps7_0_axi_periph_M02_AXI_RDATA(31 downto 0);
+  S00_AXI_rresp(1 downto 0) <= ps7_0_axi_periph_M02_AXI_RRESP(1 downto 0);
+  S00_AXI_rvalid <= ps7_0_axi_periph_M02_AXI_RVALID;
+  S00_AXI_wready <= ps7_0_axi_periph_M02_AXI_WREADY;
+  TK5_ackpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_ackpren(7 downto 0);
+  TK5_acktime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_ackTime(7 downto 0);
+  TK5_breaken <= IP_AXI_ManagerSerial_0_TK5_breaken;
+  TK5_currentpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_currentpren(7 downto 0);
+  TK5_deadtime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_deadTime(7 downto 0);
+  TK5_keysen(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_keysen(7 downto 0);
+  TK5_linepren <= IP_AXI_ManagerSerial_0_TK5_linepren;
+  TK5_mintime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK5_minTime(7 downto 0);
+  TK5_mintimepren <= IP_AXI_ManagerSerial_0_TK5_mintimepren;
+  TK5_ready <= IP_AXI_ManagerSerial_0_TK5_ready;
+  TK5_reset <= IP_AXI_ManagerSerial_0_TK5_reset;
+  TK5_softshutdownen <= IP_AXI_ManagerSerial_0_TK5_softshutdownen;
+  TK5_softshutdowntimer(15 downto 0) <= IP_AXI_ManagerSerial_0_TK5_softShutdownTimer(15 downto 0);
+  TK6_ackpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_ackpren(7 downto 0);
+  TK6_acktime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_ackTime(7 downto 0);
+  TK6_breaken <= IP_AXI_ManagerSerial_0_TK6_breaken;
+  TK6_currentpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_currentpren(7 downto 0);
+  TK6_deadtime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_deadTime(7 downto 0);
+  TK6_keysen(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_keysen(7 downto 0);
+  TK6_linepren <= IP_AXI_ManagerSerial_0_TK6_linepren;
+  TK6_mintime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK6_minTime(7 downto 0);
+  TK6_mintimepren <= IP_AXI_ManagerSerial_0_TK6_mintimepren;
+  TK6_ready <= IP_AXI_ManagerSerial_0_TK6_ready;
+  TK6_reset <= IP_AXI_ManagerSerial_0_TK6_reset;
+  TK6_softshutdownen <= IP_AXI_ManagerSerial_0_TK6_softshutdownen;
+  TK6_softshutdowntimer(15 downto 0) <= IP_AXI_ManagerSerial_0_TK6_softShutdownTimer(15 downto 0);
+  TK9_ackpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_ackpren(7 downto 0);
+  TK9_acktime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_ackTime(7 downto 0);
+  TK9_breaken <= IP_AXI_ManagerSerial_0_TK9_breaken;
+  TK9_currentpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_currentpren(7 downto 0);
+  TK9_deadtime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_deadTime(7 downto 0);
+  TK9_keysen(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_keysen(7 downto 0);
+  TK9_linepren <= IP_AXI_ManagerSerial_0_TK9_linepren;
+  TK9_mintime(7 downto 0) <= IP_AXI_ManagerSerial_0_TK9_minTime(7 downto 0);
+  TK9_mintimepren <= IP_AXI_ManagerSerial_0_TK9_mintimepren;
+  TK9_ready <= IP_AXI_ManagerSerial_0_TK9_ready;
+  TK9_reset <= IP_AXI_ManagerSerial_0_TK9_reset;
+  TK9_softshutdownen <= IP_AXI_ManagerSerial_0_TK9_softshutdownen;
+  TK9_softshutdowntimer(15 downto 0) <= IP_AXI_ManagerSerial_0_TK9_softShutdownTimer(15 downto 0);
+  TKA_ackpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_ackpren(7 downto 0);
+  TKA_acktime(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_ackTime(7 downto 0);
+  TKA_breaken <= IP_AXI_ManagerSerial_0_TKA_breaken;
+  TKA_currentpren(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_currentpren(7 downto 0);
+  TKA_deadtime(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_deadTime(7 downto 0);
+  TKA_keysen(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_keysen(7 downto 0);
+  TKA_linepren <= IP_AXI_ManagerSerial_0_TKA_linepren;
+  TKA_mintime(7 downto 0) <= IP_AXI_ManagerSerial_0_TKA_minTime(7 downto 0);
+  TKA_mintimepren <= IP_AXI_ManagerSerial_0_TKA_mintimepren;
+  TKA_ready <= IP_AXI_ManagerSerial_0_TKA_ready;
+  TKA_reset <= IP_AXI_ManagerSerial_0_TKA_reset;
+  TKA_softshutdownen <= IP_AXI_ManagerSerial_0_TKA_softshutdownen;
+  TKA_softshutdowntimer(15 downto 0) <= IP_AXI_ManagerSerial_0_TKA_softShutdownTimer(15 downto 0);
+  processing_system7_0_FCLK_CLK0 <= s00_axi_aclk;
+  ps7_0_axi_periph_M02_AXI_ARADDR(31 downto 0) <= S00_AXI_araddr(31 downto 0);
+  ps7_0_axi_periph_M02_AXI_ARPROT(2 downto 0) <= S00_AXI_arprot(2 downto 0);
+  ps7_0_axi_periph_M02_AXI_ARVALID <= S00_AXI_arvalid;
+  ps7_0_axi_periph_M02_AXI_AWADDR(31 downto 0) <= S00_AXI_awaddr(31 downto 0);
+  ps7_0_axi_periph_M02_AXI_AWPROT(2 downto 0) <= S00_AXI_awprot(2 downto 0);
+  ps7_0_axi_periph_M02_AXI_AWVALID <= S00_AXI_awvalid;
+  ps7_0_axi_periph_M02_AXI_BREADY <= S00_AXI_bready;
+  ps7_0_axi_periph_M02_AXI_RREADY <= S00_AXI_rready;
+  ps7_0_axi_periph_M02_AXI_WDATA(31 downto 0) <= S00_AXI_wdata(31 downto 0);
+  ps7_0_axi_periph_M02_AXI_WSTRB(3 downto 0) <= S00_AXI_wstrb(3 downto 0);
+  ps7_0_axi_periph_M02_AXI_WVALID <= S00_AXI_wvalid;
+  rst_ps7_0_100M_peripheral_aresetn <= s00_axi_aresetn;
+  sbclk_0_1 <= sbclk_0;
+  sbdatain_0_1 <= sbdatain_0;
+  sbdataout_0 <= SerialBusSlave_ver_2_0_sbdataout;
+  tkin_1(15 downto 0) <= tkin(15 downto 0);
+IP_AXI_ManagerSerial_0: component design_1_IP_AXI_ManagerSerial_0_2
+     port map (
+      ackTime5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackTime(7 downto 0),
+      ackTime6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackTime(7 downto 0),
+      ackTime9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackTime(7 downto 0),
+      ackTimeA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackTime(7 downto 0),
+      ackin5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_acknowledges(7 downto 0),
+      ackin6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_acknowledges(7 downto 0),
+      ackin9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_acknowledges(7 downto 0),
+      ackinA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_acknowledges(7 downto 0),
+      ackpr5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpr(7 downto 0),
+      ackpr6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpr(7 downto 0),
+      ackpr9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpr(7 downto 0),
+      ackprA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpr(7 downto 0),
+      ackpren5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpren(7 downto 0),
+      ackpren6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpren(7 downto 0),
+      ackpren9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpren(7 downto 0),
+      ackprenA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpren(7 downto 0),
+      addressregister(7 downto 0) => SerialBusSlave_ver_2_0_addressregister(7 downto 0),
+      breaken5 => IP_AXI_ManagerSerial_0_TK5_breaken,
+      breaken6 => IP_AXI_ManagerSerial_0_TK6_breaken,
+      breaken9 => IP_AXI_ManagerSerial_0_TK9_breaken,
+      breakenA => IP_AXI_ManagerSerial_0_TKA_breaken,
+      currentpr5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpr(7 downto 0),
+      currentpr6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpr(7 downto 0),
+      currentpr9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpr(7 downto 0),
+      currentprA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpr(7 downto 0),
+      currentpren5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpren(7 downto 0),
+      currentpren6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpren(7 downto 0),
+      currentpren9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpren(7 downto 0),
+      currentprenA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpren(7 downto 0),
+      datain(15 downto 0) => SerialBusSlave_ver_2_0_dataout(15 downto 0),
+      dataout(15 downto 0) => IP_AXI_ManagerSerial_0_dataout(15 downto 0),
+      dataready => SerialBusSlave_ver_2_0_dataready,
+      deadTime5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_deadTime(7 downto 0),
+      deadTime6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_deadTime(7 downto 0),
+      deadTime9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_deadTime(7 downto 0),
+      deadTimeA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_deadTime(7 downto 0),
+      keysen5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysen(7 downto 0),
+      keysen6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysen(7 downto 0),
+      keysen9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysen(7 downto 0),
+      keysenA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysen(7 downto 0),
+      keysin5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysout(7 downto 0),
+      keysin6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysout(7 downto 0),
+      keysin9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysout(7 downto 0),
+      keysinA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysout(7 downto 0),
+      linepr5 => IP_AXI_ManagerSerial_0_TK5_linepr(0),
+      linepr6 => IP_AXI_ManagerSerial_0_TK6_linepr(0),
+      linepr9 => IP_AXI_ManagerSerial_0_TK9_linepr(0),
+      lineprA => IP_AXI_ManagerSerial_0_TKA_linepr(0),
+      linepren5 => IP_AXI_ManagerSerial_0_TK5_linepren,
+      linepren6 => IP_AXI_ManagerSerial_0_TK6_linepren,
+      linepren9 => IP_AXI_ManagerSerial_0_TK9_linepren,
+      lineprenA => IP_AXI_ManagerSerial_0_TKA_linepren,
+      minTime5(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_minTime(7 downto 0),
+      minTime6(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_minTime(7 downto 0),
+      minTime9(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_minTime(7 downto 0),
+      minTimeA(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_minTime(7 downto 0),
+      mintimepr5 => IP_AXI_ManagerSerial_0_TK5_mintimepr(0),
+      mintimepr6 => IP_AXI_ManagerSerial_0_TK6_mintimepr(0),
+      mintimepr9 => IP_AXI_ManagerSerial_0_TK9_mintimepr(0),
+      mintimeprA => IP_AXI_ManagerSerial_0_TKA_mintimepr(0),
+      mintimepren5 => IP_AXI_ManagerSerial_0_TK5_mintimepren,
+      mintimepren6 => IP_AXI_ManagerSerial_0_TK6_mintimepren,
+      mintimepren9 => IP_AXI_ManagerSerial_0_TK9_mintimepren,
+      mintimeprenA => IP_AXI_ManagerSerial_0_TKA_mintimepren,
+      ready5 => IP_AXI_ManagerSerial_0_TK5_ready,
+      ready6 => IP_AXI_ManagerSerial_0_TK6_ready,
+      ready9 => IP_AXI_ManagerSerial_0_TK9_ready,
+      readyA => IP_AXI_ManagerSerial_0_TKA_ready,
+      reset5 => IP_AXI_ManagerSerial_0_TK5_reset,
+      reset6 => IP_AXI_ManagerSerial_0_TK6_reset,
+      reset9 => IP_AXI_ManagerSerial_0_TK9_reset,
+      resetA => IP_AXI_ManagerSerial_0_TKA_reset,
+      rw => SerialBusSlave_ver_2_0_rw,
+      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s00_axi_araddr(9 downto 0) => ps7_0_axi_periph_M02_AXI_ARADDR(9 downto 0),
+      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn,
+      s00_axi_arprot(2 downto 0) => ps7_0_axi_periph_M02_AXI_ARPROT(2 downto 0),
+      s00_axi_arready => ps7_0_axi_periph_M02_AXI_ARREADY,
+      s00_axi_arvalid => ps7_0_axi_periph_M02_AXI_ARVALID,
+      s00_axi_awaddr(9 downto 0) => ps7_0_axi_periph_M02_AXI_AWADDR(9 downto 0),
+      s00_axi_awprot(2 downto 0) => ps7_0_axi_periph_M02_AXI_AWPROT(2 downto 0),
+      s00_axi_awready => ps7_0_axi_periph_M02_AXI_AWREADY,
+      s00_axi_awvalid => ps7_0_axi_periph_M02_AXI_AWVALID,
+      s00_axi_bready => ps7_0_axi_periph_M02_AXI_BREADY,
+      s00_axi_bresp(1 downto 0) => ps7_0_axi_periph_M02_AXI_BRESP(1 downto 0),
+      s00_axi_bvalid => ps7_0_axi_periph_M02_AXI_BVALID,
+      s00_axi_rdata(31 downto 0) => ps7_0_axi_periph_M02_AXI_RDATA(31 downto 0),
+      s00_axi_rready => ps7_0_axi_periph_M02_AXI_RREADY,
+      s00_axi_rresp(1 downto 0) => ps7_0_axi_periph_M02_AXI_RRESP(1 downto 0),
+      s00_axi_rvalid => ps7_0_axi_periph_M02_AXI_RVALID,
+      s00_axi_wdata(31 downto 0) => ps7_0_axi_periph_M02_AXI_WDATA(31 downto 0),
+      s00_axi_wready => ps7_0_axi_periph_M02_AXI_WREADY,
+      s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
+      s00_axi_wvalid => ps7_0_axi_periph_M02_AXI_WVALID,
+      softShutdownTimer5(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_softShutdownTimer(15 downto 0),
+      softShutdownTimer6(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_softShutdownTimer(15 downto 0),
+      softShutdownTimer9(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_softShutdownTimer(15 downto 0),
+      softShutdownTimerA(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_softShutdownTimer(15 downto 0),
+      softshutdownpr5 => IP_AXI_ManagerSerial_0_TK5_softshutdownpr(0),
+      softshutdownpr6 => IP_AXI_ManagerSerial_0_TK6_softshutdownpr(0),
+      softshutdownpr9 => IP_AXI_ManagerSerial_0_TK9_softshutdownpr(0),
+      softshutdownprA => IP_AXI_ManagerSerial_0_TKA_softshutdownpr(0),
+      softshutdownpren5 => IP_AXI_ManagerSerial_0_TK5_softshutdownen,
+      softshutdownpren6 => IP_AXI_ManagerSerial_0_TK6_softshutdownen,
+      softshutdownpren9 => IP_AXI_ManagerSerial_0_TK9_softshutdownen,
+      softshutdownprenA => IP_AXI_ManagerSerial_0_TKA_softshutdownen,
+      timeerror5(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_timeerror(15 downto 0),
+      timeerror6(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_timeerror(15 downto 0),
+      timeerror9(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_timeerror(15 downto 0),
+      timeerrorA(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_timeerror(15 downto 0),
+      tkin(15 downto 0) => tkin_1(15 downto 0)
+    );
+OneStageSynchronizer_0: component design_1_OneStageSynchronizer_0_3
+     port map (
+      async_signal => sbdatain_0_1,
+      clk => Net,
+      sync_signal => OneStageSynchronizer_0_sync_signal
+    );
+OneStageSynchronizer_1: component design_1_OneStageSynchronizer_0_4
+     port map (
+      async_signal => sbclk_0_1,
+      clk => Net,
+      sync_signal => OneStageSynchronizer_1_sync_signal
+    );
+SerialBusSlave_ver_2_0: component design_1_SerialBusSlave_ver_2_0_0
+     port map (
+      addressregister(7 downto 0) => SerialBusSlave_ver_2_0_addressregister(7 downto 0),
+      clk => Net,
+      datain(15 downto 0) => IP_AXI_ManagerSerial_0_dataout(15 downto 0),
+      dataout(15 downto 0) => SerialBusSlave_ver_2_0_dataout(15 downto 0),
+      dataready => SerialBusSlave_ver_2_0_dataready,
+      rw => SerialBusSlave_ver_2_0_rw,
+      sbclk => OneStageSynchronizer_1_sync_signal,
+      sbdatain => OneStageSynchronizer_0_sync_signal,
+      sbdataout => SerialBusSlave_ver_2_0_sbdataout
+    );
+end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
@@ -2080,6 +3544,7 @@ entity design_1 is
     GPIO_0_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     LEDS_0 : out STD_LOGIC;
     datain_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    er0in_0 : in STD_LOGIC;
     pback_0 : out STD_LOGIC;
     pbce_0 : in STD_LOGIC;
     pbclk_0 : in STD_LOGIC;
@@ -2089,7 +3554,7 @@ entity design_1 is
     sbdataout_0 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=28,numReposBlks=20,numNonXlnxBlks=11,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=44,numReposBlks=33,numNonXlnxBlks=16,numHierBlks=11,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=4,bdsource=USER,da_axi4_cnt=10,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -2274,79 +3739,6 @@ architecture STRUCTURE of design_1 is
     s00_axi_aresetn : in STD_LOGIC
   );
   end component design_1_IP_AXI_LEDS_0_0;
-  component design_1_SerialBusSlave_ver_2_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    sbclk : in STD_LOGIC;
-    sbdatain : in STD_LOGIC;
-    sbdataout : out STD_LOGIC;
-    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    rw : out STD_LOGIC;
-    dataready : out STD_LOGIC
-  );
-  end component design_1_SerialBusSlave_ver_2_0_0;
-  component design_1_IP_AXI_ManagerParall_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    dataready : in STD_LOGIC;
-    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_awvalid : in STD_LOGIC;
-    s00_axi_awready : out STD_LOGIC;
-    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s00_axi_wvalid : in STD_LOGIC;
-    s00_axi_wready : out STD_LOGIC;
-    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_bvalid : out STD_LOGIC;
-    s00_axi_bready : in STD_LOGIC;
-    s00_axi_araddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_arvalid : in STD_LOGIC;
-    s00_axi_arready : out STD_LOGIC;
-    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_rvalid : out STD_LOGIC;
-    s00_axi_rready : in STD_LOGIC;
-    s00_axi_aclk : in STD_LOGIC;
-    s00_axi_aresetn : in STD_LOGIC
-  );
-  end component design_1_IP_AXI_ManagerParall_0_0;
-  component design_1_IP_AXI_ManagerSerial_0_1 is
-  port (
-    clk : in STD_LOGIC;
-    addressregister : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    dataout : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    rw : in STD_LOGIC;
-    dataready : in STD_LOGIC;
-    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_awvalid : in STD_LOGIC;
-    s00_axi_awready : out STD_LOGIC;
-    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s00_axi_wvalid : in STD_LOGIC;
-    s00_axi_wready : out STD_LOGIC;
-    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_bvalid : out STD_LOGIC;
-    s00_axi_bready : in STD_LOGIC;
-    s00_axi_araddr : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_arvalid : in STD_LOGIC;
-    s00_axi_arready : out STD_LOGIC;
-    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_rvalid : out STD_LOGIC;
-    s00_axi_rready : in STD_LOGIC;
-    s00_axi_aclk : in STD_LOGIC;
-    s00_axi_aresetn : in STD_LOGIC
-  );
-  end component design_1_IP_AXI_ManagerSerial_0_1;
   component design_1_axis_data_fifo_0_0 is
   port (
     s_axis_aresetn : in STD_LOGIC;
@@ -2451,34 +3843,6 @@ architecture STRUCTURE of design_1 is
     M00_AXI_bready : out STD_LOGIC
   );
   end component design_1_axi_smc_0;
-  component design_1_OneStageSynchronizer_0_3 is
-  port (
-    clk : in STD_LOGIC;
-    async_signal : in STD_LOGIC;
-    sync_signal : out STD_LOGIC
-  );
-  end component design_1_OneStageSynchronizer_0_3;
-  component design_1_OneStageSynchronizer_0_4 is
-  port (
-    clk : in STD_LOGIC;
-    async_signal : in STD_LOGIC;
-    sync_signal : out STD_LOGIC
-  );
-  end component design_1_OneStageSynchronizer_0_4;
-  component design_1_OneStageSynchronizer_0_5 is
-  port (
-    clk : in STD_LOGIC;
-    async_signal : in STD_LOGIC;
-    sync_signal : out STD_LOGIC
-  );
-  end component design_1_OneStageSynchronizer_0_5;
-  component design_1_OneStageSynchronizer_2_0 is
-  port (
-    clk : in STD_LOGIC;
-    async_signal : in STD_LOGIC;
-    sync_signal : out STD_LOGIC
-  );
-  end component design_1_OneStageSynchronizer_2_0;
   component design_1_EventCapturer64bit_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2523,39 +3887,99 @@ architecture STRUCTURE of design_1 is
     gpio_io_i : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component design_1_axi_gpio_1_0;
-  component design_1_ParallelBusSlave_ver_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    pbclk : in STD_LOGIC;
-    pbdata : inout STD_LOGIC_VECTOR ( 15 downto 0 );
-    pbce : in STD_LOGIC;
-    pback : out STD_LOGIC;
-    addressregister : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    datain : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    dataready : out STD_LOGIC
-  );
-  end component design_1_ParallelBusSlave_ver_0_0;
   signal EventCapturer64bit_0_s_axis_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal EventCapturer64bit_0_s_axis_tkeep : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal EventCapturer64bit_0_s_axis_tlast : STD_LOGIC;
   signal EventCapturer64bit_0_s_axis_tvalid : STD_LOGIC;
   signal IP_AXI_LEDS_0_LEDS : STD_LOGIC;
-  signal IP_AXI_ManagerParall_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal IP_AXI_ManagerSerial_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK5_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK5_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK6_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK6_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TK9_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TK9_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_acknowledges : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_ackpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_breaken : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_currentpr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_currentpren : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_deadTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_keysen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_keysout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_linepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_linepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_minTime : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_mintimepr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_mintimepren : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_ready : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_reset : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_softShutdownTimer : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_softshutdownen : STD_LOGIC;
+  signal IP_AXI_ManagerSerial_0_TKA_softshutdownpr : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal IP_AXI_ManagerSerial_0_TKA_timeerror : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal Net : STD_LOGIC;
   signal Net1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal OneStageSynchronizer_0_sync_signal : STD_LOGIC;
-  signal OneStageSynchronizer_1_sync_signal : STD_LOGIC;
-  signal OneStageSynchronizer_2_sync_signal : STD_LOGIC;
-  signal OneStageSynchronizer_3_sync_signal : STD_LOGIC;
   signal OneStageSynchronizer_4_sync_signal : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal ParallelBusSlave_ver_0_addressregister : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal ParallelBusSlave_ver_0_dataready : STD_LOGIC;
   signal ParallelBusSlave_ver_0_pback : STD_LOGIC;
-  signal SerialBusSlave_ver_2_0_addressregister : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal SerialBusSlave_ver_2_0_dataout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal SerialBusSlave_ver_2_0_dataready : STD_LOGIC;
-  signal SerialBusSlave_ver_2_0_rw : STD_LOGIC;
   signal SerialBusSlave_ver_2_0_sbdataout : STD_LOGIC;
   signal axi_dma_0_M_AXI_S2MM_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_dma_0_M_AXI_S2MM_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -2599,6 +4023,7 @@ architecture STRUCTURE of design_1 is
   signal axis_data_fifo_0_M_AXIS_TVALID : STD_LOGIC;
   signal axis_data_fifo_0_s_axis_tready : STD_LOGIC;
   signal datain_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal er0in_0_1 : STD_LOGIC;
   signal pbce_0_1 : STD_LOGIC;
   signal pbclk_0_1 : STD_LOGIC;
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -2823,6 +4248,7 @@ begin
   GPIO_0_tri_o(0) <= axi_gpio_0_GPIO_TRI_O(0);
   LEDS_0 <= IP_AXI_LEDS_0_LEDS;
   datain_0_1(15 downto 0) <= datain_0(15 downto 0);
+  er0in_0_1 <= er0in_0;
   pback_0 <= ParallelBusSlave_ver_0_pback;
   pbce_0_1 <= pbce_0;
   pbclk_0_1 <= pbclk_0;
@@ -2866,87 +4292,95 @@ IP_AXI_LEDS_0: component design_1_IP_AXI_LEDS_0_0
       s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
       s00_axi_wvalid => ps7_0_axi_periph_M01_AXI_WVALID
     );
-IP_AXI_ManagerParall_0: component design_1_IP_AXI_ManagerParall_0_0
+Invertor: entity work.Invertor_imp_6Q0FNV
      port map (
-      addressregister(7 downto 0) => ParallelBusSlave_ver_0_addressregister(7 downto 0),
-      clk => Net,
-      dataout(15 downto 0) => IP_AXI_ManagerParall_0_dataout(15 downto 0),
-      dataready => ParallelBusSlave_ver_0_dataready,
-      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s00_axi_araddr(9 downto 0) => ps7_0_axi_periph_M03_AXI_ARADDR(9 downto 0),
-      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0),
-      s00_axi_arprot(2 downto 0) => ps7_0_axi_periph_M03_AXI_ARPROT(2 downto 0),
-      s00_axi_arready => ps7_0_axi_periph_M03_AXI_ARREADY,
-      s00_axi_arvalid => ps7_0_axi_periph_M03_AXI_ARVALID,
-      s00_axi_awaddr(9 downto 0) => ps7_0_axi_periph_M03_AXI_AWADDR(9 downto 0),
-      s00_axi_awprot(2 downto 0) => ps7_0_axi_periph_M03_AXI_AWPROT(2 downto 0),
-      s00_axi_awready => ps7_0_axi_periph_M03_AXI_AWREADY,
-      s00_axi_awvalid => ps7_0_axi_periph_M03_AXI_AWVALID,
-      s00_axi_bready => ps7_0_axi_periph_M03_AXI_BREADY,
-      s00_axi_bresp(1 downto 0) => ps7_0_axi_periph_M03_AXI_BRESP(1 downto 0),
-      s00_axi_bvalid => ps7_0_axi_periph_M03_AXI_BVALID,
-      s00_axi_rdata(31 downto 0) => ps7_0_axi_periph_M03_AXI_RDATA(31 downto 0),
-      s00_axi_rready => ps7_0_axi_periph_M03_AXI_RREADY,
-      s00_axi_rresp(1 downto 0) => ps7_0_axi_periph_M03_AXI_RRESP(1 downto 0),
-      s00_axi_rvalid => ps7_0_axi_periph_M03_AXI_RVALID,
-      s00_axi_wdata(31 downto 0) => ps7_0_axi_periph_M03_AXI_WDATA(31 downto 0),
-      s00_axi_wready => ps7_0_axi_periph_M03_AXI_WREADY,
-      s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M03_AXI_WSTRB(3 downto 0),
-      s00_axi_wvalid => ps7_0_axi_periph_M03_AXI_WVALID
-    );
-IP_AXI_ManagerSerial_0: component design_1_IP_AXI_ManagerSerial_0_1
-     port map (
-      addressregister(7 downto 0) => SerialBusSlave_ver_2_0_addressregister(7 downto 0),
-      clk => Net,
-      datain(15 downto 0) => SerialBusSlave_ver_2_0_dataout(15 downto 0),
-      dataout(15 downto 0) => IP_AXI_ManagerSerial_0_dataout(15 downto 0),
-      dataready => SerialBusSlave_ver_2_0_dataready,
-      rw => SerialBusSlave_ver_2_0_rw,
-      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s00_axi_araddr(9 downto 0) => ps7_0_axi_periph_M02_AXI_ARADDR(9 downto 0),
-      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0),
-      s00_axi_arprot(2 downto 0) => ps7_0_axi_periph_M02_AXI_ARPROT(2 downto 0),
-      s00_axi_arready => ps7_0_axi_periph_M02_AXI_ARREADY,
-      s00_axi_arvalid => ps7_0_axi_periph_M02_AXI_ARVALID,
-      s00_axi_awaddr(9 downto 0) => ps7_0_axi_periph_M02_AXI_AWADDR(9 downto 0),
-      s00_axi_awprot(2 downto 0) => ps7_0_axi_periph_M02_AXI_AWPROT(2 downto 0),
-      s00_axi_awready => ps7_0_axi_periph_M02_AXI_AWREADY,
-      s00_axi_awvalid => ps7_0_axi_periph_M02_AXI_AWVALID,
-      s00_axi_bready => ps7_0_axi_periph_M02_AXI_BREADY,
-      s00_axi_bresp(1 downto 0) => ps7_0_axi_periph_M02_AXI_BRESP(1 downto 0),
-      s00_axi_bvalid => ps7_0_axi_periph_M02_AXI_BVALID,
-      s00_axi_rdata(31 downto 0) => ps7_0_axi_periph_M02_AXI_RDATA(31 downto 0),
-      s00_axi_rready => ps7_0_axi_periph_M02_AXI_RREADY,
-      s00_axi_rresp(1 downto 0) => ps7_0_axi_periph_M02_AXI_RRESP(1 downto 0),
-      s00_axi_rvalid => ps7_0_axi_periph_M02_AXI_RVALID,
-      s00_axi_wdata(31 downto 0) => ps7_0_axi_periph_M02_AXI_WDATA(31 downto 0),
-      s00_axi_wready => ps7_0_axi_periph_M02_AXI_WREADY,
-      s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
-      s00_axi_wvalid => ps7_0_axi_periph_M02_AXI_WVALID
-    );
-OneStageSynchronizer_0: component design_1_OneStageSynchronizer_0_3
-     port map (
-      async_signal => sbdatain_0_1,
-      clk => Net,
-      sync_signal => OneStageSynchronizer_0_sync_signal
-    );
-OneStageSynchronizer_1: component design_1_OneStageSynchronizer_0_4
-     port map (
-      async_signal => sbclk_0_1,
-      clk => Net,
-      sync_signal => OneStageSynchronizer_1_sync_signal
-    );
-OneStageSynchronizer_2: component design_1_OneStageSynchronizer_0_5
-     port map (
-      async_signal => pbce_0_1,
-      clk => Net,
-      sync_signal => OneStageSynchronizer_2_sync_signal
-    );
-OneStageSynchronizer_3: component design_1_OneStageSynchronizer_2_0
-     port map (
-      async_signal => pbclk_0_1,
-      clk => Net,
-      sync_signal => OneStageSynchronizer_3_sync_signal
+      Din(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0),
+      TK1_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_acknowledges(7 downto 0),
+      TK1_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpr(7 downto 0),
+      TK1_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpren(7 downto 0),
+      TK1_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackTime(7 downto 0),
+      TK1_breaken => IP_AXI_ManagerSerial_0_TK9_breaken,
+      TK1_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpr(7 downto 0),
+      TK1_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpren(7 downto 0),
+      TK1_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_deadTime(7 downto 0),
+      TK1_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysen(7 downto 0),
+      TK1_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysout(7 downto 0),
+      TK1_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_linepr(1 downto 0),
+      TK1_linepren => IP_AXI_ManagerSerial_0_TK9_linepren,
+      TK1_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_minTime(7 downto 0),
+      TK1_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_mintimepr(1 downto 0),
+      TK1_mintimepren => IP_AXI_ManagerSerial_0_TK9_mintimepren,
+      TK1_ready => IP_AXI_ManagerSerial_0_TK9_ready,
+      TK1_reset => IP_AXI_ManagerSerial_0_TK9_reset,
+      TK1_softshutdownen => IP_AXI_ManagerSerial_0_TK9_softshutdownen,
+      TK1_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_softshutdownpr(1 downto 0),
+      TK1_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_softShutdownTimer(15 downto 0),
+      TK1_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_timeerror(15 downto 0),
+      TK2_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_acknowledges(7 downto 0),
+      TK2_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpr(7 downto 0),
+      TK2_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpren(7 downto 0),
+      TK2_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackTime(7 downto 0),
+      TK2_breaken => IP_AXI_ManagerSerial_0_TKA_breaken,
+      TK2_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpr(7 downto 0),
+      TK2_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpren(7 downto 0),
+      TK2_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_deadTime(7 downto 0),
+      TK2_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysen(7 downto 0),
+      TK2_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysout(7 downto 0),
+      TK2_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_linepr(1 downto 0),
+      TK2_linepren => IP_AXI_ManagerSerial_0_TKA_linepren,
+      TK2_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_minTime(7 downto 0),
+      TK2_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_mintimepr(1 downto 0),
+      TK2_mintimepren => IP_AXI_ManagerSerial_0_TKA_mintimepren,
+      TK2_ready => IP_AXI_ManagerSerial_0_TKA_ready,
+      TK2_reset => IP_AXI_ManagerSerial_0_TKA_reset,
+      TK2_softshutdownen => IP_AXI_ManagerSerial_0_TKA_softshutdownen,
+      TK2_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_softshutdownpr(1 downto 0),
+      TK2_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_softShutdownTimer(15 downto 0),
+      TK2_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_timeerror(15 downto 0),
+      TK3_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_acknowledges(7 downto 0),
+      TK3_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpr(7 downto 0),
+      TK3_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpren(7 downto 0),
+      TK3_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackTime(7 downto 0),
+      TK3_breaken => IP_AXI_ManagerSerial_0_TK5_breaken,
+      TK3_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpr(7 downto 0),
+      TK3_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpren(7 downto 0),
+      TK3_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_deadTime(7 downto 0),
+      TK3_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysen(7 downto 0),
+      TK3_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysout(7 downto 0),
+      TK3_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_linepr(1 downto 0),
+      TK3_linepren => IP_AXI_ManagerSerial_0_TK5_linepren,
+      TK3_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_minTime(7 downto 0),
+      TK3_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_mintimepr(1 downto 0),
+      TK3_mintimepren => IP_AXI_ManagerSerial_0_TK5_mintimepren,
+      TK3_ready => IP_AXI_ManagerSerial_0_TK5_ready,
+      TK3_reset => IP_AXI_ManagerSerial_0_TK5_reset,
+      TK3_softshutdownen => IP_AXI_ManagerSerial_0_TK5_softshutdownen,
+      TK3_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_softshutdownpr(1 downto 0),
+      TK3_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_softShutdownTimer(15 downto 0),
+      TK3_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_timeerror(15 downto 0),
+      TK_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_acknowledges(7 downto 0),
+      TK_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpr(7 downto 0),
+      TK_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpren(7 downto 0),
+      TK_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackTime(7 downto 0),
+      TK_breaken => IP_AXI_ManagerSerial_0_TK6_breaken,
+      TK_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpr(7 downto 0),
+      TK_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpren(7 downto 0),
+      TK_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_deadTime(7 downto 0),
+      TK_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysen(7 downto 0),
+      TK_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysout(7 downto 0),
+      TK_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_linepr(1 downto 0),
+      TK_linepren => IP_AXI_ManagerSerial_0_TK6_linepren,
+      TK_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_minTime(7 downto 0),
+      TK_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_mintimepr(1 downto 0),
+      TK_mintimepren => IP_AXI_ManagerSerial_0_TK6_mintimepren,
+      TK_ready => IP_AXI_ManagerSerial_0_TK6_ready,
+      TK_reset => IP_AXI_ManagerSerial_0_TK6_reset,
+      TK_softshutdownen => IP_AXI_ManagerSerial_0_TK6_softshutdownen,
+      TK_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_softshutdownpr(1 downto 0),
+      TK_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_softShutdownTimer(15 downto 0),
+      TK_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_timeerror(15 downto 0),
+      clk => processing_system7_0_FCLK_CLK0,
+      er0in_0 => er0in_0_1
     );
 OneStageSynchronizer_4: component design_1_OneStageSynchronizer_4_0
      port map (
@@ -2954,28 +4388,147 @@ OneStageSynchronizer_4: component design_1_OneStageSynchronizer_4_0
       clk => Net,
       sync_signal(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0)
     );
-ParallelBusSlave_ver_0: component design_1_ParallelBusSlave_ver_0_0
+ParallelBusSlave: entity work.ParallelBusSlave_imp_AOEBEC
      port map (
-      addressregister(7 downto 0) => ParallelBusSlave_ver_0_addressregister(7 downto 0),
+      S00_AXI_araddr(31 downto 0) => ps7_0_axi_periph_M03_AXI_ARADDR(31 downto 0),
+      S00_AXI_arprot(2 downto 0) => ps7_0_axi_periph_M03_AXI_ARPROT(2 downto 0),
+      S00_AXI_arready => ps7_0_axi_periph_M03_AXI_ARREADY,
+      S00_AXI_arvalid => ps7_0_axi_periph_M03_AXI_ARVALID,
+      S00_AXI_awaddr(31 downto 0) => ps7_0_axi_periph_M03_AXI_AWADDR(31 downto 0),
+      S00_AXI_awprot(2 downto 0) => ps7_0_axi_periph_M03_AXI_AWPROT(2 downto 0),
+      S00_AXI_awready => ps7_0_axi_periph_M03_AXI_AWREADY,
+      S00_AXI_awvalid => ps7_0_axi_periph_M03_AXI_AWVALID,
+      S00_AXI_bready => ps7_0_axi_periph_M03_AXI_BREADY,
+      S00_AXI_bresp(1 downto 0) => ps7_0_axi_periph_M03_AXI_BRESP(1 downto 0),
+      S00_AXI_bvalid => ps7_0_axi_periph_M03_AXI_BVALID,
+      S00_AXI_rdata(31 downto 0) => ps7_0_axi_periph_M03_AXI_RDATA(31 downto 0),
+      S00_AXI_rready => ps7_0_axi_periph_M03_AXI_RREADY,
+      S00_AXI_rresp(1 downto 0) => ps7_0_axi_periph_M03_AXI_RRESP(1 downto 0),
+      S00_AXI_rvalid => ps7_0_axi_periph_M03_AXI_RVALID,
+      S00_AXI_wdata(31 downto 0) => ps7_0_axi_periph_M03_AXI_WDATA(31 downto 0),
+      S00_AXI_wready => ps7_0_axi_periph_M03_AXI_WREADY,
+      S00_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M03_AXI_WSTRB(3 downto 0),
+      S00_AXI_wvalid => ps7_0_axi_periph_M03_AXI_WVALID,
       clk => Net,
-      datain(15 downto 0) => IP_AXI_ManagerParall_0_dataout(15 downto 0),
-      dataready => ParallelBusSlave_ver_0_dataready,
-      pback => ParallelBusSlave_ver_0_pback,
-      pbce => OneStageSynchronizer_2_sync_signal,
-      pbclk => OneStageSynchronizer_3_sync_signal,
-      pbdata(15 downto 0) => pbdata_0(15 downto 0)
+      pback_0 => ParallelBusSlave_ver_0_pback,
+      pbce_0 => pbce_0_1,
+      pbclk_0 => pbclk_0_1,
+      pbdata_0(15 downto 0) => pbdata_0(15 downto 0),
+      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0)
     );
-SerialBusSlave_ver_2_0: component design_1_SerialBusSlave_ver_2_0_0
+SerialBusSlave: entity work.SerialBusSlave_imp_8O1ME6
      port map (
-      addressregister(7 downto 0) => SerialBusSlave_ver_2_0_addressregister(7 downto 0),
+      S00_AXI_araddr(31 downto 0) => ps7_0_axi_periph_M02_AXI_ARADDR(31 downto 0),
+      S00_AXI_arprot(2 downto 0) => ps7_0_axi_periph_M02_AXI_ARPROT(2 downto 0),
+      S00_AXI_arready => ps7_0_axi_periph_M02_AXI_ARREADY,
+      S00_AXI_arvalid => ps7_0_axi_periph_M02_AXI_ARVALID,
+      S00_AXI_awaddr(31 downto 0) => ps7_0_axi_periph_M02_AXI_AWADDR(31 downto 0),
+      S00_AXI_awprot(2 downto 0) => ps7_0_axi_periph_M02_AXI_AWPROT(2 downto 0),
+      S00_AXI_awready => ps7_0_axi_periph_M02_AXI_AWREADY,
+      S00_AXI_awvalid => ps7_0_axi_periph_M02_AXI_AWVALID,
+      S00_AXI_bready => ps7_0_axi_periph_M02_AXI_BREADY,
+      S00_AXI_bresp(1 downto 0) => ps7_0_axi_periph_M02_AXI_BRESP(1 downto 0),
+      S00_AXI_bvalid => ps7_0_axi_periph_M02_AXI_BVALID,
+      S00_AXI_rdata(31 downto 0) => ps7_0_axi_periph_M02_AXI_RDATA(31 downto 0),
+      S00_AXI_rready => ps7_0_axi_periph_M02_AXI_RREADY,
+      S00_AXI_rresp(1 downto 0) => ps7_0_axi_periph_M02_AXI_RRESP(1 downto 0),
+      S00_AXI_rvalid => ps7_0_axi_periph_M02_AXI_RVALID,
+      S00_AXI_wdata(31 downto 0) => ps7_0_axi_periph_M02_AXI_WDATA(31 downto 0),
+      S00_AXI_wready => ps7_0_axi_periph_M02_AXI_WREADY,
+      S00_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
+      S00_AXI_wvalid => ps7_0_axi_periph_M02_AXI_WVALID,
+      TK5_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_acknowledges(7 downto 0),
+      TK5_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpr(7 downto 0),
+      TK5_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackpren(7 downto 0),
+      TK5_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_ackTime(7 downto 0),
+      TK5_breaken => IP_AXI_ManagerSerial_0_TK5_breaken,
+      TK5_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpr(7 downto 0),
+      TK5_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_currentpren(7 downto 0),
+      TK5_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_deadTime(7 downto 0),
+      TK5_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysen(7 downto 0),
+      TK5_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_keysout(7 downto 0),
+      TK5_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_linepr(1 downto 0),
+      TK5_linepren => IP_AXI_ManagerSerial_0_TK5_linepren,
+      TK5_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK5_minTime(7 downto 0),
+      TK5_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_mintimepr(1 downto 0),
+      TK5_mintimepren => IP_AXI_ManagerSerial_0_TK5_mintimepren,
+      TK5_ready => IP_AXI_ManagerSerial_0_TK5_ready,
+      TK5_reset => IP_AXI_ManagerSerial_0_TK5_reset,
+      TK5_softshutdownen => IP_AXI_ManagerSerial_0_TK5_softshutdownen,
+      TK5_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK5_softshutdownpr(1 downto 0),
+      TK5_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_softShutdownTimer(15 downto 0),
+      TK5_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK5_timeerror(15 downto 0),
+      TK6_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_acknowledges(7 downto 0),
+      TK6_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpr(7 downto 0),
+      TK6_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackpren(7 downto 0),
+      TK6_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_ackTime(7 downto 0),
+      TK6_breaken => IP_AXI_ManagerSerial_0_TK6_breaken,
+      TK6_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpr(7 downto 0),
+      TK6_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_currentpren(7 downto 0),
+      TK6_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_deadTime(7 downto 0),
+      TK6_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysen(7 downto 0),
+      TK6_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_keysout(7 downto 0),
+      TK6_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_linepr(1 downto 0),
+      TK6_linepren => IP_AXI_ManagerSerial_0_TK6_linepren,
+      TK6_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK6_minTime(7 downto 0),
+      TK6_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_mintimepr(1 downto 0),
+      TK6_mintimepren => IP_AXI_ManagerSerial_0_TK6_mintimepren,
+      TK6_ready => IP_AXI_ManagerSerial_0_TK6_ready,
+      TK6_reset => IP_AXI_ManagerSerial_0_TK6_reset,
+      TK6_softshutdownen => IP_AXI_ManagerSerial_0_TK6_softshutdownen,
+      TK6_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK6_softshutdownpr(1 downto 0),
+      TK6_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_softShutdownTimer(15 downto 0),
+      TK6_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK6_timeerror(15 downto 0),
+      TK9_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_acknowledges(7 downto 0),
+      TK9_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpr(7 downto 0),
+      TK9_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackpren(7 downto 0),
+      TK9_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_ackTime(7 downto 0),
+      TK9_breaken => IP_AXI_ManagerSerial_0_TK9_breaken,
+      TK9_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpr(7 downto 0),
+      TK9_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_currentpren(7 downto 0),
+      TK9_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_deadTime(7 downto 0),
+      TK9_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysen(7 downto 0),
+      TK9_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_keysout(7 downto 0),
+      TK9_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_linepr(1 downto 0),
+      TK9_linepren => IP_AXI_ManagerSerial_0_TK9_linepren,
+      TK9_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TK9_minTime(7 downto 0),
+      TK9_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_mintimepr(1 downto 0),
+      TK9_mintimepren => IP_AXI_ManagerSerial_0_TK9_mintimepren,
+      TK9_ready => IP_AXI_ManagerSerial_0_TK9_ready,
+      TK9_reset => IP_AXI_ManagerSerial_0_TK9_reset,
+      TK9_softshutdownen => IP_AXI_ManagerSerial_0_TK9_softshutdownen,
+      TK9_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TK9_softshutdownpr(1 downto 0),
+      TK9_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_softShutdownTimer(15 downto 0),
+      TK9_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TK9_timeerror(15 downto 0),
+      TKA_acknowledges(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_acknowledges(7 downto 0),
+      TKA_ackpr(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpr(7 downto 0),
+      TKA_ackpren(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackpren(7 downto 0),
+      TKA_acktime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_ackTime(7 downto 0),
+      TKA_breaken => IP_AXI_ManagerSerial_0_TKA_breaken,
+      TKA_currentpr(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpr(7 downto 0),
+      TKA_currentpren(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_currentpren(7 downto 0),
+      TKA_deadtime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_deadTime(7 downto 0),
+      TKA_keysen(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysen(7 downto 0),
+      TKA_keysout(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_keysout(7 downto 0),
+      TKA_linepr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_linepr(1 downto 0),
+      TKA_linepren => IP_AXI_ManagerSerial_0_TKA_linepren,
+      TKA_mintime(7 downto 0) => IP_AXI_ManagerSerial_0_TKA_minTime(7 downto 0),
+      TKA_mintimepr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_mintimepr(1 downto 0),
+      TKA_mintimepren => IP_AXI_ManagerSerial_0_TKA_mintimepren,
+      TKA_ready => IP_AXI_ManagerSerial_0_TKA_ready,
+      TKA_reset => IP_AXI_ManagerSerial_0_TKA_reset,
+      TKA_softshutdownen => IP_AXI_ManagerSerial_0_TKA_softshutdownen,
+      TKA_softshutdownpr(1 downto 0) => IP_AXI_ManagerSerial_0_TKA_softshutdownpr(1 downto 0),
+      TKA_softshutdowntimer(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_softShutdownTimer(15 downto 0),
+      TKA_timeerror(15 downto 0) => IP_AXI_ManagerSerial_0_TKA_timeerror(15 downto 0),
       clk => Net,
-      datain(15 downto 0) => IP_AXI_ManagerSerial_0_dataout(15 downto 0),
-      dataout(15 downto 0) => SerialBusSlave_ver_2_0_dataout(15 downto 0),
-      dataready => SerialBusSlave_ver_2_0_dataready,
-      rw => SerialBusSlave_ver_2_0_rw,
-      sbclk => OneStageSynchronizer_1_sync_signal,
-      sbdatain => OneStageSynchronizer_0_sync_signal,
-      sbdataout => SerialBusSlave_ver_2_0_sbdataout
+      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0),
+      sbclk_0 => sbclk_0_1,
+      sbdatain_0 => sbdatain_0_1,
+      sbdataout_0 => SerialBusSlave_ver_2_0_sbdataout,
+      tkin(15 downto 0) => OneStageSynchronizer_4_sync_signal(15 downto 0)
     );
 axi_dma_0: component design_1_axi_dma_0_0
      port map (

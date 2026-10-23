@@ -2,87 +2,76 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 7 -x 2300 -y 430 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 7 -x 2300 -y 450 -defaultsOSRD
-preplace port GPIO_0 -pg 1 -lvl 7 -x 2300 -y 740 -defaultsOSRD
-preplace port LEDS_0 -pg 1 -lvl 7 -x 2300 -y 880 -defaultsOSRD
-preplace port sbclk_0 -pg 1 -lvl 0 -x 0 -y 1170 -defaultsOSRD
-preplace port sbdatain_0 -pg 1 -lvl 0 -x 0 -y 1310 -defaultsOSRD
-preplace port pback_0 -pg 1 -lvl 7 -x 2300 -y 240 -defaultsOSRD
-preplace port pbclk_0 -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
-preplace port pbce_0 -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD
-preplace port sbdataout_0 -pg 1 -lvl 7 -x 2300 -y 1270 -defaultsOSRD
-preplace portBus pbdata_0 -pg 1 -lvl 7 -x 2300 -y 220 -defaultsOSRD
-preplace portBus datain_0 -pg 1 -lvl 0 -x 0 -y 1100 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 6 -x 2020 -y 740 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 6 -x 2020 -y 510 -defaultsOSRD
-preplace inst ps7_0_axi_periph -pg 1 -lvl 3 -x 870 -y 870 -defaultsOSRD
-preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 470 -defaultsOSRD
-preplace inst IP_AXI_LEDS_0 -pg 1 -lvl 6 -x 2020 -y 880 -defaultsOSRD
-preplace inst SerialBusSlave_ver_2_0 -pg 1 -lvl 3 -x 870 -y 1290 -defaultsOSRD
-preplace inst IP_AXI_ManagerParall_0 -pg 1 -lvl 4 -x 1290 -y 280 -defaultsOSRD
-preplace inst IP_AXI_ManagerSerial_0 -pg 1 -lvl 4 -x 1290 -y 1130 -defaultsOSRD
-preplace inst axis_data_fifo_0 -pg 1 -lvl 3 -x 870 -y 500 -defaultsOSRD
-preplace inst axi_dma_0 -pg 1 -lvl 4 -x 1290 -y 520 -defaultsOSRD
-preplace inst axi_smc -pg 1 -lvl 5 -x 1620 -y 520 -defaultsOSRD
-preplace inst OneStageSynchronizer_0 -pg 1 -lvl 2 -x 540 -y 1300 -defaultsOSRD
-preplace inst OneStageSynchronizer_1 -pg 1 -lvl 2 -x 540 -y 1160 -defaultsOSRD
-preplace inst OneStageSynchronizer_2 -pg 1 -lvl 5 -x 1620 -y 210 -defaultsOSRD
-preplace inst OneStageSynchronizer_3 -pg 1 -lvl 5 -x 1620 -y 70 -defaultsOSRD
-preplace inst EventCapturer64bit_0 -pg 1 -lvl 2 -x 540 -y 500 -defaultsOSRD
-preplace inst OneStageSynchronizer_4 -pg 1 -lvl 1 -x 200 -y 1090 -defaultsOSRD
-preplace inst axi_gpio_1 -pg 1 -lvl 4 -x 1290 -y 920 -defaultsOSRD
-preplace inst ParallelBusSlave_ver_0 -pg 1 -lvl 6 -x 2020 -y 250 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 7 20 370 380 370 700 360 1080 620 1460 610 1790 660 2260
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 7 20 650 NJ 650 NJ 650 NJ 650 NJ 650 NJ 650 2250
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 5 380 620 710 630 1090 630 1470 630 1760
-preplace netloc IP_AXI_ManagerSerial_0_dataout 1 2 3 720 1190 1030J 1260 1460
-preplace netloc SerialBusSlave_ver_2_0_dataready 1 3 1 1110 1160n
-preplace netloc SerialBusSlave_ver_2_0_rw 1 3 1 1100 1140n
-preplace netloc SerialBusSlave_ver_2_0_dataout 1 3 1 1070 1120n
-preplace netloc Net 1 0 7 20 1160 380 1090 710 1090 1030 150 1480 300 1790 340 2270
-preplace netloc SerialBusSlave_ver_2_0_addressregister 1 3 1 1060 1100n
-preplace netloc Net1 1 6 1 NJ 220
-preplace netloc ParallelBusSlave_ver_0_pback 1 6 1 NJ 240
-preplace netloc ParallelBusSlave_ver_0_dataready 1 3 4 1080 140 NJ 140 NJ 140 2270
-preplace netloc ParallelBusSlave_ver_0_addressregister 1 3 4 1090 160 1470J 290 1760J 160 2260
-preplace netloc IP_AXI_ManagerParall_0_dataout 1 4 2 N 280 NJ
-preplace netloc SerialBusSlave_ver_2_0_sbdataout 1 3 4 1020J 1280 1480J 1270 NJ 1270 NJ
-preplace netloc IP_AXI_LEDS_0_LEDS 1 6 1 NJ 880
-preplace netloc OneStageSynchronizer_0_sync_signal 1 2 1 N 1300
-preplace netloc sbdatain_0_1 1 0 2 NJ 1310 NJ
-preplace netloc OneStageSynchronizer_1_sync_signal 1 2 1 690 1160n
-preplace netloc sbclk_0_1 1 0 2 NJ 1170 NJ
-preplace netloc pbce_0_1 1 0 5 NJ 170 NJ 170 NJ 170 NJ 170 1460J
-preplace netloc OneStageSynchronizer_2_sync_signal 1 5 1 1770 210n
-preplace netloc pbclk_0_1 1 0 5 NJ 80 NJ 80 NJ 80 NJ 80 NJ
-preplace netloc OneStageSynchronizer_3_sync_signal 1 5 1 1780 70n
-preplace netloc datain_0_1 1 0 1 NJ 1100
-preplace netloc OneStageSynchronizer_4_sync_signal 1 1 4 370 1080 690J 1100 1040J 1270 1470
-preplace netloc EventCapturer64bit_0_s_axis_tdata 1 2 1 690 450n
-preplace netloc EventCapturer64bit_0_s_axis_tkeep 1 2 1 690 470n
-preplace netloc EventCapturer64bit_0_s_axis_tlast 1 2 1 690 490n
-preplace netloc EventCapturer64bit_0_s_axis_tvalid 1 2 1 680 520n
-preplace netloc axis_data_fifo_0_s_axis_tready 1 2 1 690 510n
-preplace netloc ps7_0_axi_periph_M01_AXI 1 3 3 NJ 840 NJ 840 1780
-preplace netloc ps7_0_axi_periph_M04_AXI 1 3 1 1050 480n
-preplace netloc axi_smc_M00_AXI 1 5 1 1770 500n
-preplace netloc axi_dma_0_M_AXI_S2MM 1 4 1 N 500
-preplace netloc ps7_0_axi_periph_M02_AXI 1 3 1 1070 860n
-preplace netloc axi_gpio_0_GPIO 1 6 1 NJ 740
-preplace netloc ps7_0_axi_periph_M03_AXI 1 3 1 1020 230n
-preplace netloc ps7_0_axi_periph_M00_AXI 1 3 3 1040 720 NJ 720 NJ
-preplace netloc processing_system7_0_DDR 1 6 1 NJ 430
-preplace netloc processing_system7_0_FIXED_IO 1 6 1 NJ 450
-preplace netloc processing_system7_0_M_AXI_GP0 1 2 5 720 370 1040J 390 1470J 370 NJ 370 2260
-preplace netloc axis_data_fifo_0_M_AXIS 1 3 1 N 500
-preplace netloc ps7_0_axi_periph_M05_AXI 1 3 1 1060 900n
-levelinfo -pg 1 0 200 540 870 1290 1620 2020 2300
-pagesize -pg 1 -db -bbox -sgen -140 0 2450 1390
+preplace port DDR -pg 1 -lvl 7 -x 2540 -y 330 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 7 -x 2540 -y 350 -defaultsOSRD
+preplace port GPIO_0 -pg 1 -lvl 7 -x 2540 -y 1030 -defaultsOSRD
+preplace port LEDS_0 -pg 1 -lvl 7 -x 2540 -y 870 -defaultsOSRD
+preplace port sbclk_0 -pg 1 -lvl 0 -x -40 -y 680 -defaultsOSRD
+preplace port sbdatain_0 -pg 1 -lvl 0 -x -40 -y 660 -defaultsOSRD
+preplace port pback_0 -pg 1 -lvl 7 -x 2540 -y 690 -defaultsOSRD
+preplace port pbclk_0 -pg 1 -lvl 0 -x -40 -y 540 -defaultsOSRD
+preplace port pbce_0 -pg 1 -lvl 0 -x -40 -y 560 -defaultsOSRD
+preplace port sbdataout_0 -pg 1 -lvl 7 -x 2540 -y 780 -defaultsOSRD
+preplace port er0in_0 -pg 1 -lvl 0 -x -40 -y 770 -defaultsOSRD
+preplace portBus pbdata_0 -pg 1 -lvl 7 -x 2540 -y 670 -defaultsOSRD
+preplace portBus datain_0 -pg 1 -lvl 0 -x -40 -y 270 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 6 -x 2260 -y 1030 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 6 -x 2260 -y 410 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 3 -x 950 -y 1030 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 190 -y 430 -defaultsOSRD
+preplace inst IP_AXI_LEDS_0 -pg 1 -lvl 6 -x 2260 -y 870 -defaultsOSRD
+preplace inst axis_data_fifo_0 -pg 1 -lvl 3 -x 950 -y 380 -defaultsOSRD
+preplace inst axi_dma_0 -pg 1 -lvl 4 -x 1425 -y 400 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 5 -x 1820 -y 400 -defaultsOSRD
+preplace inst EventCapturer64bit_0 -pg 1 -lvl 2 -x 550 -y 120 -defaultsOSRD
+preplace inst OneStageSynchronizer_4 -pg 1 -lvl 1 -x 190 -y 260 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 4 -x 1425 -y 940 -defaultsOSRD
+preplace inst SerialBusSlave -pg 1 -lvl 4 -x 1425 -y 670 -defaultsOSRD
+preplace inst ParallelBusSlave -pg 1 -lvl 6 -x 2260 -y 680 -defaultsOSRD
+preplace inst Invertor -pg 1 -lvl 5 -x 1820 -y 670 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 7 0 160 400 270 770 220 1160 290 1660 480 2000 260 2500
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 7 10 190 370J 250 720J 210 NJ 210 NJ 210 NJ 210 2520
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 5 360 280 780 230 1110 300 1680 490 1980
+preplace netloc Net 1 0 7 20 170 380J 510 NJ 510 1130 280 NJ 280 2030 270 2490
+preplace netloc Net1 1 6 1 NJ 670
+preplace netloc ParallelBusSlave_ver_0_pback 1 6 1 NJ 690
+preplace netloc SerialBusSlave_ver_2_0_sbdataout 1 4 3 1600J 780 NJ 780 NJ
+preplace netloc IP_AXI_LEDS_0_LEDS 1 6 1 NJ 870
+preplace netloc sbdatain_0_1 1 0 4 NJ 660 NJ 660 NJ 660 1130J
+preplace netloc sbclk_0_1 1 0 4 NJ 680 NJ 680 NJ 680 1170J
+preplace netloc pbce_0_1 1 0 6 -10J 330 NJ 330 730J 200 NJ 200 NJ 200 2020J
+preplace netloc pbclk_0_1 1 0 6 NJ 540 390J 520 NJ 520 NJ 520 NJ 520 2010J
+preplace netloc datain_0_1 1 0 1 NJ 270
+preplace netloc OneStageSynchronizer_4_sync_signal 1 1 4 410 260 760J 250 1140J 510 1610
+preplace netloc EventCapturer64bit_0_s_axis_tdata 1 2 1 790 80n
+preplace netloc EventCapturer64bit_0_s_axis_tkeep 1 2 1 750 100n
+preplace netloc EventCapturer64bit_0_s_axis_tlast 1 2 1 740 120n
+preplace netloc EventCapturer64bit_0_s_axis_tvalid 1 2 1 710 140n
+preplace netloc axis_data_fifo_0_s_axis_tready 1 2 1 700 160n
+preplace netloc er0in_0_1 1 0 5 -20J 180 390J 240 690J 190 NJ 190 1670J
+preplace netloc processing_system7_0_DDR 1 6 1 NJ 330
+preplace netloc ps7_0_axi_periph_M05_AXI 1 3 1 1200 920n
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 5 800 240 NJ 240 NJ 240 NJ 240 2510
+preplace netloc processing_system7_0_FIXED_IO 1 6 1 NJ 350
+preplace netloc axis_data_fifo_0_M_AXIS 1 3 1 N 380
+preplace netloc ps7_0_axi_periph_M01_AXI 1 3 3 1120 540 NJ 540 1960J
+preplace netloc ps7_0_axi_periph_M03_AXI 1 3 3 1180J 550 NJ 550 1990
+preplace netloc ps7_0_axi_periph_M04_AXI 1 3 1 1150 360n
+preplace netloc axi_dma_0_M_AXI_S2MM 1 4 1 N 380
+preplace netloc axi_smc_M00_AXI 1 5 1 N 400
+preplace netloc ps7_0_axi_periph_M00_AXI 1 3 3 1100J 530 NJ 530 1970
+preplace netloc axi_gpio_0_GPIO 1 6 1 NJ 1030
+preplace netloc ps7_0_axi_periph_M02_AXI 1 3 1 1190 610n
+preplace netloc IP_AXI_ManagerSerial_0_TK5 1 4 1 1630 630n
+preplace netloc IP_AXI_ManagerSerial_0_TK6 1 4 1 1620 610n
+preplace netloc IP_AXI_ManagerSerial_0_TK9 1 4 1 1650 630n
+preplace netloc IP_AXI_ManagerSerial_0_TKA 1 4 1 1640 650n
+levelinfo -pg 1 -40 190 550 950 1425 1820 2260 2540
+pagesize -pg 1 -db -bbox -sgen -180 0 2690 2060
 "
 }
 {
-   "da_axi4_cnt":"9",
+   "da_axi4_cnt":"10",
    "da_board_cnt":"1",
    "da_clkrst_cnt":"1",
    "da_ps7_cnt":"1"

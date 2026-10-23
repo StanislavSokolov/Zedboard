@@ -1,0 +1,45 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port TK -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port TK1 -pg 1 -lvl 0 -x 0 -y 530 -defaultsOSRD
+preplace port TK2 -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace port TK3 -pg 1 -lvl 0 -x 0 -y 910 -defaultsOSRD
+preplace port clk -pg 1 -lvl 0 -x 0 -y 770 -defaultsOSRD
+preplace port er0in_0 -pg 1 -lvl 0 -x 0 -y 850 -defaultsOSRD
+preplace portBus Din -pg 1 -lvl 0 -x 0 -y 310 -defaultsOSRD
+preplace inst TransistorKeys_1 -pg 1 -lvl 2 -x 410 -y 120 -defaultsOSRD
+preplace inst TransistorKeys_2 -pg 1 -lvl 2 -x 410 -y 600 -defaultsOSRD
+preplace inst OneStageSynchronizer_5 -pg 1 -lvl 1 -x 150 -y 840 -defaultsOSRD
+preplace inst TransistorKeys_3 -pg 1 -lvl 2 -x 410 -y 360 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 1 -x 150 -y 1090 -defaultsOSRD
+preplace inst xlslice_2 -pg 1 -lvl 1 -x 150 -y 130 -defaultsOSRD
+preplace inst xlslice_3 -pg 1 -lvl 1 -x 150 -y 230 -defaultsOSRD
+preplace inst xlslice_4 -pg 1 -lvl 1 -x 150 -y 370 -defaultsOSRD
+preplace inst xlslice_5 -pg 1 -lvl 1 -x 150 -y 470 -defaultsOSRD
+preplace inst xlslice_6 -pg 1 -lvl 1 -x 150 -y 610 -defaultsOSRD
+preplace inst xlslice_7 -pg 1 -lvl 1 -x 150 -y 710 -defaultsOSRD
+preplace inst TransistorKeys_0 -pg 1 -lvl 2 -x 410 -y 980 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 1 -x 150 -y 990 -defaultsOSRD
+preplace netloc OneStageSynchronizer_5_sync_signal 1 1 1 290 110n
+preplace netloc xlslice_2_Dout 1 1 1 NJ 130
+preplace netloc xlslice_3_Dout 1 1 1 270J 150n
+preplace netloc xlslice_6_Dout 1 1 1 NJ 610
+preplace netloc xlslice_7_Dout 1 1 1 300J 630n
+preplace netloc xlslice_4_Dout 1 1 1 NJ 370
+preplace netloc xlslice_5_Dout 1 1 1 270J 390n
+preplace netloc xlslice_1_Dout 1 1 1 280J 1010n
+preplace netloc xlslice_0_Dout 1 1 1 NJ 990
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 20 770 280
+preplace netloc er0in_0_1 1 0 1 NJ 850
+preplace netloc OneStageSynchronizer_4_sync_signal 1 0 1 30 130n
+preplace netloc IP_AXI_ManagerSerial_0_TK6 1 0 2 NJ 50 NJ
+preplace netloc IP_AXI_ManagerSerial_0_TK9 1 0 2 NJ 530 NJ
+preplace netloc IP_AXI_ManagerSerial_0_TKA 1 0 2 NJ 290 NJ
+preplace netloc IP_AXI_ManagerSerial_0_TK5 1 0 2 NJ 910 NJ
+levelinfo -pg 1 0 150 410 530
+pagesize -pg 1 -db -bbox -sgen -110 -10 530 1150
+"
+}
+

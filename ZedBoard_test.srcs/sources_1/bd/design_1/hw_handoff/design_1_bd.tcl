@@ -122,6 +122,355 @@ if { $nRet != 0 } {
 ##################################################################
 
 
+# Hierarchical cell: SerialBusSlave
+proc create_hier_cell_SerialBusSlave { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_SerialBusSlave() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S00_AXI
+
+  create_bd_intf_pin -mode Master -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK5
+
+  create_bd_intf_pin -mode Master -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK6
+
+  create_bd_intf_pin -mode Master -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK9
+
+  create_bd_intf_pin -mode Master -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TKA
+
+
+  # Create pins
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir I -type clk s00_axi_aclk
+  create_bd_pin -dir I -type rst s00_axi_aresetn
+  create_bd_pin -dir I sbclk_0
+  create_bd_pin -dir I sbdatain_0
+  create_bd_pin -dir O sbdataout_0
+  create_bd_pin -dir I -from 15 -to 0 tkin
+
+  # Create instance: IP_AXI_ManagerSerial_0, and set properties
+  set IP_AXI_ManagerSerial_0 [ create_bd_cell -type ip -vlnv setcorp:user:IP_AXI_ManagerSerialBusSlave:2.0 IP_AXI_ManagerSerial_0 ]
+
+  # Create instance: OneStageSynchronizer_0, and set properties
+  set OneStageSynchronizer_0 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_0 ]
+  set_property -dict [ list \
+   CONFIG.PHASE_SHIFT {15} \
+ ] $OneStageSynchronizer_0
+
+  # Create instance: OneStageSynchronizer_1, and set properties
+  set OneStageSynchronizer_1 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_1 ]
+  set_property -dict [ list \
+   CONFIG.PHASE_SHIFT {15} \
+ ] $OneStageSynchronizer_1
+
+  # Create instance: SerialBusSlave_ver_2_0, and set properties
+  set SerialBusSlave_ver_2_0 [ create_bd_cell -type ip -vlnv setcorp:user:SerialBusSlave_ver_2_0:1.0 SerialBusSlave_ver_2_0 ]
+
+  # Create interface connections
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK5 [get_bd_intf_pins TK5] [get_bd_intf_pins IP_AXI_ManagerSerial_0/TK5]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK6 [get_bd_intf_pins TK6] [get_bd_intf_pins IP_AXI_ManagerSerial_0/TK6]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK9 [get_bd_intf_pins TK9] [get_bd_intf_pins IP_AXI_ManagerSerial_0/TK9]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TKA [get_bd_intf_pins TKA] [get_bd_intf_pins IP_AXI_ManagerSerial_0/TKA]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins S00_AXI] [get_bd_intf_pins IP_AXI_ManagerSerial_0/S00_AXI]
+
+  # Create port connections
+  connect_bd_net -net IP_AXI_ManagerSerial_0_dataout [get_bd_pins IP_AXI_ManagerSerial_0/dataout] [get_bd_pins SerialBusSlave_ver_2_0/datain]
+  connect_bd_net -net Net [get_bd_pins clk] [get_bd_pins OneStageSynchronizer_0/clk] [get_bd_pins OneStageSynchronizer_1/clk] [get_bd_pins SerialBusSlave_ver_2_0/clk]
+  connect_bd_net -net OneStageSynchronizer_0_sync_signal [get_bd_pins OneStageSynchronizer_0/sync_signal] [get_bd_pins SerialBusSlave_ver_2_0/sbdatain]
+  connect_bd_net -net OneStageSynchronizer_1_sync_signal [get_bd_pins OneStageSynchronizer_1/sync_signal] [get_bd_pins SerialBusSlave_ver_2_0/sbclk]
+  connect_bd_net -net SerialBusSlave_ver_2_0_addressregister [get_bd_pins IP_AXI_ManagerSerial_0/addressregister] [get_bd_pins SerialBusSlave_ver_2_0/addressregister]
+  connect_bd_net -net SerialBusSlave_ver_2_0_dataout [get_bd_pins IP_AXI_ManagerSerial_0/datain] [get_bd_pins SerialBusSlave_ver_2_0/dataout]
+  connect_bd_net -net SerialBusSlave_ver_2_0_dataready [get_bd_pins IP_AXI_ManagerSerial_0/dataready] [get_bd_pins SerialBusSlave_ver_2_0/dataready]
+  connect_bd_net -net SerialBusSlave_ver_2_0_rw [get_bd_pins IP_AXI_ManagerSerial_0/rw] [get_bd_pins SerialBusSlave_ver_2_0/rw]
+  connect_bd_net -net SerialBusSlave_ver_2_0_sbdataout [get_bd_pins sbdataout_0] [get_bd_pins SerialBusSlave_ver_2_0/sbdataout]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins s00_axi_aclk] [get_bd_pins IP_AXI_ManagerSerial_0/s00_axi_aclk]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins s00_axi_aresetn] [get_bd_pins IP_AXI_ManagerSerial_0/s00_axi_aresetn]
+  connect_bd_net -net sbclk_0_1 [get_bd_pins sbclk_0] [get_bd_pins OneStageSynchronizer_1/async_signal]
+  connect_bd_net -net sbdatain_0_1 [get_bd_pins sbdatain_0] [get_bd_pins OneStageSynchronizer_0/async_signal]
+  connect_bd_net -net tkin_1 [get_bd_pins tkin] [get_bd_pins IP_AXI_ManagerSerial_0/tkin]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: ParallelBusSlave
+proc create_hier_cell_ParallelBusSlave { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_ParallelBusSlave() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S00_AXI
+
+
+  # Create pins
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir O pback_0
+  create_bd_pin -dir I pbce_0
+  create_bd_pin -dir I pbclk_0
+  create_bd_pin -dir IO -from 15 -to 0 pbdata_0
+  create_bd_pin -dir I -type clk s00_axi_aclk
+  create_bd_pin -dir I -type rst s00_axi_aresetn
+
+  # Create instance: IP_AXI_ManagerParall_0, and set properties
+  set IP_AXI_ManagerParall_0 [ create_bd_cell -type ip -vlnv setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0 IP_AXI_ManagerParall_0 ]
+
+  # Create instance: OneStageSynchronizer_2, and set properties
+  set OneStageSynchronizer_2 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_2 ]
+  set_property -dict [ list \
+   CONFIG.PHASE_SHIFT {3} \
+ ] $OneStageSynchronizer_2
+
+  # Create instance: OneStageSynchronizer_3, and set properties
+  set OneStageSynchronizer_3 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_3 ]
+  set_property -dict [ list \
+   CONFIG.PHASE_SHIFT {3} \
+ ] $OneStageSynchronizer_3
+
+  # Create instance: ParallelBusSlave_ver_0, and set properties
+  set ParallelBusSlave_ver_0 [ create_bd_cell -type ip -vlnv setcorp:user:ParallelBusSlave_ver_2_0:1.0 ParallelBusSlave_ver_0 ]
+
+  # Create interface connections
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M03_AXI [get_bd_intf_pins S00_AXI] [get_bd_intf_pins IP_AXI_ManagerParall_0/S00_AXI]
+
+  # Create port connections
+  connect_bd_net -net IP_AXI_ManagerParall_0_dataout [get_bd_pins IP_AXI_ManagerParall_0/dataout] [get_bd_pins ParallelBusSlave_ver_0/datain]
+  connect_bd_net -net Net [get_bd_pins clk] [get_bd_pins IP_AXI_ManagerParall_0/clk] [get_bd_pins OneStageSynchronizer_2/clk] [get_bd_pins OneStageSynchronizer_3/clk] [get_bd_pins ParallelBusSlave_ver_0/clk]
+  connect_bd_net -net Net1 [get_bd_pins pbdata_0] [get_bd_pins ParallelBusSlave_ver_0/pbdata]
+  connect_bd_net -net OneStageSynchronizer_2_sync_signal [get_bd_pins OneStageSynchronizer_2/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbce]
+  connect_bd_net -net OneStageSynchronizer_3_sync_signal [get_bd_pins OneStageSynchronizer_3/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbclk]
+  connect_bd_net -net ParallelBusSlave_ver_0_addressregister [get_bd_pins IP_AXI_ManagerParall_0/addressregister] [get_bd_pins ParallelBusSlave_ver_0/addressregister]
+  connect_bd_net -net ParallelBusSlave_ver_0_dataready [get_bd_pins IP_AXI_ManagerParall_0/dataready] [get_bd_pins ParallelBusSlave_ver_0/dataready]
+  connect_bd_net -net ParallelBusSlave_ver_0_pback [get_bd_pins pback_0] [get_bd_pins ParallelBusSlave_ver_0/pback]
+  connect_bd_net -net pbce_0_1 [get_bd_pins pbce_0] [get_bd_pins OneStageSynchronizer_2/async_signal]
+  connect_bd_net -net pbclk_0_1 [get_bd_pins pbclk_0] [get_bd_pins OneStageSynchronizer_3/async_signal]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins s00_axi_aclk] [get_bd_pins IP_AXI_ManagerParall_0/s00_axi_aclk]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins s00_axi_aresetn] [get_bd_pins IP_AXI_ManagerParall_0/s00_axi_aresetn]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: Invertor
+proc create_hier_cell_Invertor { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_Invertor() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+  create_bd_intf_pin -mode Slave -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK
+
+  create_bd_intf_pin -mode Slave -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK1
+
+  create_bd_intf_pin -mode Slave -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK2
+
+  create_bd_intf_pin -mode Slave -vlnv setcorp:user:ID_TKSettings_rtl:1.0 TK3
+
+
+  # Create pins
+  create_bd_pin -dir I -from 15 -to 0 Din
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir I er0in_0
+
+  # Create instance: OneStageSynchronizer_5, and set properties
+  set OneStageSynchronizer_5 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_5 ]
+  set_property -dict [ list \
+   CONFIG.PHASE_SHIFT {8} \
+ ] $OneStageSynchronizer_5
+
+  # Create instance: TransistorKeys_0, and set properties
+  set TransistorKeys_0 [ create_bd_cell -type ip -vlnv setcorp:user:TransistorKeys:1.0 TransistorKeys_0 ]
+
+  # Create instance: TransistorKeys_1, and set properties
+  set TransistorKeys_1 [ create_bd_cell -type ip -vlnv setcorp:user:TransistorKeys:1.0 TransistorKeys_1 ]
+
+  # Create instance: TransistorKeys_2, and set properties
+  set TransistorKeys_2 [ create_bd_cell -type ip -vlnv setcorp:user:TransistorKeys:1.0 TransistorKeys_2 ]
+
+  # Create instance: TransistorKeys_3, and set properties
+  set TransistorKeys_3 [ create_bd_cell -type ip -vlnv setcorp:user:TransistorKeys:1.0 TransistorKeys_3 ]
+
+  # Create instance: xlslice_0, and set properties
+  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {1} \
+   CONFIG.DIN_TO {0} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_0
+
+  # Create instance: xlslice_1, and set properties
+  set xlslice_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {3} \
+   CONFIG.DIN_TO {2} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_1
+
+  # Create instance: xlslice_2, and set properties
+  set xlslice_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_2 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {5} \
+   CONFIG.DIN_TO {4} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_2
+
+  # Create instance: xlslice_3, and set properties
+  set xlslice_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_3 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {7} \
+   CONFIG.DIN_TO {6} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_3
+
+  # Create instance: xlslice_4, and set properties
+  set xlslice_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_4 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {9} \
+   CONFIG.DIN_TO {8} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_4
+
+  # Create instance: xlslice_5, and set properties
+  set xlslice_5 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_5 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {11} \
+   CONFIG.DIN_TO {10} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_5
+
+  # Create instance: xlslice_6, and set properties
+  set xlslice_6 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_6 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {13} \
+   CONFIG.DIN_TO {12} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_6
+
+  # Create instance: xlslice_7, and set properties
+  set xlslice_7 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_7 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {15} \
+   CONFIG.DIN_TO {14} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_7
+
+  # Create interface connections
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK5 [get_bd_intf_pins TK3] [get_bd_intf_pins TransistorKeys_0/TK]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK6 [get_bd_intf_pins TK] [get_bd_intf_pins TransistorKeys_1/TK]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK9 [get_bd_intf_pins TK1] [get_bd_intf_pins TransistorKeys_2/TK]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TKA [get_bd_intf_pins TK2] [get_bd_intf_pins TransistorKeys_3/TK]
+
+  # Create port connections
+  connect_bd_net -net OneStageSynchronizer_4_sync_signal [get_bd_pins Din] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din] [get_bd_pins xlslice_4/Din] [get_bd_pins xlslice_5/Din] [get_bd_pins xlslice_6/Din] [get_bd_pins xlslice_7/Din]
+  connect_bd_net -net OneStageSynchronizer_5_sync_signal [get_bd_pins OneStageSynchronizer_5/sync_signal] [get_bd_pins TransistorKeys_0/er0in] [get_bd_pins TransistorKeys_1/er0in] [get_bd_pins TransistorKeys_2/er0in] [get_bd_pins TransistorKeys_3/er0in]
+  connect_bd_net -net er0in_0_1 [get_bd_pins er0in_0] [get_bd_pins OneStageSynchronizer_5/async_signal]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins clk] [get_bd_pins OneStageSynchronizer_5/clk] [get_bd_pins TransistorKeys_0/clk] [get_bd_pins TransistorKeys_1/clk] [get_bd_pins TransistorKeys_2/clk] [get_bd_pins TransistorKeys_3/clk]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins TransistorKeys_0/keysel_0] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins TransistorKeys_0/keysel_1] [get_bd_pins xlslice_1/Dout]
+  connect_bd_net -net xlslice_2_Dout [get_bd_pins TransistorKeys_1/keysel_0] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_3_Dout [get_bd_pins TransistorKeys_1/keysel_1] [get_bd_pins xlslice_3/Dout]
+  connect_bd_net -net xlslice_4_Dout [get_bd_pins TransistorKeys_3/keysel_0] [get_bd_pins xlslice_4/Dout]
+  connect_bd_net -net xlslice_5_Dout [get_bd_pins TransistorKeys_3/keysel_1] [get_bd_pins xlslice_5/Dout]
+  connect_bd_net -net xlslice_6_Dout [get_bd_pins TransistorKeys_2/keysel_0] [get_bd_pins xlslice_6/Dout]
+  connect_bd_net -net xlslice_7_Dout [get_bd_pins TransistorKeys_2/keysel_1] [get_bd_pins xlslice_7/Dout]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
 
 # Procedure to create entire design; Provide argument to make
 # procedure reusable. If parentCell is "", will use root.
@@ -166,6 +515,7 @@ proc create_root_design { parentCell } {
   # Create ports
   set LEDS_0 [ create_bd_port -dir O LEDS_0 ]
   set datain_0 [ create_bd_port -dir I -from 15 -to 0 datain_0 ]
+  set er0in_0 [ create_bd_port -dir I er0in_0 ]
   set pback_0 [ create_bd_port -dir O pback_0 ]
   set pbce_0 [ create_bd_port -dir I pbce_0 ]
   set pbclk_0 [ create_bd_port -dir I pbclk_0 ]
@@ -180,35 +530,8 @@ proc create_root_design { parentCell } {
   # Create instance: IP_AXI_LEDS_0, and set properties
   set IP_AXI_LEDS_0 [ create_bd_cell -type ip -vlnv ssevendenergy.com:user:IP_AXI_LEDS:1.0 IP_AXI_LEDS_0 ]
 
-  # Create instance: IP_AXI_ManagerParall_0, and set properties
-  set IP_AXI_ManagerParall_0 [ create_bd_cell -type ip -vlnv setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0 IP_AXI_ManagerParall_0 ]
-
-  # Create instance: IP_AXI_ManagerSerial_0, and set properties
-  set IP_AXI_ManagerSerial_0 [ create_bd_cell -type ip -vlnv setcorp:user:IP_AXI_ManagerSerialBusSlave:1.0 IP_AXI_ManagerSerial_0 ]
-
-  # Create instance: OneStageSynchronizer_0, and set properties
-  set OneStageSynchronizer_0 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_0 ]
-  set_property -dict [ list \
-   CONFIG.PHASE_SHIFT {15} \
- ] $OneStageSynchronizer_0
-
-  # Create instance: OneStageSynchronizer_1, and set properties
-  set OneStageSynchronizer_1 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_1 ]
-  set_property -dict [ list \
-   CONFIG.PHASE_SHIFT {15} \
- ] $OneStageSynchronizer_1
-
-  # Create instance: OneStageSynchronizer_2, and set properties
-  set OneStageSynchronizer_2 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_2 ]
-  set_property -dict [ list \
-   CONFIG.PHASE_SHIFT {3} \
- ] $OneStageSynchronizer_2
-
-  # Create instance: OneStageSynchronizer_3, and set properties
-  set OneStageSynchronizer_3 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0 OneStageSynchronizer_3 ]
-  set_property -dict [ list \
-   CONFIG.PHASE_SHIFT {3} \
- ] $OneStageSynchronizer_3
+  # Create instance: Invertor
+  create_hier_cell_Invertor [current_bd_instance .] Invertor
 
   # Create instance: OneStageSynchronizer_4, and set properties
   set OneStageSynchronizer_4 [ create_bd_cell -type ip -vlnv setcorp:user:OneStageSynchronizerAndDigitalFilterBlock_ver_1_0:1.0 OneStageSynchronizer_4 ]
@@ -217,11 +540,11 @@ proc create_root_design { parentCell } {
    CONFIG.QUANTITY_CHANNELS {16} \
  ] $OneStageSynchronizer_4
 
-  # Create instance: ParallelBusSlave_ver_0, and set properties
-  set ParallelBusSlave_ver_0 [ create_bd_cell -type ip -vlnv setcorp:user:ParallelBusSlave_ver_2_0:1.0 ParallelBusSlave_ver_0 ]
+  # Create instance: ParallelBusSlave
+  create_hier_cell_ParallelBusSlave [current_bd_instance .] ParallelBusSlave
 
-  # Create instance: SerialBusSlave_ver_2_0, and set properties
-  set SerialBusSlave_ver_2_0 [ create_bd_cell -type ip -vlnv setcorp:user:SerialBusSlave_ver_2_0:1.0 SerialBusSlave_ver_2_0 ]
+  # Create instance: SerialBusSlave
+  create_hier_cell_SerialBusSlave [current_bd_instance .] SerialBusSlave
 
   # Create instance: axi_dma_0, and set properties
   set axi_dma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_dma:7.1 axi_dma_0 ]
@@ -696,6 +1019,10 @@ proc create_root_design { parentCell } {
   set rst_ps7_0_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_100M ]
 
   # Create interface connections
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK5 [get_bd_intf_pins Invertor/TK3] [get_bd_intf_pins SerialBusSlave/TK5]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK6 [get_bd_intf_pins Invertor/TK] [get_bd_intf_pins SerialBusSlave/TK6]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TK9 [get_bd_intf_pins Invertor/TK1] [get_bd_intf_pins SerialBusSlave/TK9]
+  connect_bd_intf_net -intf_net IP_AXI_ManagerSerial_0_TKA [get_bd_intf_pins Invertor/TK2] [get_bd_intf_pins SerialBusSlave/TKA]
   connect_bd_intf_net -intf_net axi_dma_0_M_AXI_S2MM [get_bd_intf_pins axi_dma_0/M_AXI_S2MM] [get_bd_intf_pins axi_smc/S00_AXI]
   connect_bd_intf_net -intf_net axi_gpio_0_GPIO [get_bd_intf_ports GPIO_0] [get_bd_intf_pins axi_gpio_0/GPIO]
   connect_bd_intf_net -intf_net axi_smc_M00_AXI [get_bd_intf_pins axi_smc/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0]
@@ -705,8 +1032,8 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins axi_gpio_0/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins IP_AXI_LEDS_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins IP_AXI_ManagerSerial_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M03_AXI [get_bd_intf_pins IP_AXI_ManagerParall_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M03_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins SerialBusSlave/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M03_AXI [get_bd_intf_pins ParallelBusSlave/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M03_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M04_AXI [get_bd_intf_pins axi_dma_0/S_AXI_LITE] [get_bd_intf_pins ps7_0_axi_periph/M04_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M05_AXI [get_bd_intf_pins axi_gpio_1/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M05_AXI]
 
@@ -716,38 +1043,27 @@ proc create_root_design { parentCell } {
   connect_bd_net -net EventCapturer64bit_0_s_axis_tlast [get_bd_pins EventCapturer64bit_0/s_axis_tlast] [get_bd_pins axis_data_fifo_0/s_axis_tlast]
   connect_bd_net -net EventCapturer64bit_0_s_axis_tvalid [get_bd_pins EventCapturer64bit_0/s_axis_tvalid] [get_bd_pins axis_data_fifo_0/s_axis_tvalid]
   connect_bd_net -net IP_AXI_LEDS_0_LEDS [get_bd_ports LEDS_0] [get_bd_pins IP_AXI_LEDS_0/LEDS]
-  connect_bd_net -net IP_AXI_ManagerParall_0_dataout [get_bd_pins IP_AXI_ManagerParall_0/dataout] [get_bd_pins ParallelBusSlave_ver_0/datain]
-  connect_bd_net -net IP_AXI_ManagerSerial_0_dataout [get_bd_pins IP_AXI_ManagerSerial_0/dataout] [get_bd_pins SerialBusSlave_ver_2_0/datain]
-  connect_bd_net -net Net [get_bd_pins IP_AXI_ManagerParall_0/clk] [get_bd_pins IP_AXI_ManagerSerial_0/clk] [get_bd_pins OneStageSynchronizer_0/clk] [get_bd_pins OneStageSynchronizer_1/clk] [get_bd_pins OneStageSynchronizer_2/clk] [get_bd_pins OneStageSynchronizer_3/clk] [get_bd_pins OneStageSynchronizer_4/clk] [get_bd_pins ParallelBusSlave_ver_0/clk] [get_bd_pins SerialBusSlave_ver_2_0/clk] [get_bd_pins processing_system7_0/FCLK_CLK1]
-  connect_bd_net -net Net1 [get_bd_ports pbdata_0] [get_bd_pins ParallelBusSlave_ver_0/pbdata]
-  connect_bd_net -net OneStageSynchronizer_0_sync_signal [get_bd_pins OneStageSynchronizer_0/sync_signal] [get_bd_pins SerialBusSlave_ver_2_0/sbdatain]
-  connect_bd_net -net OneStageSynchronizer_1_sync_signal [get_bd_pins OneStageSynchronizer_1/sync_signal] [get_bd_pins SerialBusSlave_ver_2_0/sbclk]
-  connect_bd_net -net OneStageSynchronizer_2_sync_signal [get_bd_pins OneStageSynchronizer_2/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbce]
-  connect_bd_net -net OneStageSynchronizer_3_sync_signal [get_bd_pins OneStageSynchronizer_3/sync_signal] [get_bd_pins ParallelBusSlave_ver_0/pbclk]
-  connect_bd_net -net OneStageSynchronizer_4_sync_signal [get_bd_pins EventCapturer64bit_0/datain] [get_bd_pins OneStageSynchronizer_4/sync_signal] [get_bd_pins axi_gpio_1/gpio_io_i]
-  connect_bd_net -net ParallelBusSlave_ver_0_addressregister [get_bd_pins IP_AXI_ManagerParall_0/addressregister] [get_bd_pins ParallelBusSlave_ver_0/addressregister]
-  connect_bd_net -net ParallelBusSlave_ver_0_dataready [get_bd_pins IP_AXI_ManagerParall_0/dataready] [get_bd_pins ParallelBusSlave_ver_0/dataready]
-  connect_bd_net -net ParallelBusSlave_ver_0_pback [get_bd_ports pback_0] [get_bd_pins ParallelBusSlave_ver_0/pback]
-  connect_bd_net -net SerialBusSlave_ver_2_0_addressregister [get_bd_pins IP_AXI_ManagerSerial_0/addressregister] [get_bd_pins SerialBusSlave_ver_2_0/addressregister]
-  connect_bd_net -net SerialBusSlave_ver_2_0_dataout [get_bd_pins IP_AXI_ManagerSerial_0/datain] [get_bd_pins SerialBusSlave_ver_2_0/dataout]
-  connect_bd_net -net SerialBusSlave_ver_2_0_dataready [get_bd_pins IP_AXI_ManagerSerial_0/dataready] [get_bd_pins SerialBusSlave_ver_2_0/dataready]
-  connect_bd_net -net SerialBusSlave_ver_2_0_rw [get_bd_pins IP_AXI_ManagerSerial_0/rw] [get_bd_pins SerialBusSlave_ver_2_0/rw]
-  connect_bd_net -net SerialBusSlave_ver_2_0_sbdataout [get_bd_ports sbdataout_0] [get_bd_pins SerialBusSlave_ver_2_0/sbdataout]
+  connect_bd_net -net Net [get_bd_pins OneStageSynchronizer_4/clk] [get_bd_pins ParallelBusSlave/clk] [get_bd_pins SerialBusSlave/clk] [get_bd_pins processing_system7_0/FCLK_CLK1]
+  connect_bd_net -net Net1 [get_bd_ports pbdata_0] [get_bd_pins ParallelBusSlave/pbdata_0]
+  connect_bd_net -net OneStageSynchronizer_4_sync_signal [get_bd_pins EventCapturer64bit_0/datain] [get_bd_pins Invertor/Din] [get_bd_pins OneStageSynchronizer_4/sync_signal] [get_bd_pins SerialBusSlave/tkin] [get_bd_pins axi_gpio_1/gpio_io_i]
+  connect_bd_net -net ParallelBusSlave_ver_0_pback [get_bd_ports pback_0] [get_bd_pins ParallelBusSlave/pback_0]
+  connect_bd_net -net SerialBusSlave_ver_2_0_sbdataout [get_bd_ports sbdataout_0] [get_bd_pins SerialBusSlave/sbdataout_0]
   connect_bd_net -net axis_data_fifo_0_s_axis_tready [get_bd_pins EventCapturer64bit_0/s_axis_tready] [get_bd_pins axis_data_fifo_0/s_axis_tready]
   connect_bd_net -net datain_0_1 [get_bd_ports datain_0] [get_bd_pins OneStageSynchronizer_4/async_signal]
-  connect_bd_net -net pbce_0_1 [get_bd_ports pbce_0] [get_bd_pins OneStageSynchronizer_2/async_signal]
-  connect_bd_net -net pbclk_0_1 [get_bd_ports pbclk_0] [get_bd_pins OneStageSynchronizer_3/async_signal]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins EventCapturer64bit_0/clk] [get_bd_pins IP_AXI_LEDS_0/s00_axi_aclk] [get_bd_pins IP_AXI_ManagerParall_0/s00_axi_aclk] [get_bd_pins IP_AXI_ManagerSerial_0/s00_axi_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/M05_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
+  connect_bd_net -net er0in_0_1 [get_bd_ports er0in_0] [get_bd_pins Invertor/er0in_0]
+  connect_bd_net -net pbce_0_1 [get_bd_ports pbce_0] [get_bd_pins ParallelBusSlave/pbce_0]
+  connect_bd_net -net pbclk_0_1 [get_bd_ports pbclk_0] [get_bd_pins ParallelBusSlave/pbclk_0]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins EventCapturer64bit_0/clk] [get_bd_pins IP_AXI_LEDS_0/s00_axi_aclk] [get_bd_pins Invertor/clk] [get_bd_pins ParallelBusSlave/s00_axi_aclk] [get_bd_pins SerialBusSlave/s00_axi_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/M05_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins EventCapturer64bit_0/resetn] [get_bd_pins IP_AXI_LEDS_0/s00_axi_aresetn] [get_bd_pins IP_AXI_ManagerParall_0/s00_axi_aresetn] [get_bd_pins IP_AXI_ManagerSerial_0/s00_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/M04_ARESETN] [get_bd_pins ps7_0_axi_periph/M05_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
-  connect_bd_net -net sbclk_0_1 [get_bd_ports sbclk_0] [get_bd_pins OneStageSynchronizer_1/async_signal]
-  connect_bd_net -net sbdatain_0_1 [get_bd_ports sbdatain_0] [get_bd_pins OneStageSynchronizer_0/async_signal]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins EventCapturer64bit_0/resetn] [get_bd_pins IP_AXI_LEDS_0/s00_axi_aresetn] [get_bd_pins ParallelBusSlave/s00_axi_aresetn] [get_bd_pins SerialBusSlave/s00_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_1/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/M04_ARESETN] [get_bd_pins ps7_0_axi_periph/M05_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
+  connect_bd_net -net sbclk_0_1 [get_bd_ports sbclk_0] [get_bd_pins SerialBusSlave/sbclk_0]
+  connect_bd_net -net sbdatain_0_1 [get_bd_ports sbdatain_0] [get_bd_pins SerialBusSlave/sbdatain_0]
 
   # Create address segments
   create_bd_addr_seg -range 0x40000000 -offset 0x00000000 [get_bd_addr_spaces axi_dma_0/Data_S2MM] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM
   create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs IP_AXI_LEDS_0/S00_AXI/S00_AXI_reg] SEG_IP_AXI_LEDS_0_S00_AXI_reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x43C20000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs IP_AXI_ManagerParall_0/S00_AXI/S00_AXI_reg] SEG_IP_AXI_ManagerParall_0_S00_AXI_reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x43C10000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs IP_AXI_ManagerSerial_0/S00_AXI/S00_AXI_reg] SEG_IP_AXI_ManagerSerial_0_S00_AXI_reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x43C20000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs ParallelBusSlave/IP_AXI_ManagerParall_0/S00_AXI/S00_AXI_reg] SEG_IP_AXI_ManagerParall_0_S00_AXI_reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x43C10000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs SerialBusSlave/IP_AXI_ManagerSerial_0/S00_AXI/S00_AXI_reg] SEG_IP_AXI_ManagerSerial_0_S00_AXI_reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40400000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41210000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_1/S_AXI/Reg] SEG_axi_gpio_1_Reg

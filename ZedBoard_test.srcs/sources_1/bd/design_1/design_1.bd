@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x262B7ED5766F1527",
+      "boundary_crc": "0xCE99F3AE594ABA71",
       "device": "xc7z020clg484-1",
       "name": "design_1",
       "synth_flow_mode": "None",
@@ -25,20 +25,39 @@
       },
       "rst_ps7_0_100M": "",
       "IP_AXI_LEDS_0": "",
-      "SerialBusSlave_ver_2_0": "",
-      "IP_AXI_ManagerParall_0": "",
-      "IP_AXI_ManagerSerial_0": "",
       "axis_data_fifo_0": "",
       "axi_dma_0": "",
       "axi_smc": "",
-      "OneStageSynchronizer_0": "",
-      "OneStageSynchronizer_1": "",
-      "OneStageSynchronizer_2": "",
-      "OneStageSynchronizer_3": "",
       "EventCapturer64bit_0": "",
       "OneStageSynchronizer_4": "",
       "axi_gpio_1": "",
-      "ParallelBusSlave_ver_0": ""
+      "SerialBusSlave": {
+        "OneStageSynchronizer_0": "",
+        "OneStageSynchronizer_1": "",
+        "IP_AXI_ManagerSerial_0": "",
+        "SerialBusSlave_ver_2_0": ""
+      },
+      "ParallelBusSlave": {
+        "ParallelBusSlave_ver_0": "",
+        "IP_AXI_ManagerParall_0": "",
+        "OneStageSynchronizer_3": "",
+        "OneStageSynchronizer_2": ""
+      },
+      "Invertor": {
+        "TransistorKeys_1": "",
+        "TransistorKeys_2": "",
+        "OneStageSynchronizer_5": "",
+        "TransistorKeys_3": "",
+        "xlslice_1": "",
+        "xlslice_2": "",
+        "xlslice_3": "",
+        "xlslice_4": "",
+        "xlslice_5": "",
+        "xlslice_6": "",
+        "xlslice_7": "",
+        "TransistorKeys_0": "",
+        "xlslice_0": ""
+      }
     },
     "interface_ports": {
       "DDR": {
@@ -141,6 +160,9 @@
         "direction": "I",
         "left": "15",
         "right": "0"
+      },
+      "er0in_0": {
+        "direction": "I"
       }
     },
     "components": {
@@ -1597,6 +1619,18 @@
           }
         },
         "interface_nets": {
+          "ps7_0_axi_periph_to_s00_couplers": {
+            "interface_ports": [
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
+          "s00_couplers_to_xbar": {
+            "interface_ports": [
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
+            ]
+          },
           "m00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
               "M00_AXI",
@@ -1615,28 +1649,28 @@
               "m01_couplers/M_AXI"
             ]
           },
-          "m02_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M02_AXI",
-              "m02_couplers/M_AXI"
-            ]
-          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
               "m01_couplers/S_AXI"
             ]
           },
-          "xbar_to_m02_couplers": {
+          "m02_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
+              "M02_AXI",
+              "m02_couplers/M_AXI"
             ]
           },
           "m03_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
               "M03_AXI",
               "m03_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m02_couplers": {
+            "interface_ports": [
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
             ]
           },
           "xbar_to_m03_couplers": {
@@ -1651,34 +1685,22 @@
               "m04_couplers/M_AXI"
             ]
           },
-          "xbar_to_m04_couplers": {
-            "interface_ports": [
-              "xbar/M04_AXI",
-              "m04_couplers/S_AXI"
-            ]
-          },
           "m05_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
               "M05_AXI",
               "m05_couplers/M_AXI"
             ]
           },
+          "xbar_to_m04_couplers": {
+            "interface_ports": [
+              "xbar/M04_AXI",
+              "m04_couplers/S_AXI"
+            ]
+          },
           "xbar_to_m05_couplers": {
             "interface_ports": [
               "xbar/M05_AXI",
               "m05_couplers/S_AXI"
-            ]
-          },
-          "ps7_0_axi_periph_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
-            ]
-          },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
             ]
           }
         },
@@ -1732,18 +1754,6 @@
       "IP_AXI_LEDS_0": {
         "vlnv": "ssevendenergy.com:user:IP_AXI_LEDS:1.0",
         "xci_name": "design_1_IP_AXI_LEDS_0_0"
-      },
-      "SerialBusSlave_ver_2_0": {
-        "vlnv": "setcorp:user:SerialBusSlave_ver_2_0:1.0",
-        "xci_name": "design_1_SerialBusSlave_ver_2_0_0"
-      },
-      "IP_AXI_ManagerParall_0": {
-        "vlnv": "setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0",
-        "xci_name": "design_1_IP_AXI_ManagerParall_0_0"
-      },
-      "IP_AXI_ManagerSerial_0": {
-        "vlnv": "setcorp:user:IP_AXI_ManagerSerialBusSlave:1.0",
-        "xci_name": "design_1_IP_AXI_ManagerSerial_0_1"
       },
       "axis_data_fifo_0": {
         "vlnv": "xilinx.com:ip:axis_data_fifo:2.0",
@@ -1812,42 +1822,6 @@
           }
         }
       },
-      "OneStageSynchronizer_0": {
-        "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
-        "xci_name": "design_1_OneStageSynchronizer_0_3",
-        "parameters": {
-          "PHASE_SHIFT": {
-            "value": "15"
-          }
-        }
-      },
-      "OneStageSynchronizer_1": {
-        "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
-        "xci_name": "design_1_OneStageSynchronizer_0_4",
-        "parameters": {
-          "PHASE_SHIFT": {
-            "value": "15"
-          }
-        }
-      },
-      "OneStageSynchronizer_2": {
-        "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
-        "xci_name": "design_1_OneStageSynchronizer_0_5",
-        "parameters": {
-          "PHASE_SHIFT": {
-            "value": "3"
-          }
-        }
-      },
-      "OneStageSynchronizer_3": {
-        "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
-        "xci_name": "design_1_OneStageSynchronizer_2_0",
-        "parameters": {
-          "PHASE_SHIFT": {
-            "value": "3"
-          }
-        }
-      },
       "EventCapturer64bit_0": {
         "vlnv": "setcorp:user:EventCapturer64bit:1.0",
         "xci_name": "design_1_EventCapturer64bit_0_0"
@@ -1876,34 +1850,686 @@
           }
         }
       },
-      "ParallelBusSlave_ver_0": {
-        "vlnv": "setcorp:user:ParallelBusSlave_ver_2_0:1.0",
-        "xci_name": "design_1_ParallelBusSlave_ver_0_0"
+      "SerialBusSlave": {
+        "interface_ports": {
+          "S00_AXI": {
+            "mode": "Slave",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          },
+          "TK5": {
+            "mode": "Master",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          },
+          "TK6": {
+            "mode": "Master",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          },
+          "TK9": {
+            "mode": "Master",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          },
+          "TKA": {
+            "mode": "Master",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          }
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "sbdataout_0": {
+            "direction": "O"
+          },
+          "sbdatain_0": {
+            "direction": "I"
+          },
+          "sbclk_0": {
+            "direction": "I"
+          },
+          "s00_axi_aclk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "s00_axi_aresetn": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "tkin": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          }
+        },
+        "components": {
+          "OneStageSynchronizer_0": {
+            "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
+            "xci_name": "design_1_OneStageSynchronizer_0_3",
+            "parameters": {
+              "PHASE_SHIFT": {
+                "value": "15"
+              }
+            }
+          },
+          "OneStageSynchronizer_1": {
+            "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
+            "xci_name": "design_1_OneStageSynchronizer_0_4",
+            "parameters": {
+              "PHASE_SHIFT": {
+                "value": "15"
+              }
+            }
+          },
+          "IP_AXI_ManagerSerial_0": {
+            "vlnv": "setcorp:user:IP_AXI_ManagerSerialBusSlave:2.0",
+            "xci_name": "design_1_IP_AXI_ManagerSerial_0_2"
+          },
+          "SerialBusSlave_ver_2_0": {
+            "vlnv": "setcorp:user:SerialBusSlave_ver_2_0:1.0",
+            "xci_name": "design_1_SerialBusSlave_ver_2_0_0"
+          }
+        },
+        "interface_nets": {
+          "IP_AXI_ManagerSerial_0_TK9": {
+            "interface_ports": [
+              "TK9",
+              "IP_AXI_ManagerSerial_0/TK9"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_TKA": {
+            "interface_ports": [
+              "TKA",
+              "IP_AXI_ManagerSerial_0/TKA"
+            ]
+          },
+          "ps7_0_axi_periph_M02_AXI": {
+            "interface_ports": [
+              "S00_AXI",
+              "IP_AXI_ManagerSerial_0/S00_AXI"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_TK5": {
+            "interface_ports": [
+              "TK5",
+              "IP_AXI_ManagerSerial_0/TK5"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_TK6": {
+            "interface_ports": [
+              "TK6",
+              "IP_AXI_ManagerSerial_0/TK6"
+            ]
+          }
+        },
+        "nets": {
+          "OneStageSynchronizer_1_sync_signal": {
+            "ports": [
+              "OneStageSynchronizer_1/sync_signal",
+              "SerialBusSlave_ver_2_0/sbclk"
+            ]
+          },
+          "OneStageSynchronizer_0_sync_signal": {
+            "ports": [
+              "OneStageSynchronizer_0/sync_signal",
+              "SerialBusSlave_ver_2_0/sbdatain"
+            ]
+          },
+          "SerialBusSlave_ver_2_0_addressregister": {
+            "ports": [
+              "SerialBusSlave_ver_2_0/addressregister",
+              "IP_AXI_ManagerSerial_0/addressregister"
+            ]
+          },
+          "SerialBusSlave_ver_2_0_dataout": {
+            "ports": [
+              "SerialBusSlave_ver_2_0/dataout",
+              "IP_AXI_ManagerSerial_0/datain"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_dataout": {
+            "ports": [
+              "IP_AXI_ManagerSerial_0/dataout",
+              "SerialBusSlave_ver_2_0/datain"
+            ]
+          },
+          "SerialBusSlave_ver_2_0_rw": {
+            "ports": [
+              "SerialBusSlave_ver_2_0/rw",
+              "IP_AXI_ManagerSerial_0/rw"
+            ]
+          },
+          "SerialBusSlave_ver_2_0_dataready": {
+            "ports": [
+              "SerialBusSlave_ver_2_0/dataready",
+              "IP_AXI_ManagerSerial_0/dataready"
+            ]
+          },
+          "Net": {
+            "ports": [
+              "clk",
+              "OneStageSynchronizer_0/clk",
+              "OneStageSynchronizer_1/clk",
+              "SerialBusSlave_ver_2_0/clk"
+            ]
+          },
+          "SerialBusSlave_ver_2_0_sbdataout": {
+            "ports": [
+              "SerialBusSlave_ver_2_0/sbdataout",
+              "sbdataout_0"
+            ]
+          },
+          "sbdatain_0_1": {
+            "ports": [
+              "sbdatain_0",
+              "OneStageSynchronizer_0/async_signal"
+            ]
+          },
+          "sbclk_0_1": {
+            "ports": [
+              "sbclk_0",
+              "OneStageSynchronizer_1/async_signal"
+            ]
+          },
+          "processing_system7_0_FCLK_CLK0": {
+            "ports": [
+              "s00_axi_aclk",
+              "IP_AXI_ManagerSerial_0/s00_axi_aclk"
+            ]
+          },
+          "rst_ps7_0_100M_peripheral_aresetn": {
+            "ports": [
+              "s00_axi_aresetn",
+              "IP_AXI_ManagerSerial_0/s00_axi_aresetn"
+            ]
+          },
+          "tkin_1": {
+            "ports": [
+              "tkin",
+              "IP_AXI_ManagerSerial_0/tkin"
+            ]
+          }
+        }
+      },
+      "ParallelBusSlave": {
+        "interface_ports": {
+          "S00_AXI": {
+            "mode": "Slave",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          }
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "pbdata_0": {
+            "direction": "IO",
+            "left": "15",
+            "right": "0"
+          },
+          "pback_0": {
+            "direction": "O"
+          },
+          "s00_axi_aclk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "s00_axi_aresetn": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "pbclk_0": {
+            "direction": "I"
+          },
+          "pbce_0": {
+            "direction": "I"
+          }
+        },
+        "components": {
+          "ParallelBusSlave_ver_0": {
+            "vlnv": "setcorp:user:ParallelBusSlave_ver_2_0:1.0",
+            "xci_name": "design_1_ParallelBusSlave_ver_0_0"
+          },
+          "IP_AXI_ManagerParall_0": {
+            "vlnv": "setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0",
+            "xci_name": "design_1_IP_AXI_ManagerParall_0_0"
+          },
+          "OneStageSynchronizer_3": {
+            "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
+            "xci_name": "design_1_OneStageSynchronizer_2_0",
+            "parameters": {
+              "PHASE_SHIFT": {
+                "value": "3"
+              }
+            }
+          },
+          "OneStageSynchronizer_2": {
+            "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
+            "xci_name": "design_1_OneStageSynchronizer_0_5",
+            "parameters": {
+              "PHASE_SHIFT": {
+                "value": "3"
+              }
+            }
+          }
+        },
+        "interface_nets": {
+          "ps7_0_axi_periph_M03_AXI": {
+            "interface_ports": [
+              "S00_AXI",
+              "IP_AXI_ManagerParall_0/S00_AXI"
+            ]
+          }
+        },
+        "nets": {
+          "OneStageSynchronizer_3_sync_signal": {
+            "ports": [
+              "OneStageSynchronizer_3/sync_signal",
+              "ParallelBusSlave_ver_0/pbclk"
+            ]
+          },
+          "OneStageSynchronizer_2_sync_signal": {
+            "ports": [
+              "OneStageSynchronizer_2/sync_signal",
+              "ParallelBusSlave_ver_0/pbce"
+            ]
+          },
+          "ParallelBusSlave_ver_0_addressregister": {
+            "ports": [
+              "ParallelBusSlave_ver_0/addressregister",
+              "IP_AXI_ManagerParall_0/addressregister"
+            ]
+          },
+          "IP_AXI_ManagerParall_0_dataout": {
+            "ports": [
+              "IP_AXI_ManagerParall_0/dataout",
+              "ParallelBusSlave_ver_0/datain"
+            ]
+          },
+          "ParallelBusSlave_ver_0_dataready": {
+            "ports": [
+              "ParallelBusSlave_ver_0/dataready",
+              "IP_AXI_ManagerParall_0/dataready"
+            ]
+          },
+          "Net": {
+            "ports": [
+              "clk",
+              "OneStageSynchronizer_2/clk",
+              "OneStageSynchronizer_3/clk",
+              "IP_AXI_ManagerParall_0/clk",
+              "ParallelBusSlave_ver_0/clk"
+            ]
+          },
+          "Net1": {
+            "ports": [
+              "pbdata_0",
+              "ParallelBusSlave_ver_0/pbdata"
+            ]
+          },
+          "ParallelBusSlave_ver_0_pback": {
+            "ports": [
+              "ParallelBusSlave_ver_0/pback",
+              "pback_0"
+            ]
+          },
+          "processing_system7_0_FCLK_CLK0": {
+            "ports": [
+              "s00_axi_aclk",
+              "IP_AXI_ManagerParall_0/s00_axi_aclk"
+            ]
+          },
+          "rst_ps7_0_100M_peripheral_aresetn": {
+            "ports": [
+              "s00_axi_aresetn",
+              "IP_AXI_ManagerParall_0/s00_axi_aresetn"
+            ]
+          },
+          "pbclk_0_1": {
+            "ports": [
+              "pbclk_0",
+              "OneStageSynchronizer_3/async_signal"
+            ]
+          },
+          "pbce_0_1": {
+            "ports": [
+              "pbce_0",
+              "OneStageSynchronizer_2/async_signal"
+            ]
+          }
+        }
+      },
+      "Invertor": {
+        "interface_ports": {
+          "TK": {
+            "mode": "Slave",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          },
+          "TK1": {
+            "mode": "Slave",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          },
+          "TK2": {
+            "mode": "Slave",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          },
+          "TK3": {
+            "mode": "Slave",
+            "vlnv": "setcorp:user:ID_TKSettings_rtl:1.0"
+          }
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "er0in_0": {
+            "direction": "I"
+          },
+          "Din": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          }
+        },
+        "components": {
+          "TransistorKeys_1": {
+            "vlnv": "setcorp:user:TransistorKeys:1.0",
+            "xci_name": "design_1_TransistorKeys_0_1"
+          },
+          "TransistorKeys_2": {
+            "vlnv": "setcorp:user:TransistorKeys:1.0",
+            "xci_name": "design_1_TransistorKeys_0_2"
+          },
+          "OneStageSynchronizer_5": {
+            "vlnv": "setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0",
+            "xci_name": "design_1_OneStageSynchronizer_1_0",
+            "parameters": {
+              "PHASE_SHIFT": {
+                "value": "8"
+              }
+            }
+          },
+          "TransistorKeys_3": {
+            "vlnv": "setcorp:user:TransistorKeys:1.0",
+            "xci_name": "design_1_TransistorKeys_0_3"
+          },
+          "xlslice_1": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_0_1",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "3"
+              },
+              "DIN_TO": {
+                "value": "2"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "xlslice_2": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_0_2",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "5"
+              },
+              "DIN_TO": {
+                "value": "4"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "xlslice_3": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_2_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "7"
+              },
+              "DIN_TO": {
+                "value": "6"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "xlslice_4": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_3_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "9"
+              },
+              "DIN_TO": {
+                "value": "8"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "xlslice_5": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_4_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "11"
+              },
+              "DIN_TO": {
+                "value": "10"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "xlslice_6": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_5_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "13"
+              },
+              "DIN_TO": {
+                "value": "12"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "xlslice_7": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_6_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "15"
+              },
+              "DIN_TO": {
+                "value": "14"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
+          "TransistorKeys_0": {
+            "vlnv": "setcorp:user:TransistorKeys:1.0",
+            "xci_name": "design_1_TransistorKeys_0_0"
+          },
+          "xlslice_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "design_1_xlslice_0_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "0"
+              },
+              "DIN_WIDTH": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          }
+        },
+        "interface_nets": {
+          "IP_AXI_ManagerSerial_0_TK6": {
+            "interface_ports": [
+              "TK",
+              "TransistorKeys_1/TK"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_TK9": {
+            "interface_ports": [
+              "TK1",
+              "TransistorKeys_2/TK"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_TKA": {
+            "interface_ports": [
+              "TK2",
+              "TransistorKeys_3/TK"
+            ]
+          },
+          "IP_AXI_ManagerSerial_0_TK5": {
+            "interface_ports": [
+              "TK3",
+              "TransistorKeys_0/TK"
+            ]
+          }
+        },
+        "nets": {
+          "OneStageSynchronizer_5_sync_signal": {
+            "ports": [
+              "OneStageSynchronizer_5/sync_signal",
+              "TransistorKeys_1/er0in",
+              "TransistorKeys_0/er0in",
+              "TransistorKeys_2/er0in",
+              "TransistorKeys_3/er0in"
+            ]
+          },
+          "xlslice_2_Dout": {
+            "ports": [
+              "xlslice_2/Dout",
+              "TransistorKeys_1/keysel_0"
+            ]
+          },
+          "xlslice_3_Dout": {
+            "ports": [
+              "xlslice_3/Dout",
+              "TransistorKeys_1/keysel_1"
+            ]
+          },
+          "xlslice_6_Dout": {
+            "ports": [
+              "xlslice_6/Dout",
+              "TransistorKeys_2/keysel_0"
+            ]
+          },
+          "xlslice_7_Dout": {
+            "ports": [
+              "xlslice_7/Dout",
+              "TransistorKeys_2/keysel_1"
+            ]
+          },
+          "xlslice_4_Dout": {
+            "ports": [
+              "xlslice_4/Dout",
+              "TransistorKeys_3/keysel_0"
+            ]
+          },
+          "xlslice_5_Dout": {
+            "ports": [
+              "xlslice_5/Dout",
+              "TransistorKeys_3/keysel_1"
+            ]
+          },
+          "xlslice_1_Dout": {
+            "ports": [
+              "xlslice_1/Dout",
+              "TransistorKeys_0/keysel_1"
+            ]
+          },
+          "xlslice_0_Dout": {
+            "ports": [
+              "xlslice_0/Dout",
+              "TransistorKeys_0/keysel_0"
+            ]
+          },
+          "processing_system7_0_FCLK_CLK0": {
+            "ports": [
+              "clk",
+              "TransistorKeys_3/clk",
+              "TransistorKeys_2/clk",
+              "TransistorKeys_0/clk",
+              "OneStageSynchronizer_5/clk",
+              "TransistorKeys_1/clk"
+            ]
+          },
+          "er0in_0_1": {
+            "ports": [
+              "er0in_0",
+              "OneStageSynchronizer_5/async_signal"
+            ]
+          },
+          "OneStageSynchronizer_4_sync_signal": {
+            "ports": [
+              "Din",
+              "xlslice_0/Din",
+              "xlslice_2/Din",
+              "xlslice_3/Din",
+              "xlslice_4/Din",
+              "xlslice_5/Din",
+              "xlslice_6/Din",
+              "xlslice_7/Din",
+              "xlslice_1/Din"
+            ]
+          }
+        }
       }
     },
     "interface_nets": {
-      "ps7_0_axi_periph_M05_AXI": {
+      "ps7_0_axi_periph_M02_AXI": {
         "interface_ports": [
-          "ps7_0_axi_periph/M05_AXI",
-          "axi_gpio_1/S_AXI"
+          "ps7_0_axi_periph/M02_AXI",
+          "SerialBusSlave/S00_AXI"
         ]
       },
-      "processing_system7_0_FIXED_IO": {
+      "IP_AXI_ManagerSerial_0_TK5": {
         "interface_ports": [
-          "FIXED_IO",
-          "processing_system7_0/FIXED_IO"
-        ]
-      },
-      "axis_data_fifo_0_M_AXIS": {
-        "interface_ports": [
-          "axis_data_fifo_0/M_AXIS",
-          "axi_dma_0/S_AXIS_S2MM"
-        ]
-      },
-      "processing_system7_0_M_AXI_GP0": {
-        "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
+          "SerialBusSlave/TK5",
+          "Invertor/TK3"
         ]
       },
       "processing_system7_0_DDR": {
@@ -1912,16 +2538,58 @@
           "processing_system7_0/DDR"
         ]
       },
+      "ps7_0_axi_periph_M05_AXI": {
+        "interface_ports": [
+          "ps7_0_axi_periph/M05_AXI",
+          "axi_gpio_1/S_AXI"
+        ]
+      },
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
+        ]
+      },
+      "processing_system7_0_FIXED_IO": {
+        "interface_ports": [
+          "FIXED_IO",
+          "processing_system7_0/FIXED_IO"
+        ]
+      },
       "ps7_0_axi_periph_M01_AXI": {
         "interface_ports": [
           "ps7_0_axi_periph/M01_AXI",
           "IP_AXI_LEDS_0/S00_AXI"
         ]
       },
-      "ps7_0_axi_periph_M02_AXI": {
+      "ps7_0_axi_periph_M04_AXI": {
         "interface_ports": [
-          "ps7_0_axi_periph/M02_AXI",
-          "IP_AXI_ManagerSerial_0/S00_AXI"
+          "ps7_0_axi_periph/M04_AXI",
+          "axi_dma_0/S_AXI_LITE"
+        ]
+      },
+      "axis_data_fifo_0_M_AXIS": {
+        "interface_ports": [
+          "axis_data_fifo_0/M_AXIS",
+          "axi_dma_0/S_AXIS_S2MM"
+        ]
+      },
+      "ps7_0_axi_periph_M00_AXI": {
+        "interface_ports": [
+          "ps7_0_axi_periph/M00_AXI",
+          "axi_gpio_0/S_AXI"
+        ]
+      },
+      "axi_smc_M00_AXI": {
+        "interface_ports": [
+          "axi_smc/M00_AXI",
+          "processing_system7_0/S_AXI_HP0"
+        ]
+      },
+      "axi_dma_0_M_AXI_S2MM": {
+        "interface_ports": [
+          "axi_dma_0/M_AXI_S2MM",
+          "axi_smc/S00_AXI"
         ]
       },
       "axi_gpio_0_GPIO": {
@@ -1933,31 +2601,25 @@
       "ps7_0_axi_periph_M03_AXI": {
         "interface_ports": [
           "ps7_0_axi_periph/M03_AXI",
-          "IP_AXI_ManagerParall_0/S00_AXI"
+          "ParallelBusSlave/S00_AXI"
         ]
       },
-      "ps7_0_axi_periph_M04_AXI": {
+      "IP_AXI_ManagerSerial_0_TK9": {
         "interface_ports": [
-          "ps7_0_axi_periph/M04_AXI",
-          "axi_dma_0/S_AXI_LITE"
+          "SerialBusSlave/TK9",
+          "Invertor/TK1"
         ]
       },
-      "axi_dma_0_M_AXI_S2MM": {
+      "IP_AXI_ManagerSerial_0_TK6": {
         "interface_ports": [
-          "axi_dma_0/M_AXI_S2MM",
-          "axi_smc/S00_AXI"
+          "SerialBusSlave/TK6",
+          "Invertor/TK"
         ]
       },
-      "axi_smc_M00_AXI": {
+      "IP_AXI_ManagerSerial_0_TKA": {
         "interface_ports": [
-          "axi_smc/M00_AXI",
-          "processing_system7_0/S_AXI_HP0"
-        ]
-      },
-      "ps7_0_axi_periph_M00_AXI": {
-        "interface_ports": [
-          "ps7_0_axi_periph/M00_AXI",
-          "axi_gpio_0/S_AXI"
+          "SerialBusSlave/TKA",
+          "Invertor/TK2"
         ]
       }
     },
@@ -1975,8 +2637,6 @@
           "IP_AXI_LEDS_0/s00_axi_aclk",
           "ps7_0_axi_periph/M02_ACLK",
           "ps7_0_axi_periph/M03_ACLK",
-          "IP_AXI_ManagerParall_0/s00_axi_aclk",
-          "IP_AXI_ManagerSerial_0/s00_axi_aclk",
           "axi_dma_0/s_axi_lite_aclk",
           "ps7_0_axi_periph/M04_ACLK",
           "axi_dma_0/m_axi_s2mm_aclk",
@@ -1985,7 +2645,10 @@
           "axis_data_fifo_0/s_axis_aclk",
           "EventCapturer64bit_0/clk",
           "axi_gpio_1/s_axi_aclk",
-          "ps7_0_axi_periph/M05_ACLK"
+          "ps7_0_axi_periph/M05_ACLK",
+          "SerialBusSlave/s00_axi_aclk",
+          "ParallelBusSlave/s00_axi_aclk",
+          "Invertor/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -2005,94 +2668,40 @@
           "IP_AXI_LEDS_0/s00_axi_aresetn",
           "ps7_0_axi_periph/M02_ARESETN",
           "ps7_0_axi_periph/M03_ARESETN",
-          "IP_AXI_ManagerParall_0/s00_axi_aresetn",
-          "IP_AXI_ManagerSerial_0/s00_axi_aresetn",
           "axi_dma_0/axi_resetn",
           "ps7_0_axi_periph/M04_ARESETN",
           "axi_smc/aresetn",
           "axis_data_fifo_0/s_axis_aresetn",
           "EventCapturer64bit_0/resetn",
           "axi_gpio_1/s_axi_aresetn",
-          "ps7_0_axi_periph/M05_ARESETN"
-        ]
-      },
-      "IP_AXI_ManagerSerial_0_dataout": {
-        "ports": [
-          "IP_AXI_ManagerSerial_0/dataout",
-          "SerialBusSlave_ver_2_0/datain"
-        ]
-      },
-      "SerialBusSlave_ver_2_0_dataready": {
-        "ports": [
-          "SerialBusSlave_ver_2_0/dataready",
-          "IP_AXI_ManagerSerial_0/dataready"
-        ]
-      },
-      "SerialBusSlave_ver_2_0_rw": {
-        "ports": [
-          "SerialBusSlave_ver_2_0/rw",
-          "IP_AXI_ManagerSerial_0/rw"
-        ]
-      },
-      "SerialBusSlave_ver_2_0_dataout": {
-        "ports": [
-          "SerialBusSlave_ver_2_0/dataout",
-          "IP_AXI_ManagerSerial_0/datain"
+          "ps7_0_axi_periph/M05_ARESETN",
+          "SerialBusSlave/s00_axi_aresetn",
+          "ParallelBusSlave/s00_axi_aresetn"
         ]
       },
       "Net": {
         "ports": [
           "processing_system7_0/FCLK_CLK1",
-          "SerialBusSlave_ver_2_0/clk",
-          "IP_AXI_ManagerParall_0/clk",
-          "IP_AXI_ManagerSerial_0/clk",
-          "OneStageSynchronizer_0/clk",
-          "OneStageSynchronizer_1/clk",
-          "OneStageSynchronizer_2/clk",
-          "OneStageSynchronizer_3/clk",
           "OneStageSynchronizer_4/clk",
-          "ParallelBusSlave_ver_0/clk"
-        ]
-      },
-      "SerialBusSlave_ver_2_0_addressregister": {
-        "ports": [
-          "SerialBusSlave_ver_2_0/addressregister",
-          "IP_AXI_ManagerSerial_0/addressregister"
+          "SerialBusSlave/clk",
+          "ParallelBusSlave/clk"
         ]
       },
       "Net1": {
         "ports": [
           "pbdata_0",
-          "ParallelBusSlave_ver_0/pbdata"
+          "ParallelBusSlave/pbdata_0"
         ]
       },
       "ParallelBusSlave_ver_0_pback": {
         "ports": [
-          "ParallelBusSlave_ver_0/pback",
+          "ParallelBusSlave/pback_0",
           "pback_0"
-        ]
-      },
-      "ParallelBusSlave_ver_0_dataready": {
-        "ports": [
-          "ParallelBusSlave_ver_0/dataready",
-          "IP_AXI_ManagerParall_0/dataready"
-        ]
-      },
-      "ParallelBusSlave_ver_0_addressregister": {
-        "ports": [
-          "ParallelBusSlave_ver_0/addressregister",
-          "IP_AXI_ManagerParall_0/addressregister"
-        ]
-      },
-      "IP_AXI_ManagerParall_0_dataout": {
-        "ports": [
-          "IP_AXI_ManagerParall_0/dataout",
-          "ParallelBusSlave_ver_0/datain"
         ]
       },
       "SerialBusSlave_ver_2_0_sbdataout": {
         "ports": [
-          "SerialBusSlave_ver_2_0/sbdataout",
+          "SerialBusSlave/sbdataout_0",
           "sbdataout_0"
         ]
       },
@@ -2102,52 +2711,28 @@
           "LEDS_0"
         ]
       },
-      "OneStageSynchronizer_0_sync_signal": {
-        "ports": [
-          "OneStageSynchronizer_0/sync_signal",
-          "SerialBusSlave_ver_2_0/sbdatain"
-        ]
-      },
       "sbdatain_0_1": {
         "ports": [
           "sbdatain_0",
-          "OneStageSynchronizer_0/async_signal"
-        ]
-      },
-      "OneStageSynchronizer_1_sync_signal": {
-        "ports": [
-          "OneStageSynchronizer_1/sync_signal",
-          "SerialBusSlave_ver_2_0/sbclk"
+          "SerialBusSlave/sbdatain_0"
         ]
       },
       "sbclk_0_1": {
         "ports": [
           "sbclk_0",
-          "OneStageSynchronizer_1/async_signal"
+          "SerialBusSlave/sbclk_0"
         ]
       },
       "pbce_0_1": {
         "ports": [
           "pbce_0",
-          "OneStageSynchronizer_2/async_signal"
-        ]
-      },
-      "OneStageSynchronizer_2_sync_signal": {
-        "ports": [
-          "OneStageSynchronizer_2/sync_signal",
-          "ParallelBusSlave_ver_0/pbce"
+          "ParallelBusSlave/pbce_0"
         ]
       },
       "pbclk_0_1": {
         "ports": [
           "pbclk_0",
-          "OneStageSynchronizer_3/async_signal"
-        ]
-      },
-      "OneStageSynchronizer_3_sync_signal": {
-        "ports": [
-          "OneStageSynchronizer_3/sync_signal",
-          "ParallelBusSlave_ver_0/pbclk"
+          "ParallelBusSlave/pbclk_0"
         ]
       },
       "datain_0_1": {
@@ -2160,7 +2745,9 @@
         "ports": [
           "OneStageSynchronizer_4/sync_signal",
           "EventCapturer64bit_0/datain",
-          "axi_gpio_1/gpio_io_i"
+          "axi_gpio_1/gpio_io_i",
+          "Invertor/Din",
+          "SerialBusSlave/tkin"
         ]
       },
       "EventCapturer64bit_0_s_axis_tdata": {
@@ -2192,6 +2779,12 @@
           "axis_data_fifo_0/s_axis_tready",
           "EventCapturer64bit_0/s_axis_tready"
         ]
+      },
+      "er0in_0_1": {
+        "ports": [
+          "er0in_0",
+          "Invertor/er0in_0"
+        ]
       }
     },
     "addressing": {
@@ -2207,12 +2800,12 @@
                 "range": "64K"
               },
               "SEG_IP_AXI_ManagerParall_0_S00_AXI_reg": {
-                "address_block": "/IP_AXI_ManagerParall_0/S00_AXI/S00_AXI_reg",
+                "address_block": "/ParallelBusSlave/IP_AXI_ManagerParall_0/S00_AXI/S00_AXI_reg",
                 "offset": "0x43C20000",
                 "range": "64K"
               },
               "SEG_IP_AXI_ManagerSerial_0_S00_AXI_reg": {
-                "address_block": "/IP_AXI_ManagerSerial_0/S00_AXI/S00_AXI_reg",
+                "address_block": "/SerialBusSlave/IP_AXI_ManagerSerial_0/S00_AXI/S00_AXI_reg",
                 "offset": "0x43C10000",
                 "range": "64K"
               },

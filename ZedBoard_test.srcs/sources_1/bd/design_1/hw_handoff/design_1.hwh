@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Oct 20 10:41:31 2026" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct 23 15:10:50 2026" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -11,47 +11,42 @@
     </PORT>
     <PORT DIR="I" NAME="sbclk_0" SIGIS="undef" SIGNAME="External_Ports_sbclk_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_1" PORT="async_signal"/>
+        <CONNECTION INSTANCE="SerialBusSlave_OneStageSynchronizer_1" PORT="async_signal"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="sbdatain_0" SIGIS="undef" SIGNAME="External_Ports_sbdatain_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_0" PORT="async_signal"/>
+        <CONNECTION INSTANCE="SerialBusSlave_OneStageSynchronizer_0" PORT="async_signal"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" LEFT="15" NAME="pbdata_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pbdata_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pbdata"/>
+        <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="pbdata"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="pback_0" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_pback">
+    <PORT DIR="O" NAME="pback_0" SIGIS="undef" SIGNAME="ParallelBusSlave_ParallelBusSlave_ver_0_pback">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pback"/>
+        <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="pback"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="pbclk_0" SIGIS="undef" SIGNAME="External_Ports_pbclk_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_3" PORT="async_signal"/>
+        <CONNECTION INSTANCE="ParallelBusSlave_OneStageSynchronizer_3" PORT="async_signal"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="pbce_0" SIGIS="undef" SIGNAME="External_Ports_pbce_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="async_signal"/>
+        <CONNECTION INSTANCE="ParallelBusSlave_OneStageSynchronizer_2" PORT="async_signal"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="sbdataout_0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_sbdataout">
+    <PORT DIR="O" NAME="sbdataout_0" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_sbdataout">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="sbdataout"/>
+        <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="sbdataout"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="15" NAME="datain_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_datain_0">
       <CONNECTIONS>
         <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="async_signal"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="GPIO_0_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_gpio_0" PORT="gpio_io_o"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="processing_system7_0_DDR_CAS_n">
@@ -157,6 +152,16 @@
     <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="processing_system7_0_PS_PORB">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="PS_PORB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="GPIO_0_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_gpio_0" PORT="gpio_io_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="er0in_0" SIGIS="undef" SIGNAME="External_Ports_er0in_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Invertor_OneStageSynchronizer_5" PORT="async_signal"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -472,7 +477,921 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/IP_AXI_ManagerParall_0" HWVERSION="1.0" INSTANCE="IP_AXI_ManagerParall_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerParallelBusSlave" VLNV="setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/OneStageSynchronizer_5" HWVERSION="1.0" INSTANCE="Invertor_OneStageSynchronizer_5" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="PHASE_SHIFT" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="1e+08" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="async_signal" SIGIS="undef" SIGNAME="External_Ports_er0in_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="er0in_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="Invertor_OneStageSynchronizer_5_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="er0in"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="er0in"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="er0in"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="er0in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/TransistorKeys_0" HWVERSION="1.0" INSTANCE="Invertor_TransistorKeys_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TransistorKeys" VLNV="setcorp:user:TransistorKeys:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_TransistorKeys_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="acknowledges" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="ackout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackin5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackpr5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackpren5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="acktime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackTime5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="breaken" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="breaken5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentpr5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentpren5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="deadtime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="deadTime5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="er0in" SIGIS="undef" SIGNAME="Invertor_OneStageSynchronizer_5_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_OneStageSynchronizer_5" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_0" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_1" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysen" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysen5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysin5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="linepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="linepr5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="linepren5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="mintime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="minTime5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mintimepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimepr5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimepren5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ob_0" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="ob_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ready5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="reset5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownen" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownpren5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="softshutdownpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownpr5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="softshutdowntimer" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softShutdownTimer5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="timeerror" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="timeerror5"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TK5" NAME="TK" TYPE="TARGET" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadtime"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="mintime"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="acktime"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownen"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softshutdowntimer"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysout"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror"/>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackout"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/TransistorKeys_1" HWVERSION="1.0" INSTANCE="Invertor_TransistorKeys_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TransistorKeys" VLNV="setcorp:user:TransistorKeys:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_TransistorKeys_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="acknowledges" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="ackout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackin6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackpr6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackpren6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="acktime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackTime6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="breaken" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="breaken6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentpr6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentpren6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="deadtime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="deadTime6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="er0in" SIGIS="undef" SIGNAME="Invertor_OneStageSynchronizer_5_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_OneStageSynchronizer_5" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_0" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_2" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_1" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_3" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysen" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysen6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysin6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="linepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="linepr6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="linepren6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="mintime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="minTime6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mintimepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimepr6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimepren6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ob_0" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="ob_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ready6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_1_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="reset6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownen" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownpren6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="softshutdownpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownpr6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="softshutdowntimer" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softShutdownTimer6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="timeerror" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="timeerror6"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TK6" NAME="TK" TYPE="TARGET" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadtime"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="mintime"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="acktime"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownen"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softshutdowntimer"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysout"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror"/>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackout"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/TransistorKeys_2" HWVERSION="1.0" INSTANCE="Invertor_TransistorKeys_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TransistorKeys" VLNV="setcorp:user:TransistorKeys:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_TransistorKeys_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="acknowledges" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="ackout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackin9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackpr9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackpren9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="acktime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackTime9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="breaken" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="breaken9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentpr9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentpren9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="deadtime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="deadTime9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="er0in" SIGIS="undef" SIGNAME="Invertor_OneStageSynchronizer_5_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_OneStageSynchronizer_5" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_0" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_6_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_6" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_1" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_7_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_7" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysen" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysen9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysin9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="linepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="linepr9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="linepren9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="mintime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="minTime9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mintimepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimepr9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimepren9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ob_0" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="ob_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ready9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_2_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="reset9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownen" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownpren9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="softshutdownpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownpr9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="softshutdowntimer" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softShutdownTimer9"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="timeerror" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="timeerror9"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TK9" NAME="TK" TYPE="TARGET" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadtime"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="mintime"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="acktime"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownen"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softshutdowntimer"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysout"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror"/>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackout"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/TransistorKeys_3" HWVERSION="1.0" INSTANCE="Invertor_TransistorKeys_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TransistorKeys" VLNV="setcorp:user:TransistorKeys:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_TransistorKeys_0_3"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="acknowledges" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="ackout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackinA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackprA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackprenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="acktime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="ackTimeA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="breaken" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="breakenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentprA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpren" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="currentprenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="deadtime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="deadTimeA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="er0in" SIGIS="undef" SIGNAME="Invertor_OneStageSynchronizer_5_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_OneStageSynchronizer_5" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_0" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_4" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="keysel_1" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_5_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_xlslice_5" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysen" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="keysinA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="linepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="lineprA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="lineprenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="mintime" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="minTimeA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mintimepr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimeprA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepren" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="mintimeprenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ob_0" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="ob_1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="readyA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_3_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="resetA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownen" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownprenA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="softshutdownpr" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softshutdownprA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="softshutdowntimer" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="softShutdownTimerA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="timeerror" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="timeerrorA"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TKA" NAME="TK" TYPE="TARGET" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadtime"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="mintime"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="acktime"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownen"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softshutdowntimer"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysout"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror"/>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackout"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_0" HWVERSION="1.0" INSTANCE="Invertor_xlslice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="1"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="keysel_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_1" HWVERSION="1.0" INSTANCE="Invertor_xlslice_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="3"/>
+        <PARAMETER NAME="DIN_TO" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_1"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="keysel_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_2" HWVERSION="1.0" INSTANCE="Invertor_xlslice_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="5"/>
+        <PARAMETER NAME="DIN_TO" VALUE="4"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_2"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="keysel_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_3" HWVERSION="1.0" INSTANCE="Invertor_xlslice_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="7"/>
+        <PARAMETER NAME="DIN_TO" VALUE="6"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_2_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="keysel_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_4" HWVERSION="1.0" INSTANCE="Invertor_xlslice_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="9"/>
+        <PARAMETER NAME="DIN_TO" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_3_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="keysel_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_5" HWVERSION="1.0" INSTANCE="Invertor_xlslice_5" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="11"/>
+        <PARAMETER NAME="DIN_TO" VALUE="10"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_4_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_5_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="keysel_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_6" HWVERSION="1.0" INSTANCE="Invertor_xlslice_6" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="13"/>
+        <PARAMETER NAME="DIN_TO" VALUE="12"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_5_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_6_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="keysel_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/Invertor/xlslice_7" HWVERSION="1.0" INSTANCE="Invertor_xlslice_7" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="15"/>
+        <PARAMETER NAME="DIN_TO" VALUE="14"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_6_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_xlslice_7_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="keysel_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/OneStageSynchronizer_4" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterBlock_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterBlock_ver_1_0:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="PHASE_SHIFT" VALUE="3"/>
+        <PARAMETER NAME="QUANTITY_CHANNELS" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_4_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="async_signal" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_datain_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="datain_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="sync_signal" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="EventCapturer64bit_0" PORT="datain"/>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="gpio_io_i"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_0" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_2" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_3" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_4" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_5" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_6" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_7" PORT="Din"/>
+            <CONNECTION INSTANCE="Invertor_xlslice_1" PORT="Din"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="tkin"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/ParallelBusSlave/IP_AXI_ManagerParall_0" HWVERSION="1.0" INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerParallelBusSlave" VLNV="setcorp:user:IP_AXI_ManagerParallelBusSlave:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>
@@ -493,112 +1412,112 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_addressregister">
+        <PORT DIR="I" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_ParallelBusSlave_ver_0_addressregister">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="addressregister"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="addressregister"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="dataout" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_dataout">
+        <PORT DIR="O" LEFT="15" NAME="dataout" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_dataout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="datain"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="datain"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="dataready" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_dataready">
+        <PORT DIR="I" NAME="dataready" SIGIS="undef" SIGNAME="ParallelBusSlave_ParallelBusSlave_ver_0_dataready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="dataready"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="dataready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="9" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awaddr">
+        <PORT DIR="I" LEFT="9" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="s00_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awprot">
+        <PORT DIR="I" LEFT="2" NAME="s00_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awprot">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_awprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_awvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awvalid">
+        <PORT DIR="I" NAME="s00_axi_awvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_awready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awready">
+        <PORT DIR="O" NAME="s00_axi_awready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="s00_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wdata">
+        <PORT DIR="I" LEFT="31" NAME="s00_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="s00_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wstrb">
+        <PORT DIR="I" LEFT="3" NAME="s00_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wstrb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_wvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wvalid">
+        <PORT DIR="I" NAME="s00_axi_wvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_wready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wready">
+        <PORT DIR="O" NAME="s00_axi_wready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s00_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_bresp">
+        <PORT DIR="O" LEFT="1" NAME="s00_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_bresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_bvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_bvalid">
+        <PORT DIR="O" NAME="s00_axi_bvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_bvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_bready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_bready">
+        <PORT DIR="I" NAME="s00_axi_bready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_bready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="9" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_araddr">
+        <PORT DIR="I" LEFT="9" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="s00_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_arprot">
+        <PORT DIR="I" LEFT="2" NAME="s00_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_arprot">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_arprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_arvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_arvalid">
+        <PORT DIR="I" NAME="s00_axi_arvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_arvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_arready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_arready">
+        <PORT DIR="O" NAME="s00_axi_arready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_arready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="s00_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rdata">
+        <PORT DIR="O" LEFT="31" NAME="s00_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s00_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rresp">
+        <PORT DIR="O" LEFT="1" NAME="s00_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_rvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rvalid">
+        <PORT DIR="O" NAME="s00_axi_rvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_rready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rready">
+        <PORT DIR="I" NAME="s00_axi_rready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_AXI_rready"/>
           </CONNECTIONS>
@@ -673,7 +1592,113 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="5" FULLNAME="/IP_AXI_ManagerSerial_0" HWVERSION="1.0" INSTANCE="IP_AXI_ManagerSerial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerSerialBusSlave" VLNV="setcorp:user:IP_AXI_ManagerSerialBusSlave:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/ParallelBusSlave/OneStageSynchronizer_2" HWVERSION="1.0" INSTANCE="ParallelBusSlave_OneStageSynchronizer_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="PHASE_SHIFT" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_0_5"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="async_signal" SIGIS="undef" SIGNAME="External_Ports_pbce_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pbce_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="ParallelBusSlave_OneStageSynchronizer_2_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="pbce"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/ParallelBusSlave/OneStageSynchronizer_3" HWVERSION="1.0" INSTANCE="ParallelBusSlave_OneStageSynchronizer_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="PHASE_SHIFT" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_2_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="async_signal" SIGIS="undef" SIGNAME="External_Ports_pbclk_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pbclk_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="ParallelBusSlave_OneStageSynchronizer_3_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="pbclk"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/ParallelBusSlave/ParallelBusSlave_ver_0" HWVERSION="1.0" INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ParallelBusSlave_ver_2_0" VLNV="setcorp:user:ParallelBusSlave_ver_2_0:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="ADDRESS_DEVICE_BUS_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="ADDRESS_REG_BUS_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="DATA_BUS_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="COUNT_WAIT" VALUE="7"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_ParallelBusSlave_ver_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pbclk" SIGIS="undef" SIGNAME="ParallelBusSlave_OneStageSynchronizer_3_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_OneStageSynchronizer_3" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="IO" LEFT="15" NAME="pbdata" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pbdata_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pbdata_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pbce" SIGIS="undef" SIGNAME="ParallelBusSlave_OneStageSynchronizer_2_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_OneStageSynchronizer_2" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pback" SIGIS="undef" SIGNAME="ParallelBusSlave_ParallelBusSlave_ver_0_pback">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pback_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_ParallelBusSlave_ver_0_addressregister">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="addressregister"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="datain" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_dataout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="dataout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="dataready" SIGIS="undef" SIGNAME="ParallelBusSlave_ParallelBusSlave_ver_0_dataready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="dataready"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/SerialBusSlave/IP_AXI_ManagerSerial_0" HWVERSION="2.0" INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_AXI_ManagerSerialBusSlave" VLNV="setcorp:user:IP_AXI_ManagerSerialBusSlave:2.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>
@@ -683,133 +1708,553 @@
         <PARAMETER NAME="C_S00_AXI_ADDR_WIDTH" VALUE="10"/>
         <PARAMETER NAME="ADDRESS_BUS_WIDTH" VALUE="8"/>
         <PARAMETER NAME="DATA_BUS_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_IP_AXI_ManagerSerial_0_1"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_IP_AXI_ManagerSerial_0_2"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_S00_AXI_BASEADDR" VALUE="0x43C10000"/>
         <PARAMETER NAME="C_S00_AXI_HIGHADDR" VALUE="0x43C1FFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+        <PORT DIR="I" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_addressregister">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="addressregister"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_addressregister">
+        <PORT DIR="O" LEFT="15" NAME="dataout" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_dataout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="addressregister"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="datain"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="dataout" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_dataout">
+        <PORT DIR="I" LEFT="15" NAME="datain" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_dataout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="datain"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="dataout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="datain" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_dataout">
+        <PORT DIR="I" NAME="rw" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_rw">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="dataout"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="rw"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rw" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_rw">
+        <PORT DIR="I" NAME="dataready" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_dataready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="rw"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="dataready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="dataready" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_dataready">
+        <PORT DIR="O" LEFT="7" NAME="keysen5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_keysen">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="dataready"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="keysen"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="9" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awaddr">
+        <PORT DIR="O" LEFT="7" NAME="deadTime5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="deadtime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="minTime5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="mintime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackTime5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="acktime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpren5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="currentpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpren5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="ackpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mintimepren5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="mintimepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="linepren5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="linepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="softshutdownpren5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="softshutdownen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="softShutdownTimer5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="softshutdowntimer"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysin5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="keysout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackin5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="ackout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpr5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="ackpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpr5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="currentpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepr5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="linepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownpr5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="softshutdownpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepr5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="mintimepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="timeerror5" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="timeerror"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="breaken5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="breaken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready5" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="reset5" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysen6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="keysen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="deadTime6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="deadtime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="minTime6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="mintime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackTime6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="acktime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpren6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="currentpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpren6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="ackpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mintimepren6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="mintimepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="linepren6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="linepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="softshutdownpren6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="softshutdownen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="softShutdownTimer6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="softshutdowntimer"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysin6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="keysout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackin6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="ackout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpr6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="ackpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpr6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="currentpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepr6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="linepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownpr6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="softshutdownpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepr6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="mintimepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="timeerror6" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="timeerror"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="breaken6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="breaken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready6" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_1_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="reset6" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_1_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysen9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="keysen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="deadTime9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="deadtime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="minTime9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="mintime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackTime9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="acktime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentpren9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="currentpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackpren9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="ackpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mintimepren9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="mintimepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="linepren9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="linepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="softshutdownpren9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="softshutdownen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="softShutdownTimer9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="softshutdowntimer"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysin9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="keysout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackin9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="ackout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackpr9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="ackpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentpr9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="currentpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="linepr9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="linepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownpr9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="softshutdownpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimepr9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="mintimepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="timeerror9" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="timeerror"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="breaken9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="breaken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready9" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_2_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="reset9" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_2_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="keysenA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_keysen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="keysen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="deadTimeA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_deadtime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="deadtime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="minTimeA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_mintime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="mintime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackTimeA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_acktime">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="acktime"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="currentprenA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_currentpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="currentpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ackprenA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ackpren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="ackpren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mintimeprenA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_mintimepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="mintimepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="lineprenA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_linepren">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="linepren"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="softshutdownprenA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_softshutdownen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="softshutdownen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="softShutdownTimerA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_softshutdowntimer">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="softshutdowntimer"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="keysinA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_keysout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="keysout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackinA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ackout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="ackout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="ackprA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ackpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="ackpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="currentprA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_currentpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="currentpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="lineprA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_linepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="linepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="softshutdownprA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_softshutdownpr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="softshutdownpr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mintimeprA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_mintimepr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="mintimepr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="timeerrorA" RIGHT="0" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_timeerror">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="timeerror"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="breakenA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_breaken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="breaken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="readyA" SIGIS="undef" SIGNAME="Invertor_TransistorKeys_3_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="resetA" SIGIS="rst" SIGNAME="Invertor_TransistorKeys_3_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="tkin" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="sync_signal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="9" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="s00_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awprot">
+        <PORT DIR="I" LEFT="2" NAME="s00_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awprot">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_awprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_awvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awvalid">
+        <PORT DIR="I" NAME="s00_axi_awvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_awready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awready">
+        <PORT DIR="O" NAME="s00_axi_awready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="s00_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wdata">
+        <PORT DIR="I" LEFT="31" NAME="s00_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="s00_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wstrb">
+        <PORT DIR="I" LEFT="3" NAME="s00_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wstrb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_wvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wvalid">
+        <PORT DIR="I" NAME="s00_axi_wvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_wready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wready">
+        <PORT DIR="O" NAME="s00_axi_wready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s00_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_bresp">
+        <PORT DIR="O" LEFT="1" NAME="s00_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_bresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_bvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_bvalid">
+        <PORT DIR="O" NAME="s00_axi_bvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_bvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_bready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_bready">
+        <PORT DIR="I" NAME="s00_axi_bready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_bready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="9" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_araddr">
+        <PORT DIR="I" LEFT="9" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="s00_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_arprot">
+        <PORT DIR="I" LEFT="2" NAME="s00_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_arprot">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_arprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_arvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_arvalid">
+        <PORT DIR="I" NAME="s00_axi_arvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_arvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_arready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_arready">
+        <PORT DIR="O" NAME="s00_axi_arready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_arready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="s00_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rdata">
+        <PORT DIR="O" LEFT="31" NAME="s00_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s00_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rresp">
+        <PORT DIR="O" LEFT="1" NAME="s00_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s00_axi_rvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rvalid">
+        <PORT DIR="O" NAME="s00_axi_rvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s00_axi_rready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rready">
+        <PORT DIR="I" NAME="s00_axi_rready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_AXI_rready"/>
           </CONNECTIONS>
@@ -828,7 +2273,7 @@
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M02_AXI" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
           <PARAMETER NAME="WIZ_DATA_WIDTH" VALUE="32"/>
-          <PARAMETER NAME="WIZ_NUM_REG" VALUE="256"/>
+          <PARAMETER NAME="WIZ_NUM_REG" VALUE="4"/>
           <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
@@ -882,9 +2327,111 @@
             <PORTMAP LOGICAL="RREADY" PHYSICAL="s00_axi_rready"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TK5" NAME="TK5" TYPE="INITIATOR" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken5"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="ackTime5"/>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen5"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren5"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadTime5"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysin5"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr5"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren5"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr5"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren5"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr5"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownpren5"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softShutdownTimer5"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="minTime5"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready5"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr5"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr5"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror5"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren5"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset5"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackin5"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TK6" NAME="TK6" TYPE="INITIATOR" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken6"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="ackTime6"/>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen6"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren6"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadTime6"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysin6"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr6"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren6"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr6"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren6"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr6"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownpren6"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softShutdownTimer6"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="minTime6"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready6"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr6"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr6"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror6"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren6"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset6"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackin6"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TK9" NAME="TK9" TYPE="INITIATOR" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breaken9"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="ackTime9"/>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysen9"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentpren9"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadTime9"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysin9"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentpr9"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimepren9"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackpr9"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackpren9"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="linepr9"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownpren9"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softShutdownTimer9"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="minTime9"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ready9"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownpr9"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimepr9"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerror9"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="linepren9"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="reset9"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackin9"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_TKA" NAME="TKA" TYPE="INITIATOR" VLNV="setcorp:user:ID_TKSettings:1.0">
+          <PARAMETER NAME="NUM_READ_OUTSTANDING"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="breaken" PHYSICAL="breakenA"/>
+            <PORTMAP LOGICAL="ackTime" PHYSICAL="ackTimeA"/>
+            <PORTMAP LOGICAL="keysen" PHYSICAL="keysenA"/>
+            <PORTMAP LOGICAL="currentpren" PHYSICAL="currentprenA"/>
+            <PORTMAP LOGICAL="deadTime" PHYSICAL="deadTimeA"/>
+            <PORTMAP LOGICAL="keysout" PHYSICAL="keysinA"/>
+            <PORTMAP LOGICAL="currentpr" PHYSICAL="currentprA"/>
+            <PORTMAP LOGICAL="mintimepren" PHYSICAL="mintimeprenA"/>
+            <PORTMAP LOGICAL="ackpr" PHYSICAL="ackprA"/>
+            <PORTMAP LOGICAL="ackpren" PHYSICAL="ackprenA"/>
+            <PORTMAP LOGICAL="linepr" PHYSICAL="lineprA"/>
+            <PORTMAP LOGICAL="softshutdownen" PHYSICAL="softshutdownprenA"/>
+            <PORTMAP LOGICAL="softShutdownTimer" PHYSICAL="softShutdownTimerA"/>
+            <PORTMAP LOGICAL="minTime" PHYSICAL="minTimeA"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="readyA"/>
+            <PORTMAP LOGICAL="softshutdownpr" PHYSICAL="softshutdownprA"/>
+            <PORTMAP LOGICAL="mintimepr" PHYSICAL="mintimeprA"/>
+            <PORTMAP LOGICAL="timeerror" PHYSICAL="timeerrorA"/>
+            <PORTMAP LOGICAL="linepren" PHYSICAL="lineprenA"/>
+            <PORTMAP LOGICAL="reset" PHYSICAL="resetA"/>
+            <PORTMAP LOGICAL="acknowledges" PHYSICAL="ackinA"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/OneStageSynchronizer_0" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/SerialBusSlave/OneStageSynchronizer_0" HWVERSION="1.0" INSTANCE="SerialBusSlave_OneStageSynchronizer_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="PHASE_SHIFT" VALUE="15"/>
@@ -902,15 +2449,15 @@
             <CONNECTION INSTANCE="External_Ports" PORT="sbdatain_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="OneStageSynchronizer_0_sync_signal">
+        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="SerialBusSlave_OneStageSynchronizer_0_sync_signal">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="sbdatain"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="sbdatain"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/OneStageSynchronizer_1" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/SerialBusSlave/OneStageSynchronizer_1" HWVERSION="1.0" INSTANCE="SerialBusSlave_OneStageSynchronizer_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="PHASE_SHIFT" VALUE="15"/>
@@ -928,149 +2475,15 @@
             <CONNECTION INSTANCE="External_Ports" PORT="sbclk_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="OneStageSynchronizer_1_sync_signal">
+        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="SerialBusSlave_OneStageSynchronizer_1_sync_signal">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="sbclk"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="sbclk"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/OneStageSynchronizer_2" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="PHASE_SHIFT" VALUE="3"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_0_5"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="async_signal" SIGIS="undef" SIGNAME="External_Ports_pbce_0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="pbce_0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="OneStageSynchronizer_2_sync_signal">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pbce"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/OneStageSynchronizer_3" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterSingle_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterSingle_ver_1_0:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="PHASE_SHIFT" VALUE="3"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_2_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="async_signal" SIGIS="undef" SIGNAME="External_Ports_pbclk_0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="pbclk_0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="sync_signal" SIGIS="undef" SIGNAME="OneStageSynchronizer_3_sync_signal">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="pbclk"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/OneStageSynchronizer_4" HWVERSION="1.0" INSTANCE="OneStageSynchronizer_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OneStageSynchronizerAndDigitalFilterBlock_ver_1_0" VLNV="setcorp:user:OneStageSynchronizerAndDigitalFilterBlock_ver_1_0:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="PHASE_SHIFT" VALUE="3"/>
-        <PARAMETER NAME="QUANTITY_CHANNELS" VALUE="16"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_OneStageSynchronizer_4_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="async_signal" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_datain_0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="datain_0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="sync_signal" RIGHT="0" SIGIS="undef" SIGNAME="OneStageSynchronizer_4_sync_signal">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="EventCapturer64bit_0" PORT="datain"/>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="gpio_io_i"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/ParallelBusSlave_ver_0" HWVERSION="1.0" INSTANCE="ParallelBusSlave_ver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ParallelBusSlave_ver_2_0" VLNV="setcorp:user:ParallelBusSlave_ver_2_0:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="ADDRESS_DEVICE_BUS_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="ADDRESS_REG_BUS_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="DATA_BUS_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="COUNT_WAIT" VALUE="7"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_ParallelBusSlave_ver_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="pbclk" SIGIS="undef" SIGNAME="OneStageSynchronizer_3_sync_signal">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="OneStageSynchronizer_3" PORT="sync_signal"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="IO" LEFT="15" NAME="pbdata" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pbdata_0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="pbdata_0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="pbce" SIGIS="undef" SIGNAME="OneStageSynchronizer_2_sync_signal">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="sync_signal"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="pback" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_pback">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="pback_0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_addressregister">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="addressregister"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="datain" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_dataout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="dataout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="dataready" SIGIS="undef" SIGNAME="ParallelBusSlave_ver_0_dataready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="dataready"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/SerialBusSlave_ver_2_0" HWVERSION="1.0" INSTANCE="SerialBusSlave_ver_2_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="SerialBusSlave_ver_2_0" VLNV="setcorp:user:SerialBusSlave_ver_2_0:1.0">
+    <MODULE COREREVISION="3" FULLNAME="/SerialBusSlave/SerialBusSlave_ver_2_0" HWVERSION="1.0" INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="SerialBusSlave_ver_2_0" VLNV="setcorp:user:SerialBusSlave_ver_2_0:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="ADDRESS_DEVICE_BUS_WIDTH" VALUE="4"/>
@@ -1087,44 +2500,44 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="sbclk" SIGIS="undef" SIGNAME="OneStageSynchronizer_1_sync_signal">
+        <PORT DIR="I" NAME="sbclk" SIGIS="undef" SIGNAME="SerialBusSlave_OneStageSynchronizer_1_sync_signal">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="OneStageSynchronizer_1" PORT="sync_signal"/>
+            <CONNECTION INSTANCE="SerialBusSlave_OneStageSynchronizer_1" PORT="sync_signal"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="sbdatain" SIGIS="undef" SIGNAME="OneStageSynchronizer_0_sync_signal">
+        <PORT DIR="I" NAME="sbdatain" SIGIS="undef" SIGNAME="SerialBusSlave_OneStageSynchronizer_0_sync_signal">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="OneStageSynchronizer_0" PORT="sync_signal"/>
+            <CONNECTION INSTANCE="SerialBusSlave_OneStageSynchronizer_0" PORT="sync_signal"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sbdataout" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_sbdataout">
+        <PORT DIR="O" NAME="sbdataout" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_sbdataout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="sbdataout_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_addressregister">
+        <PORT DIR="O" LEFT="7" NAME="addressregister" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_addressregister">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="addressregister"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="addressregister"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="dataout" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_dataout">
+        <PORT DIR="O" LEFT="15" NAME="dataout" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_dataout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="datain"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="datain"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="datain" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_dataout">
+        <PORT DIR="I" LEFT="15" NAME="datain" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_dataout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="dataout"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="dataout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="rw" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_rw">
+        <PORT DIR="O" NAME="rw" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_rw">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="rw"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="rw"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="dataready" SIGIS="undef" SIGNAME="SerialBusSlave_ver_2_0_dataready">
+        <PORT DIR="O" NAME="dataready" SIGIS="undef" SIGNAME="SerialBusSlave_SerialBusSlave_ver_2_0_dataready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="dataready"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="dataready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4800,8 +6213,6 @@
             <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ACLK"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_aclk"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_aclk"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ACLK"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="m_axi_s2mm_aclk"/>
@@ -4811,19 +6222,25 @@
             <CONNECTION INSTANCE="EventCapturer64bit_0" PORT="clk"/>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_ACLK"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_3" PORT="clk"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_2" PORT="clk"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Invertor_OneStageSynchronizer_5" PORT="clk"/>
+            <CONNECTION INSTANCE="Invertor_TransistorKeys_1" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="5e+07" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SerialBusSlave_ver_2_0" PORT="clk"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="clk"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="clk"/>
-            <CONNECTION INSTANCE="OneStageSynchronizer_0" PORT="clk"/>
-            <CONNECTION INSTANCE="OneStageSynchronizer_1" PORT="clk"/>
-            <CONNECTION INSTANCE="OneStageSynchronizer_2" PORT="clk"/>
-            <CONNECTION INSTANCE="OneStageSynchronizer_3" PORT="clk"/>
             <CONNECTION INSTANCE="OneStageSynchronizer_4" PORT="clk"/>
-            <CONNECTION INSTANCE="ParallelBusSlave_ver_0" PORT="clk"/>
+            <CONNECTION INSTANCE="SerialBusSlave_OneStageSynchronizer_0" PORT="clk"/>
+            <CONNECTION INSTANCE="SerialBusSlave_OneStageSynchronizer_1" PORT="clk"/>
+            <CONNECTION INSTANCE="SerialBusSlave_SerialBusSlave_ver_2_0" PORT="clk"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_OneStageSynchronizer_2" PORT="clk"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_OneStageSynchronizer_3" PORT="clk"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="clk"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_ParallelBusSlave_ver_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -5144,16 +6561,16 @@
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4120FFFF" INSTANCE="axi_gpio_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41210000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4121FFFF" INSTANCE="axi_gpio_1" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x43C00000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x43C0FFFF" INSTANCE="IP_AXI_LEDS_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
-        <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x43C10000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x43C1FFFF" INSTANCE="IP_AXI_ManagerSerial_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
-        <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x43C20000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x43C2FFFF" INSTANCE="IP_AXI_ManagerParall_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x43C10000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x43C1FFFF" INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x43C20000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x43C2FFFF" INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="axi_dma_0"/>
         <PERIPHERAL INSTANCE="axi_gpio_0"/>
         <PERIPHERAL INSTANCE="axi_gpio_1"/>
         <PERIPHERAL INSTANCE="IP_AXI_LEDS_0"/>
-        <PERIPHERAL INSTANCE="IP_AXI_ManagerSerial_0"/>
-        <PERIPHERAL INSTANCE="IP_AXI_ManagerParall_0"/>
+        <PERIPHERAL INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0"/>
+        <PERIPHERAL INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0"/>
       </PERIPHERALS>
     </MODULE>
     <MODULE COREREVISION="20" FULLNAME="/ps7_0_axi_periph" HWVERSION="2.1" INSTANCE="ps7_0_axi_periph" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="axi_interconnect" VLNV="xilinx.com:ip:axi_interconnect:2.1">
@@ -5559,6 +6976,461 @@
             <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M03_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M03_AXI_awvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M03_AXI_awready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M03_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M03_AXI_wvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M03_AXI_wready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M03_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M03_AXI_bvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M03_AXI_bready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M03_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M03_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_arprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M03_AXI_arvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M03_AXI_arready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M03_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M03_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M03_AXI_rvalid" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M03_AXI_rready" SIGIS="undef" SIGNAME="ParallelBusSlave_IP_AXI_ManagerParall_0_s00_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M04_AXI_awvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_awready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_wstrb" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M04_AXI_wvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_wready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M04_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_bvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_bready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M04_AXI_arvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_arready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M04_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M04_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_rvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_rready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M01_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M02_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M02_AXI_awvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M02_AXI_awready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M02_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M02_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M02_AXI_wvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M02_AXI_wready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M02_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M02_AXI_bvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M02_AXI_bready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M02_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_arprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M02_AXI_arvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M02_AXI_arready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M02_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M02_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M02_AXI_rvalid" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M02_AXI_rready" SIGIS="undef" SIGNAME="SerialBusSlave_IP_AXI_ManagerSerial_0_s00_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_M_AXI_GP0_AWID">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWID"/>
@@ -5836,461 +7708,6 @@
             <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M01_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_LEDS_0_s00_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M02_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_awprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M02_AXI_awvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M02_AXI_awready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M02_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M02_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M02_AXI_wvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M02_AXI_wready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M02_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M02_AXI_bvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M02_AXI_bready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M02_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_arprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_arprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M02_AXI_arvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M02_AXI_arready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M02_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M02_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M02_AXI_rvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M02_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_ManagerSerial_0_s00_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M03_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_awprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M03_AXI_awvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_AXI_awready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M03_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M03_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M03_AXI_wvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_AXI_wready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M03_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_AXI_bvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M03_AXI_bready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M03_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M03_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_arprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_arprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M03_AXI_arvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_AXI_arready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M03_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M03_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M03_AXI_rvalid" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M03_AXI_rready" SIGIS="undef" SIGNAME="IP_AXI_ManagerParall_0_s00_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="axi_gpio_1_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M04_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M04_AXI_awvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_awready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M04_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_wstrb" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M04_AXI_wvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_wready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M04_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_bvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_bready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M04_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M04_AXI_arvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_arready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M04_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M04_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M04_AXI_rvalid" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M04_AXI_rready" SIGIS="undef" SIGNAME="axi_dma_0_s_axi_lite_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_rready"/>
-          </CONNECTIONS>
-        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="processing_system7_0_M_AXI_GP0" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -6522,8 +7939,6 @@
             <CONNECTION INSTANCE="IP_AXI_LEDS_0" PORT="s00_axi_aresetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ARESETN"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerParall_0" PORT="s00_axi_aresetn"/>
-            <CONNECTION INSTANCE="IP_AXI_ManagerSerial_0" PORT="s00_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="axi_resetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ARESETN"/>
             <CONNECTION INSTANCE="axi_smc" PORT="aresetn"/>
@@ -6531,6 +7946,8 @@
             <CONNECTION INSTANCE="EventCapturer64bit_0" PORT="resetn"/>
             <CONNECTION INSTANCE="axi_gpio_1" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_ARESETN"/>
+            <CONNECTION INSTANCE="SerialBusSlave_IP_AXI_ManagerSerial_0" PORT="s00_axi_aresetn"/>
+            <CONNECTION INSTANCE="ParallelBusSlave_IP_AXI_ManagerParall_0" PORT="s00_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
